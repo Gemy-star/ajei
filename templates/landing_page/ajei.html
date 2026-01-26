@@ -1,0 +1,2836 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Ajei Project - Integrated Medical-Commercial Center | STC Developments" %}</title>
+    <meta name="description" content="{% trans 'Ajei is an integrated medical-commercial project in October Gardens serving your daily needs. A unique Central Hub concept combining medical services, restaurants, cafes, pharmacy, and supermarket under unified management.' %}">
+
+    <!-- Google Ads / Analytics -->
+    {% if config.AJEI_GOOGLE_ADS_ID %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.AJEI_GOOGLE_ADS_ID }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ config.AJEI_GOOGLE_ADS_ID }}');
+    </script>
+    {% endif %}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/ajei_logo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/ajei_logo.png' %}">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% trans 'Ajei Project - Integrated Medical-Commercial Center | STC Developments' %}">
+    <meta property="og:description" content="{% trans 'Ajei is an integrated medical-commercial project in October Gardens serving your daily needs.' %}">
+    <meta property="og:image" content="{% static 'images/ajei_logo.png' %}">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <style>
+        /* ============================================
+           DESIGN TOKENS (CSS Custom Properties)
+           ============================================ */
+        :root {
+            /* Colors */
+            --color-primary: #EFF0EC;
+            --color-secondary: #180F2A;
+            --color-accent: #2B2529;
+            --color-dark-purple: #180F2A;
+            --color-raisin-black: #2B2529;
+            --color-alabaster: #EFF0EC;
+            --color-text-dark: #180F2A;
+            --color-text-light: #4a5568;
+            --color-text-on-dark: #EFF0EC;
+            --color-white: #ffffff;
+            --color-success: #27ae60;
+            --color-error: #e74c3c;
+            --color-whatsapp: #25D366;
+
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            --gradient-light: linear-gradient(135deg, var(--color-alabaster) 0%, #f5f5f0 50%, var(--color-alabaster) 100%);
+
+            /* Spacing */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
+
+            /* Typography */
+            --font-primary: 'Poppins', 'Cairo', sans-serif;
+            --font-heading: 'Playfair Display', 'Cairo', serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3rem;
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            --radius-full: 50%;
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
+            --shadow-glow: 0 0 20px rgba(43, 37, 41, 0.4);
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            /* Z-index layers */
+            --z-base: 1;
+            --z-dropdown: 100;
+            --z-sticky: 500;
+            --z-fixed: 900;
+            --z-modal: 1000;
+            --z-preloader: 9999;
+        }
+
+        /* ============================================
+           CSS RESET & BASE STYLES
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-text-dark);
+            background: var(--color-alabaster);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-base);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--color-secondary), 0 0 10px var(--color-secondary); }
+            50% { box-shadow: 0 0 20px var(--color-secondary), 0 0 30px var(--color-secondary); }
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 5px 35px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        }
+
+        /* Animation utility classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .animate-on-scroll {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ============================================
+           LAYOUT UTILITIES
+           ============================================ */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        .section {
+            padding: var(--space-4xl) 0;
+            position: relative;
+        }
+
+        .section--light {
+            background: var(--gradient-light);
+        }
+
+        .section--dark {
+            background: var(--gradient-primary);
+            color: var(--color-text-on-dark);
+        }
+
+        .grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        .grid--2 { grid-template-columns: repeat(2, 1fr); }
+        .grid--3 { grid-template-columns: repeat(3, 1fr); }
+        .grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+        @media (max-width: 992px) {
+            .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+            .section { padding: var(--space-3xl) 0; }
+        }
+
+        /* ============================================
+           SECTION HEADER
+           ============================================ */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .section-header__title {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--space-md);
+            color: var(--color-dark-purple);
+        }
+
+        .section-header__title span {
+            color: var(--color-accent);
+        }
+
+        .section-header__underline {
+            width: 80px;
+            height: 4px;
+            background: var(--color-accent);
+            margin: 0 auto var(--space-lg);
+            border-radius: var(--radius-sm);
+        }
+
+        .section-header__subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section--dark .section-header__title {
+            color: var(--color-white);
+        }
+
+        @media (max-width: 768px) {
+            .section-header__title {
+                font-size: var(--font-size-3xl);
+            }
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            border-radius: var(--radius-xl);
+            transition: var(--transition-base);
+        }
+
+        .btn--primary {
+            background: var(--gradient-primary);
+            color: var(--color-white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn--primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn--outline {
+            background: transparent;
+            border: 2px solid var(--color-dark-purple);
+            color: var(--color-dark-purple);
+        }
+
+        .btn--outline:hover {
+            background: var(--color-dark-purple);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+
+        .btn--lg {
+            padding: var(--space-lg) var(--space-2xl);
+            font-size: var(--font-size-lg);
+        }
+
+        /* ============================================
+           PRELOADER
+           ============================================ */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--color-alabaster);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-preloader);
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader__content {
+            text-align: center;
+        }
+
+        .preloader__logo {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-md);
+            background: var(--gradient-primary);
+            padding: var(--space-xl) var(--space-2xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-2xl);
+            box-shadow: var(--shadow-lg);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .preloader__logo i {
+            font-size: 2.5rem;
+            color: var(--color-alabaster);
+        }
+
+        .preloader__logo img {
+            height: 80px;
+            filter: brightness(0) invert(1);
+        }
+
+        .preloader__text {
+            color: var(--color-secondary);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: var(--space-xl);
+        }
+
+        .preloader__icons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .preloader__icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-secondary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-alabaster);
+            font-size: 1.2rem;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: var(--shadow-md);
+        }
+
+        .preloader__icon:nth-child(2) { animation-delay: 0.2s; }
+        .preloader__icon:nth-child(3) { animation-delay: 0.4s; }
+        .preloader__icon:nth-child(4) { animation-delay: 0.6s; }
+
+        .preloader__spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(43, 37, 41, 0.2);
+            border-top-color: var(--color-secondary);
+            border-radius: var(--radius-full);
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+
+        /* ============================================
+           HEADER / NAVIGATION
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-fixed);
+            padding: var(--space-md) 0;
+            background: rgba(239, 240, 236, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-base);
+        }
+
+        .header.scrolled {
+            padding: var(--space-sm) 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header__container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header__logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--gradient-primary);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+
+        .header__logo:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header__logo i {
+            font-size: 1.5rem;
+            color: var(--color-alabaster);
+        }
+
+        .header__logo img {
+            height: 40px;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xl);
+        }
+
+        .nav__list {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .nav__link {
+            color: var(--color-dark-purple);
+            font-weight: 500;
+            padding: var(--space-sm) var(--space-md);
+            position: relative;
+        }
+
+        .nav__link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--color-secondary);
+            transition: var(--transition-base);
+            transform: translateX(-50%);
+        }
+
+        .nav__link:hover::after {
+            width: 80%;
+        }
+
+        .nav__actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .lang-switcher__link {
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-lg);
+            background: rgba(24, 15, 42, 0.1);
+            color: var(--color-dark-purple);
+            font-size: var(--font-size-sm);
+            transition: var(--transition-base);
+        }
+
+        .lang-switcher__link:hover,
+        .lang-switcher__link.active {
+            background: var(--color-dark-purple);
+            color: var(--color-white);
+        }
+
+        /* Mobile Menu Toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: var(--space-sm);
+            cursor: pointer;
+            z-index: var(--z-modal);
+        }
+
+        .nav-toggle__bar {
+            width: 25px;
+            height: 3px;
+            background: var(--color-dark-purple);
+            border-radius: 2px;
+            transition: var(--transition-base);
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .nav-toggle__bar:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        @media (max-width: 992px) {
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background: var(--color-alabaster);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: var(--space-4xl) var(--space-xl);
+                box-shadow: var(--shadow-xl);
+                transition: var(--transition-slow);
+                z-index: var(--z-fixed);
+            }
+
+            [dir="rtl"] .nav {
+                right: auto;
+                left: -100%;
+            }
+
+            .nav.active {
+                right: 0;
+            }
+
+            [dir="rtl"] .nav.active {
+                left: 0;
+            }
+
+            .nav__list {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+            }
+
+            .nav__link {
+                display: block;
+                padding: var(--space-md);
+                border-bottom: 1px solid rgba(24, 15, 42, 0.1);
+            }
+
+            .nav__actions {
+                flex-direction: column;
+                width: 100%;
+                margin-top: var(--space-xl);
+            }
+
+            .nav__actions .btn {
+                width: 100%;
+            }
+
+            .lang-switcher {
+                justify-content: center;
+            }
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            background: var(--gradient-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(43, 37, 41, 0.08) 0%, transparent 70%);
+            border-radius: var(--radius-full);
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .hero__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
+        }
+
+        .hero__content {
+            animation: slideInLeft 1s ease;
+        }
+
+        .hero__logo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-md);
+            background: var(--gradient-primary);
+            padding: var(--space-lg) var(--space-2xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero__logo-badge i {
+            font-size: 2rem;
+            color: var(--color-alabaster);
+        }
+
+        .hero__logo-badge img {
+            max-width: 180px;
+            filter: brightness(0) invert(1);
+        }
+
+        .hero__title {
+            font-size: var(--font-size-2xl);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            line-height: 1.5;
+        }
+
+        .hero__description {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-light);
+            margin-bottom: var(--space-md);
+            line-height: 1.8;
+        }
+
+        .hero__location {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--color-secondary);
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero__buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .hero__image {
+            animation: slideInRight 1s ease;
+        }
+
+        .hero__image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            animation: float 6s ease-in-out infinite;
+            transition: var(--transition-slow);
+        }
+
+        .hero__image img:hover {
+            transform: scale(1.02) rotate(1deg);
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                min-height: auto;
+                padding: 120px 0 var(--space-3xl);
+            }
+
+            .hero__container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero__content {
+                order: 1;
+            }
+
+            .hero__image {
+                order: 2;
+            }
+
+            .hero__buttons {
+                justify-content: center;
+            }
+
+            .hero__location {
+                justify-content: center;
+            }
+
+            .hero__title {
+                font-size: var(--font-size-xl);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero__buttons {
+                flex-direction: column;
+            }
+
+            .hero__buttons .btn {
+                width: 100%;
+            }
+        }
+
+        /* ============================================
+           CARDS
+           ============================================ */
+        .card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(239, 240, 236, 0.95) 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            border: 2px solid rgba(43, 37, 41, 0.1);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(43, 37, 41, 0.2);
+        }
+
+        .card--center {
+            text-align: center;
+        }
+
+        .card__icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(239, 240, 236, 0.9));
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-lg);
+            font-size: 1.8rem;
+            color: var(--color-secondary);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-bounce);
+        }
+
+        .card:hover .card__icon {
+            transform: rotateY(180deg) scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .card__title {
+            font-size: var(--font-size-xl);
+            color: var(--color-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .card__text {
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        /* Glass Card Variant */
+        .card--glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card--glass:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* ============================================
+           FEATURES SECTION
+           ============================================ */
+        .features {
+            background: var(--gradient-light);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("{% static 'images/ajei-background-2-min.png' %}") center/cover no-repeat;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+
+        .features__intro {
+            max-width: 900px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .features__intro .card {
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+
+        .features__intro p {
+            font-size: var(--font-size-lg);
+            line-height: 1.9;
+            margin-bottom: var(--space-lg);
+        }
+
+        .features__intro p:last-child {
+            margin-bottom: 0;
+            color: var(--color-text-light);
+        }
+
+        /* ============================================
+           PORTFOLIO DOWNLOAD SECTION
+           ============================================ */
+        .portfolio-section .grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .portfolio-card {
+            text-align: center;
+            padding: var(--space-2xl);
+        }
+
+        .portfolio-card .card__icon {
+            margin-bottom: var(--space-lg);
+        }
+
+        .portfolio-card .btn {
+            margin-top: var(--space-lg);
+        }
+
+        /* ============================================
+           PROJECT STRUCTURE SECTION
+           ============================================ */
+        .structure-section {
+            background: var(--color-white);
+            position: relative;
+        }
+
+        .structure-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("{% static 'images/ajei-background-5-min.png' %}") center/cover no-repeat;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .structure__overview {
+            max-width: 900px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .structure__overview .card {
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+
+        .structure__floors {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        @media (max-width: 768px) {
+            .structure__floors {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .floor-card {
+            text-align: center;
+            padding: var(--space-lg);
+        }
+
+        .floor-card h5 {
+            color: var(--color-dark-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+
+        .floor-card h5 i {
+            color: var(--color-secondary);
+        }
+
+        .structure__subsection {
+            margin-top: var(--space-3xl);
+        }
+
+        .structure__subsection-title {
+            text-align: center;
+            font-size: var(--font-size-2xl);
+            color: var(--color-dark-purple);
+            margin-bottom: var(--space-xl);
+        }
+
+        /* ============================================
+           LOCATION SECTION
+           ============================================ */
+        .location-section {
+            background: var(--gradient-light);
+        }
+
+        .location__info {
+            max-width: 900px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .location__info .card {
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+
+        .location__list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+            text-align: start;
+            margin-top: var(--space-xl);
+        }
+
+        @media (max-width: 576px) {
+            .location__list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .location__list-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .location__list-item i {
+            color: var(--color-secondary);
+        }
+
+        .location__map-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .location__map-card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-3xl);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location__map-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-primary);
+        }
+
+        .location__map-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .location__map-badge {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-lg);
+        }
+
+        .location__map-badge span {
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: var(--font-size-sm);
+            letter-spacing: 1px;
+        }
+
+        .location__map-title {
+            font-size: var(--font-size-3xl);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--space-lg);
+        }
+
+        .location__map-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-dark);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .location__map-container {
+            margin: var(--space-2xl) 0;
+        }
+
+        .location__map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: var(--radius-lg);
+        }
+
+        .location__map-link {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        .location__features-title {
+            text-align: center;
+            font-size: var(--font-size-2xl);
+            color: var(--color-secondary);
+            margin: var(--space-3xl) 0 var(--space-xl);
+        }
+
+        .location__features-underline {
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            margin: 0 auto var(--space-2xl);
+            border-radius: 2px;
+        }
+
+        .location__feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-lg);
+            height: 100%;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(24, 15, 42, 0.05);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location__feature-card::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(24, 15, 42, 0.05), transparent);
+            border-radius: var(--radius-full);
+        }
+
+        .location__feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .location__feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .location__feature-icon i {
+            font-size: 1.8rem;
+            color: var(--color-white);
+        }
+
+        .location__feature-card h5 {
+            color: var(--color-secondary);
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-size-lg);
+        }
+
+        .location__feature-card p {
+            color: var(--color-text-light);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* ============================================
+           AMENITIES SECTION
+           ============================================ */
+        .amenities-section {
+            background: var(--gradient-light);
+        }
+
+        /* ============================================
+           INVESTMENT SECTION
+           ============================================ */
+        .investment-section {
+            background: var(--gradient-light);
+            position: relative;
+        }
+
+        .investment__intro {
+            max-width: 900px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .investment__intro .card {
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+
+        .investment__cards {
+            margin-bottom: var(--space-3xl);
+        }
+
+        .investment__returns {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .investment__returns .card {
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+
+        .investment__returns h5 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            color: var(--color-dark-purple);
+            margin-bottom: var(--space-lg);
+        }
+
+        .investment__returns h5 i {
+            color: var(--color-secondary);
+        }
+
+        .investment__list {
+            margin-top: var(--space-md);
+        }
+
+        .investment__list li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .investment__list li i {
+            color: var(--color-secondary);
+        }
+
+        /* ============================================
+           VIDEO SECTION
+           ============================================ */
+        .video-section {
+            background: var(--color-white);
+        }
+
+        .video-section .card {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--space-xl);
+        }
+
+        .video__wrapper {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video__wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        /* ============================================
+           DESIGN & ARCHITECTURE SECTION
+           ============================================ */
+        .design-section {
+            background: var(--gradient-primary);
+            color: var(--color-text-on-dark);
+            position: relative;
+        }
+
+        .design-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("{% static 'images/ajei-background-3-min.png' %}") center/cover no-repeat;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .design__intro {
+            max-width: 900px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .design__intro .card--glass {
+            padding: var(--space-2xl);
+            text-align: center;
+        }
+
+        .design__intro p {
+            font-size: var(--font-size-lg);
+            line-height: 1.9;
+            margin-bottom: var(--space-lg);
+        }
+
+        .design__intro p:last-child {
+            margin-bottom: 0;
+            font-style: italic;
+            color: var(--color-accent);
+        }
+
+        .design__floor-plans {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-xl);
+        }
+
+        @media (max-width: 768px) {
+            .design__floor-plans {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floor-plan-card {
+            text-align: center;
+        }
+
+        .floor-plan-card img {
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-lg);
+            max-height: 350px;
+            object-fit: contain;
+            width: 100%;
+        }
+
+        .floor-plan-card h4 {
+            color: var(--color-white);
+        }
+
+        /* ============================================
+           GALLERY SECTION
+           ============================================ */
+        .gallery-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("{% static 'images/ajei-background-4-min.png' %}") center/cover no-repeat;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .gallery__filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .gallery__filter {
+            padding: var(--space-sm) var(--space-lg);
+            border: 2px solid var(--color-dark-purple);
+            border-radius: var(--radius-xl);
+            color: var(--color-dark-purple);
+            font-weight: 500;
+            transition: var(--transition-base);
+        }
+
+        .gallery__filter:hover,
+        .gallery__filter.active {
+            background: var(--color-dark-purple);
+            color: var(--color-white);
+        }
+
+        .gallery__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .gallery__item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            height: 320px;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-base);
+        }
+
+        .gallery__item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .gallery__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .gallery__item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(24, 15, 42, 0.9), rgba(43, 37, 41, 0.6), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--space-xl);
+            opacity: 0;
+            transition: var(--transition-base);
+        }
+
+        .gallery__item:hover .gallery__overlay {
+            opacity: 1;
+        }
+
+        .gallery__overlay h5 {
+            color: var(--color-white);
+            margin-bottom: var(--space-sm);
+        }
+
+        .gallery__overlay-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-alabaster);
+            font-size: 1.5rem;
+        }
+
+        /* ============================================
+           TESTIMONIALS / FEATURES SECTION
+           ============================================ */
+        .testimonials-section {
+            background: var(--gradient-primary);
+            color: var(--color-text-on-dark);
+            position: relative;
+        }
+
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("{% static 'images/ajei-background-3-min.png' %}") center/cover no-repeat;
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .testimonial-card {
+            padding: var(--space-2xl);
+        }
+
+        .testimonial-card__icon {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            margin-bottom: var(--space-lg);
+        }
+
+        .testimonial-card h4 {
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+        }
+
+        .testimonial-card p {
+            font-size: var(--font-size-lg);
+            line-height: 1.8;
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact-section {
+            background: var(--color-white);
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("{% static 'images/ajei-background-5-min.png' %}") center/cover no-repeat;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .contact__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+        }
+
+        @media (max-width: 992px) {
+            .contact__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(43, 37, 41, 0.1);
+        }
+
+        .contact-form__header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 3px solid var(--color-secondary);
+        }
+
+        .contact-form__title {
+            font-size: var(--font-size-xl);
+            color: var(--color-dark-purple);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            border: 2px solid #e8e6e0;
+            border-radius: var(--radius-md);
+            font-family: var(--font-primary);
+            font-size: var(--font-size-base);
+            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+            color: var(--color-text-dark);
+            transition: var(--transition-base);
+        }
+
+        .form-input:hover {
+            border-color: #c4c2bc;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 4px rgba(43, 37, 41, 0.1), var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .form-input::placeholder {
+            color: #999;
+        }
+
+        select.form-input {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2317112A' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 1rem center;
+            padding-left: 2.5rem;
+        }
+
+        [dir="rtl"] select.form-input {
+            background-position: right 1rem center;
+            padding-left: var(--space-lg);
+            padding-right: 2.5rem;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: var(--space-md) var(--space-xl);
+            background: var(--gradient-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: var(--space-lg);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-light);
+        }
+
+        .form-note i {
+            margin-right: var(--space-xs);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            padding: var(--space-xl);
+        }
+
+        .contact-info__title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-xl);
+            color: var(--color-dark-purple);
+        }
+
+        .contact-info__item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .contact-info__icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-secondary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-alabaster);
+            flex-shrink: 0;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-bounce);
+        }
+
+        .contact-info__item:hover .contact-info__icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .contact-info__content h5 {
+            margin-bottom: var(--space-xs);
+            color: var(--color-dark-purple);
+        }
+
+        .contact-info__content p {
+            color: var(--color-text-light);
+            margin: 0;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-top: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .alert--success {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--color-success);
+            border: 1px solid var(--color-success);
+        }
+
+        .alert--error {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--color-error);
+            border: 1px solid var(--color-error);
+        }
+
+        .alert__close {
+            margin-left: auto;
+            padding: var(--space-xs);
+            cursor: pointer;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--color-dark-purple);
+            color: var(--color-text-on-dark);
+            padding: var(--space-3xl) 0 var(--space-lg);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("{% static 'images/ajei-background-6-min.png' %}") center/cover no-repeat;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: var(--space-3xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .footer__logo {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--gradient-primary);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .footer__logo i {
+            font-size: 1.5rem;
+            color: var(--color-alabaster);
+        }
+
+        .footer__logo img {
+            height: 45px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer__description {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: var(--space-lg);
+            line-height: 1.8;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        @media (max-width: 768px) {
+            .footer__social {
+                justify-content: center;
+            }
+        }
+
+        .footer__social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            transition: var(--transition-bounce);
+        }
+
+        .footer__social-link:hover {
+            background: var(--color-secondary);
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .footer__links-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .footer__links li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer__links a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer__links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-lg);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .footer__bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .footer__copyright {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer__legal {
+            display: flex;
+            gap: var(--space-lg);
+        }
+
+        @media (max-width: 768px) {
+            .footer__legal {
+                justify-content: center;
+            }
+        }
+
+        .footer__legal a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: var(--font-size-sm);
+        }
+
+        .footer__legal a:hover {
+            color: var(--color-white);
+        }
+
+        /* ============================================
+           FLOATING BUTTONS
+           ============================================ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--color-white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            z-index: var(--z-fixed);
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
+            animation: whatsappPulse 2s infinite;
+            transition: var(--transition-base);
+        }
+
+        [dir="rtl"] .whatsapp-float {
+            right: auto;
+            left: 30px;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+            color: var(--color-white);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--color-accent);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: 1.3rem;
+            z-index: var(--z-fixed);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--color-secondary);
+            cursor: pointer;
+        }
+
+        [dir="rtl"] .scroll-top {
+            right: auto;
+            left: 30px;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--color-secondary);
+            transform: translateY(-8px);
+        }
+
+        @media (max-width: 576px) {
+            .whatsapp-float {
+                bottom: 80px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            [dir="rtl"] .whatsapp-float,
+            [dir="rtl"] .scroll-top {
+                right: auto;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader__content">
+            <div class="preloader__logo">
+                <i class="fas fa-building"></i>
+                <img src="{% static 'images/ajei_logo.png' %}" alt="AJEI">
+            </div>
+            <div class="preloader__text">{% trans "Loading Ajei Mall" %}</div>
+            <div class="preloader__icons">
+                <div class="preloader__icon"><i class="fas fa-building"></i></div>
+                <div class="preloader__icon"><i class="fas fa-store"></i></div>
+                <div class="preloader__icon"><i class="fas fa-city"></i></div>
+                <div class="preloader__icon"><i class="fas fa-home"></i></div>
+            </div>
+            <div class="preloader__spinner"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header__container">
+            <a href="#home" class="header__logo">
+                <i class="fas fa-building"></i>
+                <img src="{% static 'images/ajei_logo.png' %}" alt="AJEI Logo">
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+                <span class="nav-toggle__bar"></span>
+            </button>
+
+            <nav class="nav" id="nav">
+                <ul class="nav__list">
+                    <li><a href="#home" class="nav__link">{% trans "الرئيسية" %}</a></li>
+                    <li><a href="#about" class="nav__link">{% trans "عن Ajei" %}</a></li>
+                    <li><a href="#structure" class="nav__link">{% trans "تكوين المشروع" %}</a></li>
+                    <li><a href="#location" class="nav__link">{% trans "الموقع" %}</a></li>
+                    <li><a href="#investment" class="nav__link">{% trans "الاستثمار" %}</a></li>
+                    <li><a href="#contact" class="nav__link">{% trans "تواصل معنا" %}</a></li>
+                </ul>
+                <div class="nav__actions">
+                    <div class="lang-switcher">
+                        <a href="?lang=en" class="lang-switcher__link {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</a>
+                        <a href="?lang=ar" class="lang-switcher__link {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">AR</a>
+                    </div>
+                    <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" class="btn btn--primary">
+                        {% trans "واتساب" %}
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <div class="hero__logo-badge">
+                        <i class="fas fa-city"></i>
+                        <img src="{% static 'images/ajei_logo.png' %}" alt="Ajei">
+                    </div>
+                    <h1 class="hero__title">{% trans "أكثر من مجرد مول… وجهة يومية متكاملة" %}</h1>
+                    <p class="hero__description">{% trans "مشروع تجاري–طبي متكامل، مصمم لخدمة الاحتياجات اليومية من خلال إدارة موحدة ونموذج استثماري ذكي." %}</p>
+                    <p class="hero__location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        {% trans "حدائق أكتوبر" %}
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="#contact" class="btn btn--primary btn--lg">{% trans "اطلب تفاصيل المشروع" %}</a>
+                        <a href="#about" class="btn btn--outline btn--lg">{% trans "اكتشف المزيد" %}</a>
+                    </div>
+                </div>
+                <div class="hero__image">
+                    <img src="{% static 'images/Ajei_Final Assets.png' %}" alt="AJEI Project">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section features">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "ما هو" %} <span>{% trans "مشروع Ajei؟" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="features__intro animate-on-scroll">
+                    <div class="card">
+                        <p>{% trans "Ajei هو مشروع تجاري–طبي متكامل، تم تصميمه ليعمل كنظام واحد مترابط." %}</p>
+                        <p>{% trans "يجمع بين الخدمات اليومية الأساسية في مكان واحد، مما يخلق حركة مستمرة وقيمة تشغيلية حقيقية." %}</p>
+                        <p>{% trans "Ajei ليس مولًا تقليديًا، بل هو مركز خدمات مركزي مبني حول نمط الحياة اليومية." %}</p>
+                    </div>
+                </div>
+
+                <div class="grid grid--3">
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-heartbeat"></i></div>
+                        <h4 class="card__title">{% trans "الخدمات الطبية" %}</h4>
+                        <p class="card__text">{% trans "منشآت رعاية صحية شاملة بمشغلين طبيين محترفين" %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-utensils"></i></div>
+                        <h4 class="card__title">{% trans "المطاعم والمقاهي" %}</h4>
+                        <p class="card__text">{% trans "تجارب طعام ومقاهي راقية للاستمتاع اليومي" %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-pills"></i></div>
+                        <h4 class="card__title">{% trans "الصيدلية" %}</h4>
+                        <p class="card__text">{% trans "صيدلية متكاملة الخدمات لاحتياجاتك الصحية" %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-flask"></i></div>
+                        <h4 class="card__title">{% trans "معامل التحاليل والأشعة" %}</h4>
+                        <p class="card__text">{% trans "مرافق متقدمة للفحوصات الطبية والتصوير" %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-shopping-basket"></i></div>
+                        <h4 class="card__title">{% trans "سوبر ماركت" %}</h4>
+                        <p class="card__text">{% trans "الاحتياجات اليومية والبقالة في موقع واحد مناسب" %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-building"></i></div>
+                        <h4 class="card__title">{% trans "إدارة موحدة" %}</h4>
+                        <p class="card__text">{% trans "جميع الخدمات مدارة تحت سقف واحد بنشاط مستمر" %}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Download Section -->
+        <section class="section portfolio-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "ملف المشروع" %}</h2>
+                    <div class="section-header__underline"></div>
+                    <p class="section-header__subtitle">{% trans "تعرّف بشكل أعمق على مشروع Ajei والشركة المطوّرة له." %}</p>
+                </div>
+                <div class="grid grid--2">
+                    <div class="card card--center portfolio-card animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-file-pdf"></i></div>
+                        <h4 class="card__title">{% trans "ملف المشروع" %}</h4>
+                        <p class="card__text">{% trans "تفاصيل كاملة عن مشروع Ajei" %}</p>
+                        <a href="{% static 'pdf/AJEI2025.pdf' %}" class="btn btn--primary" download>
+                            <i class="fas fa-download"></i> {% trans "تحميل PDF" %}
+                        </a>
+                    </div>
+                    <div class="card card--center portfolio-card animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-file-pdf"></i></div>
+                        <h4 class="card__title">{% trans "ملف مشروع الشركة" %}</h4>
+                        <p class="card__text">{% trans "معلومات عن الشركة المطوّرة" %}</p>
+                        <a href="{% static 'pdf/STC Portfolio.pdf' %}" class="btn btn--primary" download>
+                            <i class="fas fa-download"></i> {% trans "تحميل PDF" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Structure Section -->
+        <section id="structure" class="section structure-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "تكوين" %} <span>{% trans "المشروع" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                    <p class="section-header__subtitle">{% trans "تم تخطيط مشروع Ajei بعناية لضمان التكامل الوظيفي وكفاءة التشغيل." %}</p>
+                </div>
+
+                <div class="structure__overview animate-on-scroll">
+                    <div class="card">
+                        <p class="card__text">{% trans "تم اختيار كل عنصر داخل المشروع لضمان حركة يومية مستمرة وتشغيل مستدام." %}</p>
+                        <div class="structure__floors">
+                            <div class="card floor-card">
+                                <h5><i class="fas fa-layer-group"></i> {% trans "Ground Floor" %}</h5>
+                            </div>
+                            <div class="card floor-card">
+                                <h5><i class="fas fa-layer-group"></i> {% trans "First Floor" %}</h5>
+                            </div>
+                            <div class="card floor-card">
+                                <h5><i class="fas fa-layer-group"></i> {% trans "Second Floor" %}</h5>
+                            </div>
+                            <div class="card floor-card">
+                                <h5><i class="fas fa-layer-group"></i> {% trans "Basement" %}</h5>
+                            </div>
+                        </div>
+                        <p><strong>{% trans "Each Floor Area:" %}</strong> 1000 m²</p>
+                        <p class="card__text">{% trans "Activities within the project have been carefully distributed to ensure integration between services and achieve maximum operational efficiency." %}</p>
+                    </div>
+                </div>
+
+                <!-- Ground Floor Details -->
+                <div class="structure__subsection">
+                    <h3 class="structure__subsection-title animate-on-scroll">{% trans "الدور الأرضي" %}</h3>
+                    <div class="grid grid--3">
+                        <div class="card card--center animate-on-scroll">
+                            <div class="card__icon"><i class="fas fa-utensils"></i></div>
+                            <h5 class="card__title">{% trans "مطعم Gad" %}</h5>
+                        </div>
+                        <div class="card card--center animate-on-scroll">
+                            <div class="card__icon"><i class="fas fa-coffee"></i></div>
+                            <h5 class="card__title">{% trans "كافيه Second Cup" %}</h5>
+                        </div>
+                        <div class="card card--center animate-on-scroll">
+                            <div class="card__icon"><i class="fas fa-prescription-bottle"></i></div>
+                            <h5 class="card__title">{% trans "صيدلية" %}</h5>
+                        </div>
+                        <div class="card card--center animate-on-scroll">
+                            <div class="card__icon"><i class="fas fa-x-ray"></i></div>
+                            <h5 class="card__title">{% trans "معمل أشعة" %}</h5>
+                        </div>
+                        <div class="card card--center animate-on-scroll">
+                            <div class="card__icon"><i class="fas fa-microscope"></i></div>
+                            <h5 class="card__title">{% trans "معمل تحاليل" %}</h5>
+                        </div>
+                        <div class="card card--center animate-on-scroll">
+                            <div class="card__icon"><i class="fas fa-store"></i></div>
+                            <h5 class="card__title">{% trans "مساحة تجارية إضافية" %}</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical Floors -->
+                <div class="structure__subsection">
+                    <h3 class="structure__subsection-title animate-on-scroll">{% trans "الدور الأول والدور الثاني" %}</h3>
+                    <div class="features__intro animate-on-scroll">
+                        <div class="card">
+                            <p>{% trans "أدوار مخصصة بالكامل للنشاط الطبي" %}</p>
+                            <p class="card__text">{% trans "يتم تشغيلها بواسطة مشغّل طبي متخصص" %}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basement -->
+                <div class="structure__subsection">
+                    <h3 class="structure__subsection-title animate-on-scroll">{% trans "الأرضي المرتفع" %}</h3>
+                    <div class="features__intro animate-on-scroll">
+                        <div class="card card--center">
+                            <div class="card__icon"><i class="fas fa-shopping-cart"></i></div>
+                            <h4 class="card__title">{% trans "سوبر ماركت" %}</h4>
+                            <p class="card__text">{% trans "مساحة 400 متر مربع" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="section location-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "الموقع والمرافق" %} <span>{% trans "والخدمات" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="location__info animate-on-scroll">
+                    <div class="card">
+                        <h3>{% trans "موقعك الجديد في مدينة حدائق أكتوبر" %}</h3>
+                        <p>{% trans "يقع مشروع Ajei في موقع استراتيجي في قلب مدينة حدائق أكتوبر، محاطًا بـ:" %}</p>
+                        <div class="location__list">
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة كينت كوليج غرب القاهرة" %}</div>
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "هرم لايف" %}</div>
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة ساكسوني الدولية" %}</div>
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدارس ستانفورد مصر الدولية" %}</div>
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة BCCIS غرب" %}</div>
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "حديقة جرين ريفر" %}</div>
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة NIS أويست" %}</div>
+                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "كمباوند أويست" %}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location__map-wrapper animate-on-scroll">
+                    <div class="location__map-card">
+                        <div class="location__map-header">
+                            <div class="location__map-badge">
+                                <span><i class="fas fa-map-marker-alt"></i> {% trans "الموقع الاستراتيجي" %}</span>
+                            </div>
+                            <h3 class="location__map-title">{% trans "مشروع Ajei في حدائق أكتوبر" %}</h3>
+                            <p class="location__map-subtitle">{% trans "مشروع Ajei موجود في حدائق أكتوبر (October Gardens City) وهي منطقة سكنية وتجارية نامية في الجزء الغربي من القاهرة الكبرى." %}</p>
+                        </div>
+
+                        <div class="location__map-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.8662748576657!2d30.9449!3d30.0358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14585723456789ab%3A0x123456789abcdef0!2sOctober%20Gardens%2C%206th%20of%20October%20City!5e0!3m2!1sen!2seg!4v1234567890123!5m2!1sen!2seg"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="{% trans 'Ajei Project Location - October Gardens' %}">
+                            </iframe>
+                        </div>
+
+                        <div class="location__map-link">
+                            <a href="https://maps.app.goo.gl/yAWEurf7B5mq5rj4A?g_st=iw" target="_blank" class="btn btn--primary btn--lg">
+                                <i class="fas fa-map-marker-alt"></i>
+                                {% trans "افتح في خرائط Google" %}
+                            </a>
+                        </div>
+
+                        <h4 class="location__features-title">{% trans "المنطقة اللي Ajei فيها بتتميز بوجود:" %}</h4>
+                        <div class="location__features-underline"></div>
+
+                        <div class="grid grid--3">
+                            <div class="location__feature-card animate-on-scroll">
+                                <div class="location__feature-icon"><i class="fas fa-building"></i></div>
+                                <h5>{% trans "كمبوندات سكنية راقية" %}</h5>
+                                <p>{% trans "محيط سكني متميز بأرقى المجمعات السكنية" %}</p>
+                            </div>
+                            <div class="location__feature-card animate-on-scroll">
+                                <div class="location__feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <h5>{% trans "مدارس وجامعات قريبة" %}</h5>
+                                <p>{% trans "مؤسسات تعليمية متميزة على مسافة قريبة" %}</p>
+                            </div>
+                            <div class="location__feature-card animate-on-scroll">
+                                <div class="location__feature-icon"><i class="fas fa-hospital"></i></div>
+                                <h5>{% trans "خدمات طبية ومرافق مهمة" %}</h5>
+                                <p>{% trans "مراكز طبية ومستشفيات متطورة قريبة" %}</p>
+                            </div>
+                            <div class="location__feature-card animate-on-scroll">
+                                <div class="location__feature-icon"><i class="fas fa-road"></i></div>
+                                <h5>{% trans "محاور وشوارع رئيسية" %}</h5>
+                                <p>{% trans "سهولة في الوصول والحركة المرورية" %}</p>
+                            </div>
+                            <div class="location__feature-card animate-on-scroll">
+                                <div class="location__feature-icon"><i class="fas fa-shopping-bag"></i></div>
+                                <h5>{% trans "مراكز ترفيه وتسوق" %}</h5>
+                                <p>{% trans "وجهات ترفيهية وتسويقية على بعد مسافة قصيرة" %}</p>
+                            </div>
+                            <div class="location__feature-card animate-on-scroll">
+                                <div class="location__feature-icon"><i class="fas fa-briefcase"></i></div>
+                                <h5>{% trans "قرب من مراكز الأعمال" %}</h5>
+                                <p>{% trans "طرق رئيسية تسهل التنقل لباقي القاهرة الكبرى" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Amenities Section -->
+        <section id="amenities" class="section amenities-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "المرافق" %} <span>{% trans "والخدمات والأنشطة" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="grid grid--3">
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-shopping-cart"></i></div>
+                        <h4 class="card__title">{% trans "سوبر ماركت" %}</h4>
+                        <p class="card__text">{% trans "سوبر ماركت مجهز بالكامل لجميع احتياجاتك اليومية." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-mosque"></i></div>
+                        <h4 class="card__title">{% trans "منطقة الصلاة" %}</h4>
+                        <p class="card__text">{% trans "منطقة صلاة مخصصة لراحة جميع الزوار." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-pills"></i></div>
+                        <h4 class="card__title">{% trans "صيدلية" %}</h4>
+                        <p class="card__text">{% trans "صيدلية متكاملة الخدمات مع طاقم محترف." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-dumbbell"></i></div>
+                        <h4 class="card__title">{% trans "صالة رياضية وسبا" %}</h4>
+                        <p class="card__text">{% trans "مركز لياقة بدنية حديث وسبا فاخر." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-video"></i></div>
+                        <h4 class="card__title">{% trans "كاميرات مراقبة 24 ساعة" %}</h4>
+                        <p class="card__text">{% trans "مراقبة أمنية على مدار الساعة." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <h4 class="card__title">{% trans "صراف آلي" %}</h4>
+                        <p class="card__text">{% trans "خدمات صراف آلي متاحة." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-charging-station"></i></div>
+                        <h4 class="card__title">{% trans "شاحن سيارات كهربائية" %}</h4>
+                        <p class="card__text">{% trans "محطات شحن حديثة للسيارات الكهربائية." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-parking"></i></div>
+                        <h4 class="card__title">{% trans "موقف سيارات" %}</h4>
+                        <p class="card__text">{% trans "مرفق موقف متعدد الطوابق فسيح." %}</p>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-warehouse"></i></div>
+                        <h4 class="card__title">{% trans "منطقة التخزين" %}</h4>
+                        <p class="card__text">{% trans "مرافق تخزين آمنة." %}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Section -->
+        <section id="investment" class="section investment-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "نظام الاستثمار بنظام" %} <span>{% trans "الحصص (Share System)" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="investment__intro animate-on-scroll">
+                    <div class="card">
+                        <p>{% trans "يتم طرح مشروع Ajei بالكامل بنظام الحصص الاستثمارية (Share)." %}</p>
+                        <h4 style="color: var(--color-dark-purple); margin-top: var(--space-lg);">{% trans "ماذا يعني ذلك؟" %}</h4>
+                    </div>
+                </div>
+
+                <div class="grid grid--3 investment__cards">
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-ban"></i></div>
+                        <h4 class="card__title">{% trans "لا يتم بيع وحدات منفصلة" %}</h4>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-chart-pie"></i></div>
+                        <h4 class="card__title">{% trans "يحصل المستثمر على حصة نسبية في:" %}</h4>
+                        <ul class="investment__list">
+                            <li><i class="fas fa-check-circle"></i> {% trans "أرض المشروع" %}</li>
+                            <li><i class="fas fa-check-circle"></i> {% trans "المشروع ككل" %}</li>
+                            <li><i class="fas fa-check-circle"></i> {% trans "العائد التشغيلي" %}</li>
+                        </ul>
+                    </div>
+                    <div class="card card--center animate-on-scroll">
+                        <div class="card__icon"><i class="fas fa-briefcase"></i></div>
+                        <h4 class="card__title">{% trans "الإدارة والتشغيل" %}</h4>
+                        <ul class="investment__list">
+                            <li><i class="fas fa-check-circle"></i> {% trans "إدارة وتشغيل مركزي بواسطة الشركة المطوّرة" %}</li>
+                            <li><i class="fas fa-check-circle"></i> {% trans "لا يتحمّل المستثمر أي مسؤوليات تشغيلية" %}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="investment__returns animate-on-scroll">
+                    <div class="card">
+                        <h5><i class="fas fa-chart-line"></i> {% trans "العائد" %}</h5>
+                        <ul class="investment__list" style="justify-content: center;">
+                            <li><i class="fas fa-check-circle"></i> {% trans "عائد متغير حسب أداء الأنشطة" %}</li>
+                            <li><i class="fas fa-check-circle"></i> {% trans "محدد ضمن نطاق عائد واضح" %}</li>
+                        </ul>
+                        <p class="card__text" style="margin-top: var(--space-lg);">{% trans "يوفّر هذا النموذج وضوحًا استثماريًا، ومشاركة في النجاح، مع تقليل المخاطر التشغيلية." %}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video" class="section video-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "تجربة" %} <span>Ajei</span></h2>
+                    <div class="section-header__underline"></div>
+                    <p class="section-header__subtitle">{% trans "اكتشف رؤية المشروع وتصميمه وأجواءه من خلال الفيديو التعريفي." %}</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="video__wrapper">
+                        <video controls poster="{% static 'images/ajei-background.jpg' %}">
+                            <source src="{% static 'images/ajei_video.mp4' %}" type="video/mp4">
+                            {% trans "Your browser does not support the video tag." %}
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design & Architecture Section -->
+        <section class="section design-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title" style="color: var(--color-white);">{% trans "التصميم" %} <span>{% trans "والعمارة" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="design__intro animate-on-scroll">
+                    <div class="card card--glass">
+                        <p>{% trans "ادخل إلى عالم مول Ajei واشهد تصميمًا يتحدث لغة المستقبل." %}</p>
+                        <p>{% trans "عمارتنا، بخطوطها الدائرية المتدفقة، تعكس مجالًا مغناطيسيًا - تجذب وترحب وتوحد." %}</p>
+                        <p>{% trans "هذا هو المكان الذي يلتقي فيه التصميم الحديث بالوظيفة." %}</p>
+                    </div>
+                </div>
+
+                <div class="design__floor-plans">
+                    <div class="card card--glass floor-plan-card animate-on-scroll">
+                        <img src="{% static 'images/ground-min.png' %}" alt="Ground Floor Plan">
+                        <h4>{% trans "الطابق الأرضي" %}</h4>
+                    </div>
+                    <div class="card card--glass floor-plan-card animate-on-scroll">
+                        <img src="{% static 'images/first-floor-min.png' %}" alt="First Floor Plan">
+                        <h4>{% trans "الطابق الأول" %}</h4>
+                    </div>
+                    <div class="card card--glass floor-plan-card animate-on-scroll">
+                        <img src="{% static 'images/second-floor-min.png' %}" alt="Second Floor Plan">
+                        <h4>{% trans "الطابق الثاني" %}</h4>
+                    </div>
+                    <div class="card card--glass floor-plan-card animate-on-scroll">
+                        <img src="{% static 'images/roof-floor-min.png' %}" alt="Roof Floor Plan">
+                        <h4>{% trans "طابق السطح" %}</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "معرض" %} <span>{% trans "المشروع" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="gallery__filters animate-on-scroll">
+                    <button class="gallery__filter active" data-filter="all">{% trans "الكل" %}</button>
+                    <button class="gallery__filter" data-filter="exterior">{% trans "الواجهات الخارجية" %}</button>
+                    <button class="gallery__filter" data-filter="interior">{% trans "المساحات الداخلية" %}</button>
+                </div>
+
+                <div class="gallery__grid">
+                    <a href="{% static 'images/AJEI2025-01-min.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
+                        <img src="{% static 'images/AJEI2025-01-min.png' %}" alt="{% trans 'Ajei Project 2025' %}">
+                        <div class="gallery__overlay">
+                            <h5>{% trans "مشروع Ajei 2025" %}</h5>
+                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </a>
+                    <a href="{% static 'images/extorior/Ajei Mall-1-2.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
+                        <img src="{% static 'images/extorior/Ajei Mall-1-2.png' %}" alt="{% trans 'Mall Exterior' %}">
+                        <div class="gallery__overlay">
+                            <h5>{% trans "منظر المول الخارجي" %}</h5>
+                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </a>
+                    <a href="{% static 'images/extorior/Ajei Mall-1-5.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
+                        <img src="{% static 'images/extorior/Ajei Mall-1-5.png' %}" alt="{% trans 'Mall Exterior' %}">
+                        <div class="gallery__overlay">
+                            <h5>{% trans "منظر المول الخارجي" %}</h5>
+                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </a>
+                    <a href="{% static 'images/interior/GR-02.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
+                        <img src="{% static 'images/interior/GR-02.png' %}" alt="{% trans 'Interior Design' %}">
+                        <div class="gallery__overlay">
+                            <h5>{% trans "التصميم الداخلي" %}</h5>
+                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </a>
+                    <a href="{% static 'images/interior/GR-03.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
+                        <img src="{% static 'images/interior/GR-03.png' %}" alt="{% trans 'Interior Design' %}">
+                        <div class="gallery__overlay">
+                            <h5>{% trans "التصميم الداخلي" %}</h5>
+                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </a>
+                    <a href="{% static 'images/interior/FR-01.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
+                        <img src="{% static 'images/interior/FR-01.png' %}" alt="{% trans 'Interior Design' %}">
+                        <div class="gallery__overlay">
+                            <h5>{% trans "التصميم الداخلي" %}</h5>
+                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials/Features Section -->
+        <section id="testimonials" class="section testimonials-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title" style="color: var(--color-white);">{% trans "المشروع" %} <span>{% trans "المميزات الفريدة" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="grid grid--3">
+                    <div class="card card--glass testimonial-card animate-on-scroll">
+                        <div class="testimonial-card__icon"><i class="fas fa-money-check-alt"></i></div>
+                        <h4>{% trans "الدفع المرن" %}</h4>
+                        <p>{% trans "خطط سداد مرنة تبدأ من 0٪ مقدم وحتى 6 سنوات تقسيط." %}</p>
+                    </div>
+                    <div class="card card--glass testimonial-card animate-on-scroll">
+                        <div class="testimonial-card__icon"><i class="fas fa-drafting-compass"></i></div>
+                        <h4>{% trans "المساحات الذكية" %}</h4>
+                        <p>{% trans "مساحات ذكية تجمع بين التصميم الأنيق وأفضل كفاءة للمساحة." %}</p>
+                    </div>
+                    <div class="card card--glass testimonial-card animate-on-scroll">
+                        <div class="testimonial-card__icon"><i class="fas fa-building"></i></div>
+                        <h4>{% trans "الإدارة المحترفة" %}</h4>
+                        <p>{% trans "إدارة مرافق وعقارات محترفة (EGY MAP) واستشاري هندسي (ARKAN CONSULTANTS)." %}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <h2 class="section-header__title">{% trans "اطلب المزيد من" %} <span>{% trans "المعلومات" %}</span></h2>
+                    <div class="section-header__underline"></div>
+                </div>
+
+                <div class="contact__grid">
+                    <div class="contact-form animate-on-scroll">
+                        <form id="contactForm">
+                            {% csrf_token %}
+                            <div class="contact-form__header">
+                                <h3 class="contact-form__title">{% trans "نموذج تفاصيل التواصل" %}</h3>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="{% trans '* الاسم الكامل' %}" name="full_name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-input" placeholder="{% trans '* رقم الموبايل' %}" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-input" placeholder="{% trans '* البريد الإلكتروني' %}" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="{% trans '* وقت التواصل المفضل' %}" name="preferred_contact_time">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-input" placeholder="{% trans '* رقم الواتساب' %}" name="whatsapp_number">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-input" name="interest_type">
+                                    <option value="">{% trans "نوع الاهتمام" %}</option>
+                                    <option value="investment">{% trans "الاستثمار في Ajei" %}</option>
+                                    <option value="share_system">{% trans "نظام الشير" %}</option>
+                                    <option value="expected_returns">{% trans "العائد المتوقع" %}</option>
+                                    <option value="general_info">{% trans "معلومات عامة" %}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-input" name="investment_size">
+                                    <option value="">{% trans "حجم الاستثمار التقريبي" %}</option>
+                                    <option value="under_1m">{% trans "أقل من 1 مليون" %}</option>
+                                    <option value="1m_3m">{% trans "من 1 إلى 3 مليون" %}</option>
+                                    <option value="over_3m">{% trans "أكثر من 3 مليون" %}</option>
+                                    <option value="not_specified">{% trans "لم أحدد بعد" %}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-input" placeholder="{% trans 'رسالة / استفسار (اختياري)' %}" name="message" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="form-submit">{% trans 'اطلب تفاصيل المشروع' %}</button>
+                            <p class="form-note">
+                                <i class="fas fa-lock"></i>
+                                {% trans "بياناتك في أمان تام، وسيتم التواصل معك من فريق Ajei في أقرب وقت" %}
+                            </p>
+                        </form>
+                    </div>
+
+                    <div class="contact-info animate-on-scroll">
+                        <h3 class="contact-info__title">{% trans "معلومات التواصل" %}</h3>
+                        <div class="contact-info__item">
+                            <div class="contact-info__icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-info__content">
+                                <h5>{% trans "زرنا" %}</h5>
+                                <p>{{ address }}</p>
+                            </div>
+                        </div>
+                        <div class="contact-info__item">
+                            <div class="contact-info__icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-info__content">
+                                <h5>{% trans "الهاتف" %}</h5>
+                                <p>{{ contact_phone }}</p>
+                            </div>
+                        </div>
+                        <div class="contact-info__item">
+                            <div class="contact-info__icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-info__content">
+                                <h5>{% trans "البريد الإلكتروني" %}</h5>
+                                <p>{{ contact_email }}</p>
+                            </div>
+                        </div>
+                        <div class="contact-info__item">
+                            <div class="contact-info__icon"><i class="fas fa-map-pin"></i></div>
+                            <div class="contact-info__content">
+                                <h5>{% trans "الموقع" %}</h5>
+                                <p>{% trans "مدينة حدائق أكتوبر - بالقرب من Kent College" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <i class="fas fa-building-flag"></i>
+                        <img src="{% static 'images/ajei_logo.png' %}" alt="Ajei">
+                    </div>
+                    <p class="footer__description">{% trans "مشروع تجاري-طبي متكامل مصمم لخدمة احتياجاتك اليومية في مدينة حدائق أكتوبر." %}</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/profile.php?id=61571119168603" target="_blank" class="footer__social-link" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/01016638824" target="_blank" class="footer__social-link" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <h5 class="footer__links-title">{% trans "روابط سريعة" %}</h5>
+                    <ul class="footer__links">
+                        <li><a href="#home">{% trans "الرئيسية" %}</a></li>
+                        <li><a href="#about">{% trans "عن Ajei" %}</a></li>
+                        <li><a href="#structure">{% trans "تكوين المشروع" %}</a></li>
+                        <li><a href="#location">{% trans "الموقع" %}</a></li>
+                        <li><a href="#investment">{% trans "الاستثمار" %}</a></li>
+                        <li><a href="#contact">{% trans "تواصل معنا" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2026 {% trans "مشروع Ajei." %} {% trans "جميع الحقوق محفوظة." %}</p>
+                <div class="footer__legal">
+                    <a href="#">{% trans "سياسة الخصوصية" %}</a>
+                    <a href="#">{% trans "شروط الخدمة" %}</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/201016638824?text=مرحباً، أريد معرفة المزيد عن مشروع Ajei" target="_blank" class="whatsapp-float" title="{% trans 'تواصل معنا عبر WhatsApp' %}">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- GLightbox JS -->
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Hide preloader on page load
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+                setTimeout(() => preloader.remove(), 500);
+            }, 500);
+        });
+
+        // Initialize GLightbox
+        const lightbox = GLightbox({
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true
+        });
+
+        // Scroll animations with Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const nav = document.getElementById('nav');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    window.scrollTo({
+                        top: target.offsetTop - offset,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> {% trans "Sending..." %}';
+
+            fetch('{% url "ajei_contact_submit" %}', {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-CSRFToken': '{{ csrf_token }}' }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const alert = document.createElement('div');
+                alert.className = data.success ? 'alert alert--success' : 'alert alert--error';
+                alert.innerHTML = `
+                    <i class="fas fa-${data.success ? 'check-circle' : 'exclamation-circle'}"></i>
+                    <span>${data.message}</span>
+                    <span class="alert__close" onclick="this.parentElement.remove()">&times;</span>
+                `;
+                this.insertAdjacentElement('afterend', alert);
+                if (data.success) this.reset();
+                setTimeout(() => alert.remove(), 5000);
+            })
+            .catch(() => {
+                const alert = document.createElement('div');
+                alert.className = 'alert alert--error';
+                alert.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>{% trans "An error occurred. Please try again." %}</span>
+                    <span class="alert__close" onclick="this.parentElement.remove()">&times;</span>
+                `;
+                this.insertAdjacentElement('afterend', alert);
+                setTimeout(() => alert.remove(), 5000);
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
+        });
+
+        // Gallery filter (basic implementation)
+        document.querySelectorAll('.gallery__filter').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelector('.gallery__filter.active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
