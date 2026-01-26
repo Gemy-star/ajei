@@ -103,7 +103,7 @@
         .lang-switcher {
             position: fixed;
             top: 1.5rem;
-            {% if LANGUAGE_BIDI %}left: 1.5rem;{% else %}right: 1.5rem;{% endif %}
+            {% if LANGUAGE_CODE == 'ar' %}right: 1.5rem;{% else %}left: 1.5rem;{% endif %}
             z-index: 1000;
             display: flex;
             gap: 0.5rem;
@@ -807,7 +807,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            min-height: 200px;
+            min-height: 250px;
             border: 2px solid transparent;
         }
 
@@ -819,7 +819,7 @@
 
         .partner-logo img {
             max-width: 100%;
-            max-height: 120px;
+            max-height: 180px;
             width: auto;
             height: auto;
             object-fit: contain;
@@ -1297,7 +1297,8 @@
             }
 
             .hero-logo {
-                width: 100px;
+                width: 140px;
+                margin-top: 3rem;
             }
 
             .hero-title {
@@ -1529,7 +1530,7 @@
 
             .lang-switcher {
                 top: 1rem;
-                {% if LANGUAGE_BIDI %}left: 1rem;{% else %}right: 1rem;{% endif %}
+                {% if LANGUAGE_CODE == 'ar' %}right: 1rem;{% else %}left: 1rem;{% endif %}
                 padding: 0.4rem;
             }
 
@@ -1620,7 +1621,8 @@
             }
 
             .hero-logo {
-                width: 90px;
+                width: 130px;
+                margin-top: 3rem;
             }
 
             .hero-title {
@@ -1763,16 +1765,15 @@
             }
 
             .lang-switcher {
-                flex-direction: column;
                 gap: 0.3rem;
                 padding: 0.3rem;
                 top: 0.5rem;
-                {% if LANGUAGE_BIDI %}left: 0.5rem;{% else %}right: 0.5rem;{% endif %}
+                {% if LANGUAGE_CODE == 'ar' %}left: 0.5rem;{% else %}right: 0.5rem;{% endif %}
+                width: fit-content;
             }
 
             .lang-btn {
                 padding: 0.4rem 0.8rem;
-                width: 100%;
                 font-size: 0.65rem;
                 min-height: 38px;
             }
@@ -2173,11 +2174,11 @@
         <div class="partners-grid">
             <div class="partner-logo">
                 <span class="partner-flag">🇪🇬</span>
-                <img src="{% static 'images/arkan_logo.png' %}" alt="Arkan Consultant">
+                <img src="{% static 'images/arkan_logo.png' %}" alt="Arkan Consultant" style="max-height: 220px;">
             </div>
             <div class="partner-logo">
                 <span class="partner-flag">🇪🇬</span>
-                <img src="{% static 'images/egy_map.png' %}" alt="Egypt Map">
+                <img src="{% static 'images/egy_map.png' %}" alt="Egypt Map" style="max-height: 220px;">
             </div>
         </div>
     </section>

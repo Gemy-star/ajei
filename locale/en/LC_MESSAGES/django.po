@@ -227,16 +227,16 @@ msgstr "More than just a mall... an integrated daily destination"
 msgid ""
 "مشروع تجاري–طبي متكامل، مصمم لخدمة الاحتياجات اليومية من خلال إدارة موحدة "
 "ونموذج استثماري ذكي."
-msgstr ""
+msgstr "An integrated commercial-medical project, designed to serve daily needs through unified management and a smart investment model."
 
 #: .\templates\landing_page\ajei.html:2027
 msgid "حدائق أكتوبر"
-msgstr ""
+msgstr "October Gardens"
 
 #: .\templates\landing_page\ajei.html:2030
 #: .\templates\landing_page\ajei.html:2605
 msgid "اطلب تفاصيل المشروع"
-msgstr ""
+msgstr "Request Project Details"
 
 #: .\templates\landing_page\ajei.html:2031
 msgid "اكتشف المزيد"
