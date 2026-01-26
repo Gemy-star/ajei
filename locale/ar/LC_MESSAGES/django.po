@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 14:28+0200\n"
+"POT-Creation-Date: 2026-01-26 14:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,8 +197,8 @@ msgstr ""
 #: .\templates\landing_page\ajei.html:1997
 #: .\templates\landing_page\ajei.html:2639
 #: .\templates\landing_page\ajei.html:2670
-#: .\templates\landing_page\ajei_landing.html:1241
-#: .\templates\landing_page\ajei_landing.html:1354
+#: .\templates\landing_page\ajei_landing.html:1252
+#: .\templates\landing_page\ajei_landing.html:1365
 msgid "الموقع"
 msgstr "الموقع"
 
@@ -210,12 +209,12 @@ msgstr ""
 
 #: .\templates\landing_page\ajei.html:1999
 #: .\templates\landing_page\ajei.html:2672
-#: .\templates\landing_page\ajei_landing.html:1295
+#: .\templates\landing_page\ajei_landing.html:1306
 msgid "تواصل معنا"
 msgstr "تواصل معنا"
 
 #: .\templates\landing_page\ajei.html:2007
-#: .\templates\landing_page\ajei_landing.html:1314
+#: .\templates\landing_page\ajei_landing.html:1325
 msgid "واتساب"
 msgstr "واتساب"
 
@@ -916,7 +915,7 @@ msgid "بياناتك في أمان تام، وسيتم التواصل معك م
 msgstr ""
 
 #: .\templates\landing_page\ajei.html:2614
-#: .\templates\landing_page\ajei_landing.html:1359
+#: .\templates\landing_page\ajei_landing.html:1370
 msgid "معلومات التواصل"
 msgstr "معلومات التواصل"
 
@@ -943,7 +942,7 @@ msgid ""
 msgstr ""
 
 #: .\templates\landing_page\ajei.html:2665
-#: .\templates\landing_page\ajei_landing.html:1349
+#: .\templates\landing_page\ajei_landing.html:1360
 msgid "روابط سريعة"
 msgstr "روابط سريعة"
 
@@ -1036,7 +1035,7 @@ msgid "إرسال"
 msgstr "إرسال"
 
 #: .\templates\landing_page\ajei_landing.html:1005
-#: .\templates\landing_page\ajei_landing.html:1351
+#: .\templates\landing_page\ajei_landing.html:1362
 msgid "عن المشروع"
 msgstr "عن المشروع"
 
@@ -1055,7 +1054,7 @@ msgid ""
 msgstr ""
 
 #: .\templates\landing_page\ajei_landing.html:1030
-#: .\templates\landing_page\ajei_landing.html:1352
+#: .\templates\landing_page\ajei_landing.html:1363
 msgid "المميزات"
 msgstr "المميزات"
 
@@ -1133,7 +1132,7 @@ msgid "قاعات اجتماعات"
 msgstr "قاعات اجتماعات"
 
 #: .\templates\landing_page\ajei_landing.html:1096
-#: .\templates\landing_page\ajei_landing.html:1353
+#: .\templates\landing_page\ajei_landing.html:1364
 msgid "المعرض"
 msgstr "المعرض"
 
@@ -1173,80 +1172,94 @@ msgstr "شركاء النجاح"
 msgid "شركاؤنا"
 msgstr "شركاؤنا"
 
-#: .\templates\landing_page\ajei_landing.html:1242
+#: .\templates\landing_page\ajei_landing.html:1235
+msgid "الفروع"
+msgstr "الفروع"
+
+#: .\templates\landing_page\ajei_landing.html:1236
+#, fuzzy
+#| msgid "معلومات التواصل"
+msgid "العلامات التجارية"
+msgstr "معلومات التواصل"
+
+#: .\templates\landing_page\ajei_landing.html:1253
 msgid "موقع استراتيجي متميز"
 msgstr "موقع استراتيجي متميز"
 
-#: .\templates\landing_page\ajei_landing.html:1244
+#: .\templates\landing_page\ajei_landing.html:1255
 msgid ""
 "يقع مشروع Ajei في قلب أكتوبر جاردنز بمدينة السادس من أكتوبر، في موقع حيوي "
 "يسهل الوصول إليه"
 msgstr ""
 
-#: .\templates\landing_page\ajei_landing.html:1252
+#: .\templates\landing_page\ajei_landing.html:1263
 msgid "موقع المشروع على الخريطة"
 msgstr "موقع المشروع على الخريطة"
 
-#: .\templates\landing_page\ajei_landing.html:1264
+#: .\templates\landing_page\ajei_landing.html:1275
 msgid "العنوان"
 msgstr "العنوان"
 
-#: .\templates\landing_page\ajei_landing.html:1265
+#: .\templates\landing_page\ajei_landing.html:1276
 msgid "أكتوبر جاردنز، السادس من أكتوبر، الجيزة"
 msgstr "أكتوبر جاردنز، السادس من أكتوبر، الجيزة"
 
-#: .\templates\landing_page\ajei_landing.html:1274
+#: .\templates\landing_page\ajei_landing.html:1285
 msgid "سهولة الوصول"
 msgstr "سهولة الوصول"
 
-#: .\templates\landing_page\ajei_landing.html:1275
+#: .\templates\landing_page\ajei_landing.html:1286
 msgid "قريب من الطريق الدائري ومحور 26 يوليو"
 msgstr "قريب من الطريق الدائري ومحور 26 يوليو"
 
-#: .\templates\landing_page\ajei_landing.html:1284
+#: .\templates\landing_page\ajei_landing.html:1295
 msgid "البيئة المحيطة"
 msgstr "البيئة المحيطة"
 
-#: .\templates\landing_page\ajei_landing.html:1285
+#: .\templates\landing_page\ajei_landing.html:1296
 msgid "محاط بمجتمعات سكنية راقية ومرافق حيوية"
 msgstr "محاط بمجتمعات سكنية راقية ومرافق حيوية"
 
-#: .\templates\landing_page\ajei_landing.html:1296
+#: .\templates\landing_page\ajei_landing.html:1307
 msgid "نحن هنا لخدمتك"
 msgstr "نحن هنا لخدمتك"
 
-#: .\templates\landing_page\ajei_landing.html:1304
+#: .\templates\landing_page\ajei_landing.html:1315
 msgid "اتصل بنا"
 msgstr "اتصل بنا"
 
-#: .\templates\landing_page\ajei_landing.html:1316
+#: .\templates\landing_page\ajei_landing.html:1327
 msgid "راسلنا الآن"
 msgstr "راسلنا الآن"
 
-#: .\templates\landing_page\ajei_landing.html:1324
+#: .\templates\landing_page\ajei_landing.html:1335
 msgid "فيسبوك"
 msgstr "فيسبوك"
 
-#: .\templates\landing_page\ajei_landing.html:1326
+#: .\templates\landing_page\ajei_landing.html:1337
 msgid "تابعنا"
 msgstr "تابعنا"
 
-#: .\templates\landing_page\ajei_landing.html:1337
+#: .\templates\landing_page\ajei_landing.html:1348
 msgid "مشروع تجاري–طبي متكامل في قلب أكتوبر جاردنز"
 msgstr "مشروع تجاري–طبي متكامل في قلب أكتوبر جاردنز"
 
-#: .\templates\landing_page\ajei_landing.html:1361
+#: .\templates\landing_page\ajei_landing.html:1372
 msgid "أكتوبر جاردنز، السادس من أكتوبر"
 msgstr "أكتوبر جاردنز، السادس من أكتوبر"
 
-#: .\templates\landing_page\ajei_landing.html:1369
+#: .\templates\landing_page\ajei_landing.html:1380
 msgid "جميع الحقوق محفوظة"
 msgstr "جميع الحقوق محفوظة"
 
-#: .\templates\landing_page\ajei_landing.html:1377
+#: .\templates\landing_page\ajei_landing.html:1388
 msgid "تواصل معنا عبر واتساب"
 msgstr "تواصل معنا عبر واتساب"
 
-#: .\templates\landing_page\ajei_landing.html:1440
+#: .\templates\landing_page\ajei_landing.html:1451
 msgid "يرجى ملء جميع الحقول المطلوبة"
 msgstr "يرجى ملء جميع الحقول المطلوبة"
+
+#: .\templates\landing_page\ajei_landing.html
+msgid "رمز الاستجابة السريع"
+msgstr "رمز الاستجابة السريع"
