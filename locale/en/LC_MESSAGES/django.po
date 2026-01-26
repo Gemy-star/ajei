@@ -1265,3 +1265,11 @@ msgstr "Please fill in all required fields"
 #: .\templates\landing_page\ajei_landing.html
 msgid "رمز الاستجابة السريع"
 msgstr "Scan QR Code"
+
+#: .\templates\landing_page\ajei_landing.html
+msgid "مالك المشروع"
+msgstr "Project Owner"
+
+#: .\templates\landing_page\ajei_landing.html
+msgid "شركة مصرية رائدة في مجال التطوير العقاري"
+msgstr "Leading Egyptian Real Estate Development Company"

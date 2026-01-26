@@ -4,120 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% trans "Ajei Project - Integrated Medical-Commercial Center | STC Developments" %}</title>
-    <meta name="description" content="{% trans 'Ajei is an integrated medical-commercial project in October Gardens serving your daily needs. A unique Central Hub concept combining medical services, restaurants, cafes, pharmacy, and supermarket under unified management.' %}">
-
-    <!-- Google Ads / Analytics -->
-    {% if config.AJEI_GOOGLE_ADS_ID %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.AJEI_GOOGLE_ADS_ID }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ config.AJEI_GOOGLE_ADS_ID }}');
-    </script>
-    {% endif %}
+    <title>{% trans "Ajei - Integrated Medical-Commercial Center" %}</title>
+    <meta name="description" content="{% trans 'Ajei is an integrated medical-commercial project serving your daily needs in October Gardens' %}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{% static 'images/ajei_logo.png' %}">
     <link rel="apple-touch-icon" href="{% static 'images/ajei_logo.png' %}">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{% trans 'Ajei Project - Integrated Medical-Commercial Center | STC Developments' %}">
-    <meta property="og:description" content="{% trans 'Ajei is an integrated medical-commercial project in October Gardens serving your daily needs.' %}">
+    <!--  Open Graph -->
+    <meta property="og:title" content="{% trans 'Ajei - Integrated Medical-Commercial Center' %}">
+    <meta property="og:description" content="{% trans 'Ajei is an integrated medical-commercial project serving your daily needs in October Gardens' %}">
     <meta property="og:image" content="{% static 'images/ajei_logo.png' %}">
     <meta property="og:type" content="website">
 
-    <!-- Google Fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- GLightbox CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        /* ============================================
-           DESIGN TOKENS (CSS Custom Properties)
-           ============================================ */
+        /* Modern CSS Variables */
         :root {
-            /* Colors */
-            --color-primary: #EFF0EC;
-            --color-secondary: #180F2A;
-            --color-accent: #2B2529;
-            --color-dark-purple: #180F2A;
-            --color-raisin-black: #2B2529;
-            --color-alabaster: #EFF0EC;
-            --color-text-dark: #180F2A;
-            --color-text-light: #4a5568;
-            --color-text-on-dark: #EFF0EC;
-            --color-white: #ffffff;
-            --color-success: #27ae60;
-            --color-error: #e74c3c;
-            --color-whatsapp: #25D366;
-
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
-            --gradient-light: linear-gradient(135deg, var(--color-alabaster) 0%, #f5f5f0 50%, var(--color-alabaster) 100%);
-
-            /* Spacing */
-            --space-xs: 0.25rem;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2rem;
-            --space-2xl: 3rem;
-            --space-3xl: 4rem;
-            --space-4xl: 6rem;
-
-            /* Typography */
-            --font-primary: 'Poppins', 'Cairo', sans-serif;
-            --font-heading: 'Playfair Display', 'Cairo', serif;
-            --font-size-xs: 0.75rem;
-            --font-size-sm: 0.875rem;
-            --font-size-base: 1rem;
-            --font-size-lg: 1.125rem;
-            --font-size-xl: 1.25rem;
-            --font-size-2xl: 1.5rem;
-            --font-size-3xl: 2rem;
-            --font-size-4xl: 2.5rem;
-            --font-size-5xl: 3rem;
-
-            /* Border Radius */
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 30px;
-            --radius-full: 50%;
-
-            /* Shadows */
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
-            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.2);
-            --shadow-glow: 0 0 20px rgba(43, 37, 41, 0.4);
-
-            /* Transitions */
-            --transition-fast: 0.2s ease;
-            --transition-base: 0.3s ease;
-            --transition-slow: 0.5s ease;
-            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-            /* Z-index layers */
-            --z-base: 1;
-            --z-dropdown: 100;
-            --z-sticky: 500;
-            --z-fixed: 900;
-            --z-modal: 1000;
-            --z-preloader: 9999;
+            --primary: #EFF0EC;
+            --secondary: #31292E;
+            --accent: #17112A;
+            --gold: #e94560;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --dark-purple: #17112A;
+            --raisin-black: #31292E;
+            --alabaster: #EFF0EC;
+            --text-dark: #31292E;
+            --text-light: #6c757d;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --gradient: linear-gradient(135deg, var(--dark-purple), var(--raisin-black));
+            --gradient-overlay: linear-gradient(135deg, rgba(239,240,236,0.85), rgba(239,240,236,0.75));
+            --gradient-vibrant: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.18);
         }
 
-        /* ============================================
-           CSS RESET & BASE STYLES
-           ============================================ */
+        /* Reset & Base */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -126,26 +61,22 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: var(--font-primary);
-            color: var(--color-text-dark);
-            background: var(--color-alabaster);
+            font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            background: var(--alabaster);
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition-base);
+        * {
+            font-family: 'Cairo', sans-serif !important;
         }
 
         img {
@@ -154,2683 +85,2530 @@
             display: block;
         }
 
-        ul, ol {
-            list-style: none;
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+            -webkit-tap-highlight-color: transparent;
         }
 
-        button {
-            font-family: inherit;
-            cursor: pointer;
-            border: none;
-            background: none;
+        button, .form-button, .gallery-tab, .lang-btn {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
-        /* ============================================
-           ANIMATIONS
-           ============================================ */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px var(--color-secondary), 0 0 10px var(--color-secondary); }
-            50% { box-shadow: 0 0 20px var(--color-secondary), 0 0 30px var(--color-secondary); }
-        }
-
-        @keyframes whatsappPulse {
-            0%, 100% { box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4); }
-            50% { box-shadow: 0 5px 35px rgba(37, 211, 102, 0.7), 0 0 0 10px rgba(37, 211, 102, 0.1); }
-        }
-
-        /* Animation utility classes */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            .animate-on-scroll {
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        /* ============================================
-           LAYOUT UTILITIES
-           ============================================ */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-        }
-
-        .section {
-            padding: var(--space-4xl) 0;
-            position: relative;
-        }
-
-        .section--light {
-            background: var(--gradient-light);
-        }
-
-        .section--dark {
-            background: var(--gradient-primary);
-            color: var(--color-text-on-dark);
-        }
-
-        .grid {
-            display: grid;
-            gap: var(--space-xl);
-        }
-
-        .grid--2 { grid-template-columns: repeat(2, 1fr); }
-        .grid--3 { grid-template-columns: repeat(3, 1fr); }
-        .grid--4 { grid-template-columns: repeat(4, 1fr); }
-
-        @media (max-width: 992px) {
-            .grid--3, .grid--4 { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
-            .section { padding: var(--space-3xl) 0; }
-        }
-
-        /* ============================================
-           SECTION HEADER
-           ============================================ */
-        .section-header {
-            text-align: center;
-            margin-bottom: var(--space-3xl);
-        }
-
-        .section-header__title {
-            font-size: var(--font-size-4xl);
-            margin-bottom: var(--space-md);
-            color: var(--color-dark-purple);
-        }
-
-        .section-header__title span {
-            color: var(--color-accent);
-        }
-
-        .section-header__underline {
-            width: 80px;
-            height: 4px;
-            background: var(--color-accent);
-            margin: 0 auto var(--space-lg);
-            border-radius: var(--radius-sm);
-        }
-
-        .section-header__subtitle {
-            font-size: var(--font-size-lg);
-            color: var(--color-text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .section--dark .section-header__title {
-            color: var(--color-white);
-        }
-
-        @media (max-width: 768px) {
-            .section-header__title {
-                font-size: var(--font-size-3xl);
-            }
-        }
-
-        /* ============================================
-           BUTTONS
-           ============================================ */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-sm);
-            padding: var(--space-md) var(--space-xl);
-            font-size: var(--font-size-base);
-            font-weight: 600;
-            border-radius: var(--radius-xl);
-            transition: var(--transition-base);
-        }
-
-        .btn--primary {
-            background: var(--gradient-primary);
-            color: var(--color-white);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn--primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn--outline {
-            background: transparent;
-            border: 2px solid var(--color-dark-purple);
-            color: var(--color-dark-purple);
-        }
-
-        .btn--outline:hover {
-            background: var(--color-dark-purple);
-            color: var(--color-white);
-            transform: translateY(-3px);
-        }
-
-        .btn--lg {
-            padding: var(--space-lg) var(--space-2xl);
-            font-size: var(--font-size-lg);
-        }
-
-        /* ============================================
-           PRELOADER
-           ============================================ */
-        .preloader {
-            position: fixed;
-            inset: 0;
-            background: var(--color-alabaster);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: var(--z-preloader);
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .preloader__content {
-            text-align: center;
-        }
-
-        .preloader__logo {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-md);
-            background: var(--gradient-primary);
-            padding: var(--space-xl) var(--space-2xl);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-2xl);
-            box-shadow: var(--shadow-lg);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .preloader__logo i {
-            font-size: 2.5rem;
-            color: var(--color-alabaster);
-        }
-
-        .preloader__logo img {
-            height: 80px;
-            filter: brightness(0) invert(1);
-        }
-
-        .preloader__text {
-            color: var(--color-secondary);
-            font-size: var(--font-size-xl);
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: var(--space-xl);
-        }
-
-        .preloader__icons {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-lg);
-            margin-bottom: var(--space-xl);
-        }
-
-        .preloader__icon {
-            width: 50px;
-            height: 50px;
-            background: var(--color-secondary);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-alabaster);
-            font-size: 1.2rem;
-            animation: float 3s ease-in-out infinite;
-            box-shadow: var(--shadow-md);
-        }
-
-        .preloader__icon:nth-child(2) { animation-delay: 0.2s; }
-        .preloader__icon:nth-child(3) { animation-delay: 0.4s; }
-        .preloader__icon:nth-child(4) { animation-delay: 0.6s; }
-
-        .preloader__spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(43, 37, 41, 0.2);
-            border-top-color: var(--color-secondary);
-            border-radius: var(--radius-full);
-            margin: 0 auto;
-            animation: spin 1s linear infinite;
-        }
-
-        /* ============================================
-           HEADER / NAVIGATION
-           ============================================ */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: var(--z-fixed);
-            padding: var(--space-md) 0;
-            background: rgba(239, 240, 236, 0.95);
-            backdrop-filter: blur(10px);
-            transition: var(--transition-base);
-        }
-
-        .header.scrolled {
-            padding: var(--space-sm) 0;
-            box-shadow: var(--shadow-md);
-        }
-
-        .header__container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header__logo {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            background: var(--gradient-primary);
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
-        }
-
-        .header__logo:hover {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .header__logo i {
-            font-size: 1.5rem;
-            color: var(--color-alabaster);
-        }
-
-        .header__logo img {
-            height: 40px;
-            filter: brightness(0) invert(1);
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: var(--space-xl);
-        }
-
-        .nav__list {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-        }
-
-        .nav__link {
-            color: var(--color-dark-purple);
-            font-weight: 500;
-            padding: var(--space-sm) var(--space-md);
-            position: relative;
-        }
-
-        .nav__link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--color-secondary);
-            transition: var(--transition-base);
-            transform: translateX(-50%);
-        }
-
-        .nav__link:hover::after {
-            width: 80%;
-        }
-
-        .nav__actions {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-        }
-
+        /* Language Switcher - Floating */
         .lang-switcher {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
             display: flex;
-            gap: var(--space-xs);
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.5rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
         }
 
-        .lang-switcher__link {
-            padding: var(--space-sm) var(--space-md);
-            border-radius: var(--radius-lg);
-            background: rgba(24, 15, 42, 0.1);
-            color: var(--color-dark-purple);
-            font-size: var(--font-size-sm);
-            transition: var(--transition-base);
-        }
-
-        .lang-switcher__link:hover,
-        .lang-switcher__link.active {
-            background: var(--color-dark-purple);
-            color: var(--color-white);
-        }
-
-        /* Mobile Menu Toggle */
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            padding: var(--space-sm);
+        .lang-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid transparent;
+            background: transparent;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            z-index: var(--z-modal);
+            transition: var(--transition);
         }
 
-        .nav-toggle__bar {
-            width: 25px;
-            height: 3px;
-            background: var(--color-dark-purple);
-            border-radius: 2px;
-            transition: var(--transition-base);
+        .lang-btn:hover {
+            background: var(--light);
         }
 
-        .nav-toggle.active .nav-toggle__bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+        .lang-btn.active {
+            background: var(--gradient);
+            color: var(--white);
+            border-color: var(--dark-purple);
         }
 
-        .nav-toggle.active .nav-toggle__bar:nth-child(2) {
-            opacity: 0;
-        }
-
-        .nav-toggle.active .nav-toggle__bar:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-
-        @media (max-width: 992px) {
-            .nav-toggle {
-                display: flex;
-            }
-
-            .nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 350px;
-                height: 100vh;
-                background: var(--color-alabaster);
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: var(--space-4xl) var(--space-xl);
-                box-shadow: var(--shadow-xl);
-                transition: var(--transition-slow);
-                z-index: var(--z-fixed);
-            }
-
-            [dir="rtl"] .nav {
-                right: auto;
-                left: -100%;
-            }
-
-            .nav.active {
-                right: 0;
-            }
-
-            [dir="rtl"] .nav.active {
-                left: 0;
-            }
-
-            .nav__list {
-                flex-direction: column;
-                align-items: stretch;
-                width: 100%;
-            }
-
-            .nav__link {
-                display: block;
-                padding: var(--space-md);
-                border-bottom: 1px solid rgba(24, 15, 42, 0.1);
-            }
-
-            .nav__actions {
-                flex-direction: column;
-                width: 100%;
-                margin-top: var(--space-xl);
-            }
-
-            .nav__actions .btn {
-                width: 100%;
-            }
-
-            .lang-switcher {
-                justify-content: center;
-            }
-        }
-
-        /* ============================================
-           HERO SECTION
-           ============================================ */
+        /* Hero Section - Enhanced Modern Design */
         .hero {
             min-height: 100vh;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
-            padding-top: 100px;
-            background: var(--gradient-light);
+            gap: 5rem;
+            padding: 8rem 5% 4rem;
             position: relative;
+            background: var(--gradient-overlay), url('{% static "images/AJEI2025-01-min.png" %}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(43, 37, 41, 0.08) 0%, transparent 70%);
-            border-radius: var(--radius-full);
-            animation: float 8s ease-in-out infinite;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 50%, rgba(233, 69, 96, 0.15), transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.1), transparent 50%);
             pointer-events: none;
+            animation: gradientMove 15s ease infinite;
         }
 
-        .hero__container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-3xl);
-            align-items: center;
+        @keyframes gradientMove {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
         }
 
-        .hero__content {
-            animation: slideInLeft 1s ease;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .hero__logo-badge {
+        .hero-logo {
+            width: 180px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 8px 24px rgba(49,41,46,0.25));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            font-weight: 900;
+            color: var(--dark-purple);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(255,255,255,0.6);
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 2vw, 1.85rem);
+            color: var(--raisin-black);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 600px;
+            font-weight: 500;
+        }
+
+        .hero-location {
             display: inline-flex;
             align-items: center;
-            gap: var(--space-md);
-            background: var(--gradient-primary);
-            padding: var(--space-lg) var(--space-2xl);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-xl);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .hero__logo-badge i {
-            font-size: 2rem;
-            color: var(--color-alabaster);
-        }
-
-        .hero__logo-badge img {
-            max-width: 180px;
-            filter: brightness(0) invert(1);
-        }
-
-        .hero__title {
-            font-size: var(--font-size-2xl);
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--gradient);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 50px;
+            color: var(--white);
             font-weight: 600;
-            margin-bottom: var(--space-lg);
-            line-height: 1.5;
+            box-shadow: 0 10px 40px rgba(23, 17, 42, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
         }
 
-        .hero__description {
-            font-size: var(--font-size-lg);
-            color: var(--color-text-light);
-            margin-bottom: var(--space-md);
-            line-height: 1.8;
+        .hero-location:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(23, 17, 42, 0.4);
         }
 
-        .hero__location {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            color: var(--color-secondary);
-            margin-bottom: var(--space-xl);
-        }
-
-        .hero__buttons {
-            display: flex;
-            gap: var(--space-md);
-            flex-wrap: wrap;
-        }
-
-        .hero__image {
-            animation: slideInRight 1s ease;
-        }
-
-        .hero__image img {
-            width: 100%;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-xl);
-            animation: float 6s ease-in-out infinite;
-            transition: var(--transition-slow);
-        }
-
-        .hero__image img:hover {
-            transform: scale(1.02) rotate(1deg);
-        }
-
-        @media (max-width: 992px) {
-            .hero {
-                min-height: auto;
-                padding: 120px 0 var(--space-3xl);
-            }
-
-            .hero__container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero__content {
-                order: 1;
-            }
-
-            .hero__image {
-                order: 2;
-            }
-
-            .hero__buttons {
-                justify-content: center;
-            }
-
-            .hero__location {
-                justify-content: center;
-            }
-
-            .hero__title {
-                font-size: var(--font-size-xl);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero__buttons {
-                flex-direction: column;
-            }
-
-            .hero__buttons .btn {
-                width: 100%;
-            }
-        }
-
-        /* ============================================
-           CARDS
-           ============================================ */
-        .card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(239, 240, 236, 0.95) 100%);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
-            border: 2px solid rgba(43, 37, 41, 0.1);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-base);
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(43, 37, 41, 0.2);
-        }
-
-        .card--center {
-            text-align: center;
-        }
-
-        .card__icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(239, 240, 236, 0.9));
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--space-lg);
-            font-size: 1.8rem;
-            color: var(--color-secondary);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-bounce);
-        }
-
-        .card:hover .card__icon {
-            transform: rotateY(180deg) scale(1.1);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .card__title {
-            font-size: var(--font-size-xl);
-            color: var(--color-secondary);
-            margin-bottom: var(--space-md);
-        }
-
-        .card__text {
-            color: var(--color-text-light);
-            line-height: 1.8;
-        }
-
-        /* Glass Card Variant */
-        .card--glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .card--glass:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* ============================================
-           FEATURES SECTION
-           ============================================ */
-        .features {
-            background: var(--gradient-light);
+        /* Hero Form - Enhanced Modern Design */
+        .hero-form-wrapper {
             position: relative;
+            z-index: 2;
+            animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .features::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("{% static 'images/ajei-background-2-min.png' %}") center/cover no-repeat;
-            opacity: 0.04;
-            pointer-events: none;
-        }
-
-        .features__intro {
-            max-width: 900px;
-            margin: 0 auto var(--space-3xl);
-        }
-
-        .features__intro .card {
-            padding: var(--space-2xl);
-            text-align: center;
-        }
-
-        .features__intro p {
-            font-size: var(--font-size-lg);
-            line-height: 1.9;
-            margin-bottom: var(--space-lg);
-        }
-
-        .features__intro p:last-child {
-            margin-bottom: 0;
-            color: var(--color-text-light);
-        }
-
-        /* ============================================
-           PORTFOLIO DOWNLOAD SECTION
-           ============================================ */
-        .portfolio-section .grid {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .portfolio-card {
-            text-align: center;
-            padding: var(--space-2xl);
-        }
-
-        .portfolio-card .card__icon {
-            margin-bottom: var(--space-lg);
-        }
-
-        .portfolio-card .btn {
-            margin-top: var(--space-lg);
-        }
-
-        /* ============================================
-           PROJECT STRUCTURE SECTION
-           ============================================ */
-        .structure-section {
-            background: var(--color-white);
-            position: relative;
-        }
-
-        .structure-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("{% static 'images/ajei-background-5-min.png' %}") center/cover no-repeat;
-            opacity: 0.03;
-            pointer-events: none;
-        }
-
-        .structure__overview {
-            max-width: 900px;
-            margin: 0 auto var(--space-3xl);
-        }
-
-        .structure__overview .card {
-            padding: var(--space-2xl);
-            text-align: center;
-        }
-
-        .structure__floors {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-lg);
-            margin-bottom: var(--space-2xl);
-        }
-
-        @media (max-width: 768px) {
-            .structure__floors {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .floor-card {
-            text-align: center;
-            padding: var(--space-lg);
-        }
-
-        .floor-card h5 {
-            color: var(--color-dark-purple);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-sm);
-        }
-
-        .floor-card h5 i {
-            color: var(--color-secondary);
-        }
-
-        .structure__subsection {
-            margin-top: var(--space-3xl);
-        }
-
-        .structure__subsection-title {
-            text-align: center;
-            font-size: var(--font-size-2xl);
-            color: var(--color-dark-purple);
-            margin-bottom: var(--space-xl);
-        }
-
-        /* ============================================
-           LOCATION SECTION
-           ============================================ */
-        .location-section {
-            background: var(--gradient-light);
-        }
-
-        .location__info {
-            max-width: 900px;
-            margin: 0 auto var(--space-3xl);
-        }
-
-        .location__info .card {
-            padding: var(--space-2xl);
-            text-align: center;
-        }
-
-        .location__list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-            text-align: start;
-            margin-top: var(--space-xl);
-        }
-
-        @media (max-width: 576px) {
-            .location__list {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .location__list-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-
-        .location__list-item i {
-            color: var(--color-secondary);
-        }
-
-        .location__map-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .location__map-card {
-            background: var(--color-white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-3xl);
-            box-shadow: var(--shadow-lg);
+        .hero-form {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            padding: 3.5rem;
+            border-radius: 40px;
+            box-shadow:
+                0 30px 90px rgba(23, 17, 42, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            border: 1px solid rgba(255, 255, 255, 0.9);
             position: relative;
             overflow: hidden;
         }
 
-        .location__map-card::before {
+        .hero-form::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: var(--gradient-primary);
-        }
-
-        .location__map-header {
-            text-align: center;
-            margin-bottom: var(--space-2xl);
-        }
-
-        .location__map-badge {
-            display: inline-block;
-            padding: var(--space-sm) var(--space-lg);
-            background: var(--gradient-primary);
-            border-radius: var(--radius-xl);
-            margin-bottom: var(--space-lg);
-        }
-
-        .location__map-badge span {
-            color: var(--color-white);
-            font-weight: 600;
-            font-size: var(--font-size-sm);
-            letter-spacing: 1px;
-        }
-
-        .location__map-title {
-            font-size: var(--font-size-3xl);
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: var(--space-lg);
-        }
-
-        .location__map-subtitle {
-            font-size: var(--font-size-lg);
-            color: var(--color-text-dark);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .location__map-container {
-            margin: var(--space-2xl) 0;
-        }
-
-        .location__map-container iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
-            border-radius: var(--radius-lg);
-        }
-
-        .location__map-link {
-            text-align: center;
-            margin-top: var(--space-xl);
-        }
-
-        .location__features-title {
-            text-align: center;
-            font-size: var(--font-size-2xl);
-            color: var(--color-secondary);
-            margin: var(--space-3xl) 0 var(--space-xl);
-        }
-
-        .location__features-underline {
-            width: 80px;
             height: 4px;
-            background: var(--gradient-primary);
-            margin: 0 auto var(--space-2xl);
+            background: var(--gradient);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            position: relative;
+        }
+
+        .form-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
             border-radius: 2px;
         }
 
-        .location__feature-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            padding: var(--space-2xl);
-            border-radius: var(--radius-lg);
-            height: 100%;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(24, 15, 42, 0.05);
-            transition: var(--transition-base);
-            position: relative;
-            overflow: hidden;
+        .form-title {
+            font-size: 2.25rem;
+            font-weight: 900;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
         }
 
-        .location__feature-card::before {
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            border: 2px solid rgba(49, 41, 46, 0.12);
+            border-radius: 20px;
+            font-size: 1.05rem;
+            font-family: inherit;
+            transition: var(--transition-smooth);
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--dark-purple);
+            background: var(--white);
+            box-shadow:
+                0 10px 30px rgba(23, 17, 42, 0.12),
+                0 0 0 4px rgba(23, 17, 42, 0.06),
+                0 1px 3px rgba(0, 0, 0, 0.05) inset;
+            transform: translateY(-2px);
+        }
+
+        .form-input::placeholder,
+        .form-select::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(49, 41, 46, 0.5);
+            font-weight: 400;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            border-radius: 20px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow:
+                0 15px 45px rgba(23, 17, 42, 0.25),
+                0 5px 15px rgba(23, 17, 42, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            overflow: hidden;
+            min-height: 54px;
+        }
+
+        .form-button::before {
             content: '';
             position: absolute;
-            top: -30px;
-            right: -30px;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, rgba(24, 15, 42, 0.05), transparent);
-            border-radius: var(--radius-full);
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
         }
 
-        .location__feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
+        .form-button:hover::before {
+            left: 100%;
         }
 
-        .location__feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-primary);
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: var(--space-lg);
-            box-shadow: var(--shadow-md);
+        .form-button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .location__feature-icon i {
-            font-size: 1.8rem;
-            color: var(--color-white);
+        .form-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow:
+                0 25px 70px rgba(23, 17, 42, 0.35),
+                0 10px 25px rgba(23, 17, 42, 0.2);
         }
 
-        .location__feature-card h5 {
-            color: var(--color-secondary);
-            margin-bottom: var(--space-sm);
-            font-size: var(--font-size-lg);
+        .form-button:hover::after {
+            opacity: 1;
         }
 
-        .location__feature-card p {
-            color: var(--color-text-light);
-            line-height: 1.8;
-            margin: 0;
+        .form-button:active {
+            transform: translateY(-2px) scale(1);
         }
 
-        /* ============================================
-           AMENITIES SECTION
-           ============================================ */
-        .amenities-section {
-            background: var(--gradient-light);
-        }
-
-        /* ============================================
-           INVESTMENT SECTION
-           ============================================ */
-        .investment-section {
-            background: var(--gradient-light);
+        /* Section Base */
+        .section {
+            padding: 6rem 5%;
             position: relative;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
-        .investment__intro {
-            max-width: 900px;
-            margin: 0 auto var(--space-3xl);
-        }
-
-        .investment__intro .card {
-            padding: var(--space-2xl);
+        .section-header {
             text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
         }
 
-        .investment__cards {
-            margin-bottom: var(--space-3xl);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .investment__returns {
+        .section-subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            background: linear-gradient(135deg, #17112A 0%, #31292E 100%);
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            box-shadow:
+                0 10px 30px rgba(23, 17, 42, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+                0 2px 4px rgba(0, 0, 0, 0.1) inset;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-subtitle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .section-subtitle:hover::before {
+            left: 100%;
+        }
+
+        .section-subtitle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow:
+                0 15px 40px rgba(23, 17, 42, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #31292E 0%, #17112A 50%, #31292E 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1.5rem;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 6px;
+            background: linear-gradient(90deg, #17112A, #31292E);
+            border-radius: 10px;
+            animation: expandLine 2s ease-out forwards;
+        }
+
+        @keyframes expandLine {
+            from {
+                width: 0;
+            }
+            to {
+                width: 60px;
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 6px;
+            background: linear-gradient(90deg, #31292E, #17112A);
+            border-radius: 10px;
+            animation: expandLine 2s ease-out 0.3s forwards;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: 50%;
+            left: -100px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(23, 17, 42, 0.3), rgba(49, 41, 46, 0.1));
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(30px);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.8;
         }
 
-        .investment__returns .card {
-            padding: var(--space-2xl);
-            text-align: center;
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
         }
 
-        .investment__returns h5 {
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--dark-purple);
+            margin-bottom: 1.5rem;
+            word-wrap: break-word;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+            word-wrap: break-word;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(239,240,236,0.95) 100%);
+            padding: 3rem 2rem;
+            border-radius: 35px;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(23, 17, 42, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(102, 126, 234, 0.05), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-20px);
+            box-shadow:
+                0 25px 70px rgba(23, 17, 42, 0.15),
+                0 10px 25px rgba(23, 17, 42, 0.08);
+            border-color: rgba(23, 17, 42, 0.15);
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient);
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: var(--space-sm);
-            color: var(--color-dark-purple);
-            margin-bottom: var(--space-lg);
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+            color: var(--white);
+            box-shadow: 0 10px 30px rgba(23, 17, 42, 0.3);
+            transition: var(--transition);
         }
 
-        .investment__returns h5 i {
-            color: var(--color-secondary);
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(23, 17, 42, 0.4);
         }
 
-        .investment__list {
-            margin-top: var(--space-md);
+        .feature-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--dark-purple);
+            margin-bottom: 1rem;
+            text-align: center;
         }
 
-        .investment__list li {
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.7;
+            text-align: center;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(23, 17, 42, 0.1);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.85rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .feature-list li:hover {
+            padding-left: 3rem;
+            color: var(--dark-purple);
+        }
+
+        .feature-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-sm);
+            justify-content: center;
         }
 
-        .investment__list li i {
-            color: var(--color-secondary);
+        .feature-list li::after {
+            content: '✓';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--white);
+            font-weight: bold;
+            font-size: 0.75rem;
         }
 
-        /* ============================================
-           VIDEO SECTION
-           ============================================ */
-        .video-section {
-            background: var(--color-white);
+        /* Gallery */
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
 
-        .video-section .card {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: var(--space-xl);
+        .gallery-tab {
+            padding: 1rem 2rem;
+            background: var(--white);
+            border: 2px solid var(--dark-purple);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark-purple);
         }
 
-        .video__wrapper {
-            border-radius: var(--radius-lg);
-            overflow: hidden;
+        .gallery-tab:hover,
+        .gallery-tab.active {
+            background: var(--gradient);
+            color: var(--white);
             box-shadow: var(--shadow-lg);
         }
 
-        .video__wrapper video {
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.06);
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(23, 17, 42, 0.6), rgba(233, 69, 96, 0.4));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-item:hover {
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.2),
+                0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Video Section */
+        .video-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .video-wrapper video {
             width: 100%;
             display: block;
         }
 
-        /* ============================================
-           DESIGN & ARCHITECTURE SECTION
-           ============================================ */
-        .design-section {
-            background: var(--gradient-primary);
-            color: var(--color-text-on-dark);
-            position: relative;
-        }
-
-        .design-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("{% static 'images/ajei-background-3-min.png' %}") center/cover no-repeat;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .design__intro {
-            max-width: 900px;
-            margin: 0 auto var(--space-3xl);
-        }
-
-        .design__intro .card--glass {
-            padding: var(--space-2xl);
-            text-align: center;
-        }
-
-        .design__intro p {
-            font-size: var(--font-size-lg);
-            line-height: 1.9;
-            margin-bottom: var(--space-lg);
-        }
-
-        .design__intro p:last-child {
-            margin-bottom: 0;
-            font-style: italic;
-            color: var(--color-accent);
-        }
-
-        .design__floor-plans {
+        /* Floor Plans */
+        .floor-plans-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-xl);
-        }
-
-        @media (max-width: 768px) {
-            .design__floor-plans {
-                grid-template-columns: 1fr;
-            }
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
         .floor-plan-card {
-            text-align: center;
-        }
-
-        .floor-plan-card img {
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-lg);
-            max-height: 350px;
-            object-fit: contain;
-            width: 100%;
-        }
-
-        .floor-plan-card h4 {
-            color: var(--color-white);
-        }
-
-        /* ============================================
-           GALLERY SECTION
-           ============================================ */
-        .gallery-section {
-            position: relative;
+            background: var(--white);
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
 
-        .gallery-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("{% static 'images/ajei-background-4-min.png' %}") center/cover no-repeat;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .gallery__filters {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-2xl);
-        }
-
-        .gallery__filter {
-            padding: var(--space-sm) var(--space-lg);
-            border: 2px solid var(--color-dark-purple);
-            border-radius: var(--radius-xl);
-            color: var(--color-dark-purple);
-            font-weight: 500;
-            transition: var(--transition-base);
-        }
-
-        .gallery__filter:hover,
-        .gallery__filter.active {
-            background: var(--color-dark-purple);
-            color: var(--color-white);
-        }
-
-        .gallery__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-xl);
-        }
-
-        .gallery__item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-lg);
-            height: 320px;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition-base);
-        }
-
-        .gallery__item:hover {
-            transform: translateY(-8px);
+        .floor-plan-card:hover {
+            transform: translateY(-5px);
             box-shadow: var(--shadow-xl);
         }
 
-        .gallery__item img {
+        .floor-plan-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .floor-plan-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition-slow);
         }
 
-        .gallery__item:hover img {
-            transform: scale(1.1);
+        .floor-plan-content {
+            padding: 1.5rem;
         }
 
-        .gallery__overlay {
+        .floor-plan-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Partners */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .partner-logo {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .partner-logo img {
+            max-height: 80px;
+            width: auto;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+        }
+
+        .partner-flag {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(24, 15, 42, 0.9), rgba(43, 37, 41, 0.6), transparent);
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
+            z-index: 1;
+        }
+
+        /* Location */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .map-wrapper {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            height: 500px;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .location-info {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
-            padding: var(--space-xl);
-            opacity: 0;
-            transition: var(--transition-base);
+            gap: 2rem;
         }
 
-        .gallery__item:hover .gallery__overlay {
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .info-content h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--dark-purple), var(--raisin-black));
+            padding: 3rem 2rem;
+            border-radius: 35px;
+            box-shadow:
+                0 20px 60px rgba(23, 17, 42, 0.3),
+                0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+            top: -30%;
+            right: -30%;
+        }
+
+        .contact-card:hover::after {
             opacity: 1;
         }
 
-        .gallery__overlay h5 {
-            color: var(--color-white);
-            margin-bottom: var(--space-sm);
+        .contact-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow:
+                0 30px 90px rgba(23, 17, 42, 0.4),
+                0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        .gallery__overlay-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: var(--color-accent);
-            border-radius: var(--radius-full);
+        .contact-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-alabaster);
-            font-size: 1.5rem;
-        }
-
-        /* ============================================
-           TESTIMONIALS / FEATURES SECTION
-           ============================================ */
-        .testimonials-section {
-            background: var(--gradient-primary);
-            color: var(--color-text-on-dark);
-            position: relative;
-        }
-
-        .testimonials-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("{% static 'images/ajei-background-3-min.png' %}") center/cover no-repeat;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .testimonial-card {
-            padding: var(--space-2xl);
-        }
-
-        .testimonial-card__icon {
+            margin: 0 auto 2rem;
             font-size: 2.5rem;
-            color: var(--color-accent);
-            margin-bottom: var(--space-lg);
-        }
-
-        .testimonial-card h4 {
-            color: var(--color-accent);
-            margin-bottom: var(--space-md);
-        }
-
-        .testimonial-card p {
-            font-size: var(--font-size-lg);
-            line-height: 1.8;
-        }
-
-        /* ============================================
-           CONTACT SECTION
-           ============================================ */
-        .contact-section {
-            background: var(--color-white);
+            color: var(--dark-purple);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
             position: relative;
+            z-index: 1;
         }
 
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("{% static 'images/ajei-background-5-min.png' %}") center/cover no-repeat;
-            opacity: 0.03;
-            pointer-events: none;
+        .contact-card:hover .contact-icon {
+            transform: scale(1.15) rotateY(360deg);
+            box-shadow: 0 15px 50px rgba(255, 255, 255, 0.5);
         }
 
-        .contact__grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-3xl);
+        .contact-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
-        @media (max-width: 992px) {
-            .contact__grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: var(--color-white);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(43, 37, 41, 0.1);
-        }
-
-        .contact-form__header {
-            text-align: center;
-            margin-bottom: var(--space-xl);
-            padding-bottom: var(--space-lg);
-            border-bottom: 3px solid var(--color-secondary);
-        }
-
-        .contact-form__title {
-            font-size: var(--font-size-xl);
-            color: var(--color-dark-purple);
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .form-group {
-            margin-bottom: var(--space-lg);
-        }
-
-        .form-input {
-            width: 100%;
-            padding: var(--space-md) var(--space-lg);
-            border: 2px solid #e8e6e0;
-            border-radius: var(--radius-md);
-            font-family: var(--font-primary);
-            font-size: var(--font-size-base);
-            background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
-            color: var(--color-text-dark);
-            transition: var(--transition-base);
-        }
-
-        .form-input:hover {
-            border-color: #c4c2bc;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 4px rgba(43, 37, 41, 0.1), var(--shadow-md);
-            transform: translateY(-2px);
-        }
-
-        .form-input::placeholder {
-            color: #999;
-        }
-
-        select.form-input {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2317112A' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: left 1rem center;
-            padding-left: 2.5rem;
-        }
-
-        [dir="rtl"] select.form-input {
-            background-position: right 1rem center;
-            padding-left: var(--space-lg);
-            padding-right: 2.5rem;
-        }
-
-        textarea.form-input {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: var(--space-md) var(--space-xl);
-            background: var(--gradient-primary);
-            color: var(--color-white);
-            border: none;
-            border-radius: var(--radius-md);
-            font-size: var(--font-size-lg);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: var(--transition-base);
-            box-shadow: var(--shadow-md);
-        }
-
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .form-submit:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .form-note {
-            text-align: center;
-            margin-top: var(--space-lg);
-            font-size: var(--font-size-sm);
-            color: var(--color-text-light);
-        }
-
-        .form-note i {
-            margin-right: var(--space-xs);
-        }
-
-        /* Contact Info */
         .contact-info {
-            padding: var(--space-xl);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-info__title {
-            font-size: var(--font-size-2xl);
-            margin-bottom: var(--space-xl);
-            color: var(--color-dark-purple);
+        .contact-info a {
+            color: var(--alabaster);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--alabaster);
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            transition: var(--transition);
+            direction: ltr;
+            unicode-bidi: embed;
         }
 
-        .contact-info__item {
+        .contact-info a:hover {
+            background: var(--alabaster);
+            color: var(--dark-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(239, 240, 236, 0.3);
+        }
+
+        .qr-code-img {
+            width: 180px;
+            height: 180px;
+            margin: 1rem auto;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .qr-code-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--alabaster);
+            color: var(--text-dark);
+            padding: 4rem 5% 2rem;
+            box-shadow: 0 -4px 20px rgba(239, 240, 236, 0.5);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--dark-purple);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-logo {
+            width: 150px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* RTL Fix for phone numbers, emails, and links */
+        a[href^="tel:"],
+        a[href^="mailto:"],
+        .contact-info,
+        .footer-links a[href^="tel:"],
+        .footer-links a[href^="mailto:"] {
+            direction: ltr;
+            unicode-bidi: embed;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
             display: flex;
-            align-items: flex-start;
-            gap: var(--space-lg);
-            margin-bottom: var(--space-xl);
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
-        .contact-info__icon {
+        .social-link {
             width: 50px;
             height: 50px;
-            background: var(--color-secondary);
-            border-radius: var(--radius-full);
+            background: var(--dark-purple);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-alabaster);
-            flex-shrink: 0;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-bounce);
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
         }
 
-        .contact-info__item:hover .contact-info__icon {
-            transform: rotate(360deg) scale(1.1);
+        .social-link:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
         }
 
-        .contact-info__content h5 {
-            margin-bottom: var(--space-xs);
-            color: var(--color-dark-purple);
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(49, 41, 46, 0.2);
+            color: var(--text-light);
         }
 
-        .contact-info__content p {
-            color: var(--color-text-light);
-            margin: 0;
-        }
-
-        /* Alert Messages */
-        .alert {
-            padding: var(--space-md) var(--space-lg);
-            border-radius: var(--radius-md);
-            margin-top: var(--space-lg);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-
-        .alert--success {
-            background: rgba(39, 174, 96, 0.1);
-            color: var(--color-success);
-            border: 1px solid var(--color-success);
-        }
-
-        .alert--error {
-            background: rgba(231, 76, 60, 0.1);
-            color: var(--color-error);
-            border: 1px solid var(--color-error);
-        }
-
-        .alert__close {
-            margin-left: auto;
-            padding: var(--space-xs);
-            cursor: pointer;
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        .footer {
-            background: var(--color-dark-purple);
-            color: var(--color-text-on-dark);
-            padding: var(--space-3xl) 0 var(--space-lg);
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("{% static 'images/ajei-background-6-min.png' %}") center/cover no-repeat;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .footer__grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: var(--space-3xl);
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 768px) {
-            .footer__grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        .footer__logo {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            background: var(--gradient-primary);
-            padding: var(--space-md) var(--space-xl);
-            border-radius: var(--radius-md);
-            margin-bottom: var(--space-lg);
-            box-shadow: var(--shadow-md);
-        }
-
-        .footer__logo i {
-            font-size: 1.5rem;
-            color: var(--color-alabaster);
-        }
-
-        .footer__logo img {
-            height: 45px;
-            filter: brightness(0) invert(1);
-        }
-
-        .footer__description {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: var(--space-lg);
-            line-height: 1.8;
-        }
-
-        .footer__social {
-            display: flex;
-            gap: var(--space-md);
-        }
-
-        @media (max-width: 768px) {
-            .footer__social {
-                justify-content: center;
-            }
-        }
-
-        .footer__social-link {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-white);
-            transition: var(--transition-bounce);
-        }
-
-        .footer__social-link:hover {
-            background: var(--color-secondary);
-            transform: translateY(-5px) rotate(360deg);
-        }
-
-        .footer__links-title {
-            font-size: var(--font-size-lg);
-            margin-bottom: var(--space-lg);
-        }
-
-        .footer__links li {
-            margin-bottom: var(--space-sm);
-        }
-
-        .footer__links a {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer__links a:hover {
-            color: var(--color-accent);
-        }
-
-        .footer__bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: var(--space-2xl);
-            padding-top: var(--space-lg);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-            position: relative;
-            z-index: 1;
-        }
-
-        @media (max-width: 768px) {
-            .footer__bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        .footer__copyright {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer__legal {
-            display: flex;
-            gap: var(--space-lg);
-        }
-
-        @media (max-width: 768px) {
-            .footer__legal {
-                justify-content: center;
-            }
-        }
-
-        .footer__legal a {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: var(--font-size-sm);
-        }
-
-        .footer__legal a:hover {
-            color: var(--color-white);
-        }
-
-        /* ============================================
-           FLOATING BUTTONS
-           ============================================ */
+        /* Floating Actions */
         .whatsapp-float {
             position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 8rem;
+            right: 2rem;
+            width: 65px;
+            height: 65px;
             background: linear-gradient(135deg, #25D366, #128C7E);
-            color: var(--color-white);
-            border-radius: var(--radius-full);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            z-index: var(--z-fixed);
-            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
-            animation: whatsappPulse 2s infinite;
-            transition: var(--transition-base);
-        }
-
-        [dir="rtl"] .whatsapp-float {
-            right: auto;
-            left: 30px;
+            color: var(--white);
+            font-size: 2rem;
+            box-shadow: var(--shadow-xl);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
         }
 
         .whatsapp-float:hover {
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
-            color: var(--color-white);
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5);
         }
 
         .scroll-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            background: var(--color-accent);
-            border-radius: var(--radius-full);
-            display: flex;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: none;
             align-items: center;
             justify-content: center;
-            color: var(--color-white);
-            font-size: 1.3rem;
-            z-index: var(--z-fixed);
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition-base);
-            box-shadow: var(--shadow-lg);
-            border: 2px solid var(--color-secondary);
+            color: var(--white);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-xl);
             cursor: pointer;
+            z-index: 999;
+            transition: var(--transition);
         }
 
-        [dir="rtl"] .scroll-top {
-            right: auto;
-            left: 30px;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
+        .scroll-top.show {
+            display: flex;
         }
 
         .scroll-top:hover {
-            background: var(--color-secondary);
-            transform: translateY(-8px);
+            transform: translateY(-5px);
         }
 
-        @media (max-width: 576px) {
-            .whatsapp-float {
-                bottom: 80px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+        }
+
+        @keyframes decorFloat {
+            0%, 100% {
+                transform: translateY(-50%) translateX(0) rotate(-5deg);
+            }
+            50% {
+                transform: translateY(-50%) translateX(5px) rotate(-3deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 5%;
+                gap: 3rem;
+            }
+
+            .about-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+
+            body {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .lang-switcher {
+                top: 0.75rem;
+                right: 0.75rem;
+                padding: 0.4rem;
+            }
+
+            .lang-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                min-height: 44px;
+            }
+
+            .section {
+                padding: 2rem 4%;
+                overflow-x: hidden;
+            }
+
+            .section-header {
+                margin-bottom: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.75rem;
+                padding: 0.75rem 1.8rem;
+                letter-spacing: 2px;
+                word-break: break-word;
+            }
+
+            .section-title {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+                word-wrap: break-word;
+                hyphens: auto;
+                padding-bottom: 1.2rem;
+            }
+
+            .section-title::before {
+                width: 40px;
+                height: 4px;
+            }
+
+            .section-title::after {
+                width: 30px;
+                height: 4px;
+            }
+
+            .section-description {
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 1.5rem 4% 2rem;
+                gap: 1.5rem;
+                background-attachment: scroll;
+            }
+
+            .hero-logo {
+                width: 100px;
+            }
+
+            .hero-title {
                 font-size: 1.6rem;
             }
 
-            .scroll-top {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
+            .hero-subtitle {
+                font-size: 0.95rem;
             }
 
-            [dir="rtl"] .whatsapp-float,
-            [dir="rtl"] .scroll-top {
-                right: auto;
-                left: 20px;
+            .hero-description {
+                font-size: 0.85rem;
+            }
+
+            .hero-location {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-form {
+                padding: 1.5rem 1.25rem;
+                border-radius: 20px;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+
+            .form-input,
+            .form-select,
+            .form-textarea {
+                padding: 0.9rem 1.1rem;
+                font-size: 0.85rem;
+                min-height: 44px;
+            }
+
+            .form-button {
+                padding: 1.1rem;
+                font-size: 0.9rem;
+                min-height: 48px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.75rem 1.25rem;
+            }
+
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.75rem;
+            }
+
+            .feature-title {
+                font-size: 1.2rem;
+                word-wrap: break-word;
+            }
+
+            .feature-description {
+                font-size: 0.85rem;
+            }
+
+            .feature-list li {
+                font-size: 0.85rem;
+                word-wrap: break-word;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .about-content p {
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .gallery-tabs {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .gallery-tab {
+                padding: 0.75rem 1.25rem;
+                width: 100%;
+                font-size: 0.85rem;
+            }
+
+            .floor-plans-grid,
+            .partners-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .partner-logo {
+                padding: 1.5rem;
+            }
+
+            .partner-logo img {
+                max-height: 50px;
+            }
+
+            .floor-plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 2rem;
+            }
+
+            .partner-logo {
+                padding: 1.5rem;
+            }
+
+            .partner-logo img {
+                max-height: 60px;
+            }
+
+            .partner-flag {
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
+                top: 8px;
+                right: 8px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-card {
+                padding: 2rem 1.75rem;
+            }
+
+            .contact-icon {
+                width: 75px;
+                height: 75px;
+                font-size: 2rem;
+            }
+
+            .contact-title {
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                font-size: 0.85rem;
+            }
+
+            .contact-info a {
+                font-size: 0.85rem;
+                padding: 0.7rem 1.5rem;
+            }
+
+            .qr-code-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .section-header-decor {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .footer-links li {
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.8rem;
+            }
+
+            .whatsapp-float {
+                bottom: 5rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.75rem;
+            }
+
+            .scroll-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 13px;
+            }
+
+            body {
+                font-size: 0.85rem;
+                line-height: 1.55;
+            }
+
+            .section {
+                padding: 1.5rem 3%;
+            }
+
+            .section-subtitle {
+                font-size: 0.65rem;
+                padding: 0.65rem 1.4rem;
+                letter-spacing: 1.5px;
+            }
+
+            .section-title {
+                font-size: clamp(1.2rem, 5vw, 1.6rem);
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                padding-bottom: 1rem;
+            }
+
+            .section-title::before {
+                width: 30px;
+                height: 3px;
+            }
+
+            .section-title::after {
+                width: 25px;
+                height: 3px;
+            }
+
+            .section-description {
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 1.25rem 3% 1.5rem;
+            }
+
+            .hero-logo {
+                width: 90px;
+            }
+
+            .hero-title {
+                font-size: 1.3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .hero-description {
+                font-size: 0.75rem;
+            }
+
+            .hero-location {
+                padding: 0.6rem 1rem;
+                font-size: 0.7rem;
+            }
+
+            .hero-form {
+                padding: 1.25rem 1rem;
+            }
+
+            .form-header {
+                margin-bottom: 1.25rem;
+                padding-bottom: 1.25rem;
+            }
+
+            .form-title {
+                font-size: 1.2rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-input,
+            .form-select,
+            .form-textarea {
+                padding: 0.8rem 1rem;
+                font-size: 0.8rem;
+                min-height: 44px;
+            }
+
+            .form-button {
+                padding: 1rem;
+                font-size: 0.85rem;
+                min-height: 48px;
+            }
+
+            .feature-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .feature-title {
+                font-size: 1.05rem;
+            }
+
+            .feature-description {
+                font-size: 0.8rem;
+            }
+
+            .feature-list li {
+                padding: 0.6rem 0;
+                padding-left: 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .about-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .about-content p {
+                font-size: 0.85rem;
+            }
+
+            .gallery-tab {
+                padding: 0.7rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+
+            .contact-title {
+                font-size: 0.95rem;
+            }
+
+            .contact-info {
+                font-size: 0.8rem;
+            }
+
+            .contact-info a {
+                font-size: 0.8rem;
+                padding: 0.6rem 1.2rem;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .qr-code-img {
+                width: 120px;
+                height: 120px;
+                padding: 0.75rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1rem;
+            }
+
+            .footer-links li {
+                font-size: 0.8rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.75rem;
+            }
+
+            .partner-logo {
+                padding: 1rem;
+            }
+
+            .partner-logo img {
+                max-height: 45px;
+            }
+
+            .lang-switcher {
+                flex-direction: column;
+                gap: 0.3rem;
+                padding: 0.3rem;
+                top: 0.5rem;
+                right: 0.5rem;
+            }
+
+            .lang-btn {
+                padding: 0.45rem 0.9rem;
+                width: 100%;
+                font-size: 0.7rem;
+                min-height: 40px;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 4.5rem;
+            }
+
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .map-wrapper iframe {
+                height: 300px;
+            }
+
+            .video-wrapper video {
+                max-height: 250px;
+            }
+        }
+
+        /* Utility */
+        .bg-light {
+            background: var(--alabaster);
+        }
+
+        .bg-white {
+            background: var(--white);
+        }
+
+        .bg-dark {
+            background: var(--raisin-black);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* --- Modern Redesign Additions --- */
+
+        /* Navbar - Enhanced Modern Design */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            background: transparent;
+        }
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            padding: 1rem 5%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(23, 17, 42, 0.05);
+        }
+        .nav-brand {
+            position: relative;
+            z-index: 1001;
+        }
+        .nav-brand img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition);
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+        }
+        .nav-brand img:hover {
+            transform: scale(1.05);
+        }
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-link {
+            font-weight: 700;
+            color: var(--dark-purple);
+            position: relative;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 100%;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--gold);
+        }
+        .nav-link:hover::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark-purple);
+            cursor: pointer;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .mobile-toggle:hover {
+            background: rgba(23, 17, 42, 0.05);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                {% if LANGUAGE_BIDI %}left: -100%; right: auto;{% else %}right: -100%; left: auto;{% endif %}
+                width: 85%;
+                max-width: 400px;
+                height: 100vh;
+                background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(239,240,236,0.95));
+                backdrop-filter: blur(40px) saturate(180%);
+                -webkit-backdrop-filter: blur(40px) saturate(180%);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                padding: 3rem 2rem;
+                box-shadow: -10px 0 50px rgba(0, 0, 0, 0.2);
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 999;
+                border-left: 1px solid rgba(23, 17, 42, 0.1);
+            }
+            .nav-menu.active {
+                {% if LANGUAGE_BIDI %}left: 0;{% else %}right: 0;{% endif %}
+            }
+            .nav-link {
+                font-size: 1.25rem;
+                padding: 1rem 0;
+            }
+            .mobile-toggle {
+                display: flex;
+                z-index: 1001;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div id="preloader" class="preloader">
-        <div class="preloader__content">
-            <div class="preloader__logo">
-                <i class="fas fa-building"></i>
-                <img src="{% static 'images/ajei_logo.png' %}" alt="AJEI">
-            </div>
-            <div class="preloader__text">{% trans "Loading Ajei Mall" %}</div>
-            <div class="preloader__icons">
-                <div class="preloader__icon"><i class="fas fa-building"></i></div>
-                <div class="preloader__icon"><i class="fas fa-store"></i></div>
-                <div class="preloader__icon"><i class="fas fa-city"></i></div>
-                <div class="preloader__icon"><i class="fas fa-home"></i></div>
-            </div>
-            <div class="preloader__spinner"></div>
+
+    <!-- Modern Navbar -->
+    <nav class="navbar">
+        <a href="#" class="nav-brand">
+            <img src="{% static 'images/ajei_logo.png' %}" alt="Ajei">
+        </a>
+
+        <div class="mobile-toggle">
+            <i class="fas fa-bars"></i>
         </div>
-    </div>
 
-    <!-- Header -->
-    <header class="header" id="header">
-        <div class="container header__container">
-            <a href="#home" class="header__logo">
-                <i class="fas fa-building"></i>
-                <img src="{% static 'images/ajei_logo.png' %}" alt="AJEI Logo">
-            </a>
+        <div class="nav-menu">
+            <a href="#about" class="nav-link">{% trans "عن المشروع" %}</a>
+            <a href="#features" class="nav-link">{% trans "المميزات" %}</a>
+            <a href="#gallery" class="nav-link">{% trans "المعرض" %}</a>
+            <a href="#location" class="nav-link">{% trans "الموقع" %}</a>
+            <a href="#contact" class="nav-link">{% trans "تواصل معنا" %}</a>
 
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
-                <span class="nav-toggle__bar"></span>
-            </button>
+            <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                <a href="?lang=ar" class="lang-btn {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">AR</a>
+                <a href="?lang=en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</a>
+            </div>
+        </div>
+    </nav>
 
-            <nav class="nav" id="nav">
-                <ul class="nav__list">
-                    <li><a href="#home" class="nav__link">{% trans "الرئيسية" %}</a></li>
-                    <li><a href="#about" class="nav__link">{% trans "عن Ajei" %}</a></li>
-                    <li><a href="#structure" class="nav__link">{% trans "تكوين المشروع" %}</a></li>
-                    <li><a href="#location" class="nav__link">{% trans "الموقع" %}</a></li>
-                    <li><a href="#investment" class="nav__link">{% trans "الاستثمار" %}</a></li>
-                    <li><a href="#contact" class="nav__link">{% trans "تواصل معنا" %}</a></li>
+    <!-- Hero Section (No Header) -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="{% static 'images/ajei_logo.png' %}" alt="Ajei Logo" class="hero-logo">
+            <p class="hero-subtitle">{% trans "أكثر من مجرد مول… وجهة يومية متكاملة" %}</p>
+            <p class="hero-description">
+                {% trans "مشروع تجاري–طبي متكامل، مصمم لخدمة الاحتياجات اليومية من خلال إدارة موحدة ونموذج استثماري ذكي." %}
+            </p>
+            <div class="hero-location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{% trans "أكتوبر جاردنز - السادس من أكتوبر" %}</span>
+            </div>
+        </div>
+
+        <div class="hero-form-wrapper">
+            <form class="hero-form" method="post" action="{% url 'ajei_contact_submit' %}">
+                {% csrf_token %}
+                <div class="form-header">
+                    <h2 class="form-title">{% trans "ابدأ استثمارك" %}</h2>
+                </div>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <div class="form-group">
+                    <input type="text" name="name" class="form-input" placeholder="{% trans 'الاسم الكامل' %}" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" name="email" class="form-input" placeholder="{% trans 'البريد الإلكتروني' %}" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" name="phone" class="form-input" placeholder="{% trans 'رقم الهاتف' %}" required>
+                </div>
+
+                <div class="form-group">
+                    <select name="investment_type" class="form-select">
+                        <option value="">{% trans "نوع الاستثمار" %}</option>
+                        <option value="medical">{% trans "عيادة طبية" %}</option>
+                        <option value="commercial">{% trans "وحدة تجارية" %}</option>
+                        <option value="pharmacy">{% trans "صيدلية" %}</option>
+                        <option value="restaurant">{% trans "مطعم/كافيه" %}</option>
+                        <option value="other">{% trans "أخرى" %}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <textarea name="message" class="form-textarea" placeholder="{% trans 'رسالتك (اختياري)' %}"></textarea>
+                </div>
+
+                <button type="submit" class="form-button">
+                    {% trans "إرسال" %}
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-white reveal">
+        <div class="about-grid">
+            <div class="about-content">
+                <div class="section-subtitle">{% trans "عن المشروع" %}</div>
+                <h3>{% trans "ما هو مشروع Ajei؟" %}</h3>
+                <p>
+                    {% trans "Ajei هو مشروع تجاري–طبي متكامل، تم تصميمه ليعمل كنظام واحد مترابط." %}
+                </p>
+                <p>
+                    {% trans "يجمع بين الخدمات اليومية الأساسية في مكان واحد، مما يخلق حركة مستمرة وقيمة تشغيلية حقيقية." %}
+                </p>
+                <p style="font-weight: 600; color: var(--dark-purple);">
+                    {% trans "Ajei ليس مولًا تقليديًا،" %}
+                </p>
+                <p>
+                    {% trans "بل هو مركز خدمات مركزي مبني حول نمط الحياة اليومية، حيث تتكامل الخدمات والحركة والوظائف بسلاسة." %}
+                </p>
+
+                <div style="margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(239,240,236,0.5), rgba(239,240,236,0.3)); border-radius: 20px; border: 2px solid var(--dark-purple);">
+                    <h4 style="color: var(--dark-purple); margin-bottom: 1rem; font-size: 1.3rem; font-weight: 700;">🇪🇬 {% trans "مالك المشروع" %}</h4>
+                    <div style="display: flex; align-items: center; gap: 1.5rem;">
+                        <img src="{% static 'images/STC final Logo.png' %}" alt="STC Developments" style="max-width: 200px; height: auto;">
+                        <div>
+                            <p style="font-weight: 600; color: var(--dark-purple); margin-bottom: 0.5rem;">STC Developments</p>
+                            <p style="color: var(--text-light); font-size: 0.95rem;">🇪🇬 {% trans "شركة مصرية رائدة في مجال التطوير العقاري" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-image">
+                <img src="{% static 'images/ajei-background-3-min.png' %}" alt="Ajei Building">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section bg-light reveal">
+        <div class="section-header">
+            <div class="section-subtitle">{% trans "المميزات" %}</div>
+            <h2 class="section-title">{% trans "لماذا تستثمر في Ajei؟" %}</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3 class="feature-title">{% trans "الطابق الأرضي" %}</h3>
+                <p class="feature-description">{% trans "خدمات يومية أساسية" %}</p>
+                <ul class="feature-list">
+                    <li>{% trans "صيدلية" %}</li>
+                    <li>{% trans "مطعم وكافيه" %}</li>
+                    <li>{% trans "سوبر ماركت" %}</li>
+                    <li>{% trans "محل ملابس" %}</li>
                 </ul>
-                <div class="nav__actions">
-                    <div class="lang-switcher">
-                        <a href="?lang=en" class="lang-switcher__link {% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</a>
-                        <a href="?lang=ar" class="lang-switcher__link {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">AR</a>
-                    </div>
-                    <a href="https://wa.me/{{ whatsapp_number }}" target="_blank" class="btn btn--primary">
-                        {% trans "واتساب" %}
-                    </a>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-stethoscope"></i>
                 </div>
-            </nav>
+                <h3 class="feature-title">{% trans "الطابق الأول" %}</h3>
+                <p class="feature-description">{% trans "عيادات طبية متخصصة" %}</p>
+                <ul class="feature-list">
+                    <li>{% trans "عيادة أطفال" %}</li>
+                    <li>{% trans "عيادة أسنان" %}</li>
+                    <li>{% trans "عيادة باطنة" %}</li>
+                    <li>{% trans "عيادة نساء وتوليد" %}</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3 class="feature-title">{% trans "الطابق الثاني" %}</h3>
+                <p class="feature-description">{% trans "مركز طبي متكامل" %}</p>
+                <ul class="feature-list">
+                    <li>{% trans "معمل تحاليل" %}</li>
+                    <li>{% trans "مركز أشعة" %}</li>
+                    <li>{% trans "عيادات تخصصية" %}</li>
+                    <li>{% trans "صيدلية" %}</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h3 class="feature-title">{% trans "الطابق الأخير" %}</h3>
+                <p class="feature-description">{% trans "مساحات تجارية ومكاتب" %}</p>
+                <ul class="feature-list">
+                    <li>{% trans "مكاتب إدارية" %}</li>
+                    <li>{% trans "شركات ومراكز" %}</li>
+                    <li>{% trans "مساحات عمل" %}</li>
+                    <li>{% trans "قاعات اجتماعات" %}</li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container hero__container">
-                <div class="hero__content">
-                    <div class="hero__logo-badge">
+    <!-- Gallery Section -->
+    <section id="gallery" class="section bg-white reveal">
+        <div class="section-header">
+            <div class="section-subtitle">{% trans "المعرض" %}</div>
+            <h2 class="section-title">{% trans "تصاميم المشروع" %}</h2>
+        </div>
+
+        <div class="gallery-tabs">
+            <button class="gallery-tab active" data-tab="exterior">{% trans "التصميم الخارجي" %}</button>
+            <button class="gallery-tab" data-tab="interior">{% trans "التصميم الداخلي" %}</button>
+            <button class="gallery-tab" data-tab="medical">{% trans "المركز الطبي" %}</button>
+        </div>
+
+        <div class="gallery-content">
+            <div class="gallery-grid" id="exterior">
+                <div class="gallery-item">
+                    <img src="{% static 'images/extorior/Ajei Mall-1-2.png' %}" alt="Exterior View 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/extorior/Ajei Mall-1-5.png' %}" alt="Exterior View 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/ajei-background-2-min.png' %}" alt="Exterior View 3">
+                </div>
+            </div>
+
+            <div class="gallery-grid hidden" id="interior">
+                <div class="gallery-item">
+                    <img src="{% static 'images/interior/GR-02.png' %}" alt="Ground Floor Interior 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/interior/GR-03.png' %}" alt="Ground Floor Interior 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/interior/GR-05.png' %}" alt="Ground Floor Interior 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/interior/FR-01.png' %}" alt="First Floor Interior 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/interior/FR-02.png' %}" alt="First Floor Interior 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/interior/FR-04.png' %}" alt="First Floor Interior 3">
+                </div>
+            </div>
+
+            <div class="gallery-grid hidden" id="medical">
+                <div class="gallery-item">
+                    <img src="{% static 'images/AJEI2025-01-min.png' %}" alt="Medical Center">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/ajei-background-4-min.png' %}" alt="Medical Facility">
+                </div>
+                <div class="gallery-item">
+                    <img src="{% static 'images/ajei-background-6-min.png' %}" alt="Healthcare Center">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="section bg-light reveal">
+        <div class="section-header">
+            <div class="section-subtitle">{% trans "فيديو" %}</div>
+            <h2 class="section-title">{% trans "جولة افتراضية في المشروع" %}</h2>
+        </div>
+
+        <div class="video-wrapper">
+            <video controls poster="{% static 'images/ajei-background-4-min.png' %}">
+                <source src="{% static 'images/ajei_video.mp4' %}" type="video/mp4">
+                {% trans "Your browser does not support the video tag." %}
+            </video>
+        </div>
+    </section>
+
+    <!-- Floor Plans -->
+    <section class="section bg-white reveal">
+        <div class="section-header">
+            <div class="section-subtitle">{% trans "المخططات" %}</div>
+            <h2 class="section-title">{% trans "مخططات الطوابق" %}</h2>
+        </div>
+
+        <div class="floor-plans-grid">
+            <div class="floor-plan-card">
+                <div class="floor-plan-image">
+                    <img src="{% static 'images/ground-min.png' %}" alt="Ground Floor">
+                </div>
+                <div class="floor-plan-content">
+                    <h3 class="floor-plan-title">{% trans "الطابق الأرضي" %}</h3>
+                </div>
+            </div>
+
+            <div class="floor-plan-card">
+                <div class="floor-plan-image">
+                    <img src="{% static 'images/first-floor-min.png' %}" alt="First Floor">
+                </div>
+                <div class="floor-plan-content">
+                    <h3 class="floor-plan-title">{% trans "الطابق الأول" %}</h3>
+                </div>
+            </div>
+
+            <div class="floor-plan-card">
+                <div class="floor-plan-image">
+                    <img src="{% static 'images/second-floor-min.png' %}" alt="Second Floor">
+                </div>
+                <div class="floor-plan-content">
+                    <h3 class="floor-plan-title">{% trans "الطابق الثاني" %}</h3>
+                </div>
+            </div>
+
+            <div class="floor-plan-card">
+                <div class="floor-plan-image">
+                    <img src="{% static 'images/roof-floor-min.png' %}" alt="Roof Floor">
+                </div>
+                <div class="floor-plan-content">
+                    <h3 class="floor-plan-title">{% trans "الطابق الأخير" %}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section bg-light reveal">
+        <div class="section-header">
+            <div class="section-subtitle">🇪🇬 {% trans "شركاء النجاح" %}</div>
+            <h2 class="section-title">{% trans "شركاؤنا" %} 🇪🇬</h2>
+        </div>
+
+        <div class="partners-grid">
+            <div class="partner-logo">
+                <span class="partner-flag">🇪🇬</span>
+                <img src="{% static 'images/arkan_logo.png' %}" alt="Arkan Consultant">
+            </div>
+            <div class="partner-logo">
+                <span class="partner-flag">🇪🇬</span>
+                <img src="{% static 'images/egy_map.png' %}" alt="Egypt Map">
+            </div>
+        </div>
+    </section>
+
+    <!-- Branches Section -->
+    <section class="section bg-white reveal">
+        <div class="section-header">
+            <div class="section-subtitle">{% trans "الفروع" %}</div>
+            <h2 class="section-title">{% trans "العلامات التجارية" %}</h2>
+        </div>
+
+        <div class="partners-grid">
+            <div class="partner-logo">
+                <img src="{% static 'images/Logo_gad.png' %}" alt="GAD">
+            </div>
+            <div class="partner-logo">
+                <img src="{% static 'images/Logo_ Second Cup-1.png' %}" alt="Second Cup">
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="section bg-white reveal">
+        <div class="section-header">
+            <div class="section-subtitle">{% trans "الموقع" %}</div>
+            <h2 class="section-title">{% trans "موقع استراتيجي متميز" %}</h2>
+            <p class="section-description">
+                {% trans "يقع مشروع Ajei في قلب أكتوبر جاردنز بمدينة السادس من أكتوبر، في موقع حيوي يسهل الوصول إليه" %}
+            </p>
+        </div>
+
+        <div class="location-grid">
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.8662748576657!2d30.9449!3d30.0358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAwJzAwLjAiTiAzMMKwNTYnNDIuMCJF!5e0!3m2!1sen!2seg!4v1234567890"
+                    title="{% trans 'موقع المشروع على الخريطة' %}"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <div class="location-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>{% trans "العنوان" %}</h4>
+                        <p>{% trans "أكتوبر جاردنز، السادس من أكتوبر، الجيزة" %}</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="info-content">
+                        <h4>{% trans "سهولة الوصول" %}</h4>
+                        <p>{% trans "قريب من الطريق الدائري ومحور 26 يوليو" %}</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
                         <i class="fas fa-city"></i>
-                        <img src="{% static 'images/ajei_logo.png' %}" alt="Ajei">
                     </div>
-                    <h1 class="hero__title">{% trans "أكثر من مجرد مول… وجهة يومية متكاملة" %}</h1>
-                    <p class="hero__description">{% trans "مشروع تجاري–طبي متكامل، مصمم لخدمة الاحتياجات اليومية من خلال إدارة موحدة ونموذج استثماري ذكي." %}</p>
-                    <p class="hero__location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        {% trans "حدائق أكتوبر" %}
-                    </p>
-                    <div class="hero__buttons">
-                        <a href="#contact" class="btn btn--primary btn--lg">{% trans "اطلب تفاصيل المشروع" %}</a>
-                        <a href="#about" class="btn btn--outline btn--lg">{% trans "اكتشف المزيد" %}</a>
-                    </div>
-                </div>
-                <div class="hero__image">
-                    <img src="{% static 'images/Ajei_Final Assets.png' %}" alt="AJEI Project">
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section features">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "ما هو" %} <span>{% trans "مشروع Ajei؟" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="features__intro animate-on-scroll">
-                    <div class="card">
-                        <p>{% trans "Ajei هو مشروع تجاري–طبي متكامل، تم تصميمه ليعمل كنظام واحد مترابط." %}</p>
-                        <p>{% trans "يجمع بين الخدمات اليومية الأساسية في مكان واحد، مما يخلق حركة مستمرة وقيمة تشغيلية حقيقية." %}</p>
-                        <p>{% trans "Ajei ليس مولًا تقليديًا، بل هو مركز خدمات مركزي مبني حول نمط الحياة اليومية." %}</p>
-                    </div>
-                </div>
-
-                <div class="grid grid--3">
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-heartbeat"></i></div>
-                        <h4 class="card__title">{% trans "الخدمات الطبية" %}</h4>
-                        <p class="card__text">{% trans "منشآت رعاية صحية شاملة بمشغلين طبيين محترفين" %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-utensils"></i></div>
-                        <h4 class="card__title">{% trans "المطاعم والمقاهي" %}</h4>
-                        <p class="card__text">{% trans "تجارب طعام ومقاهي راقية للاستمتاع اليومي" %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-pills"></i></div>
-                        <h4 class="card__title">{% trans "الصيدلية" %}</h4>
-                        <p class="card__text">{% trans "صيدلية متكاملة الخدمات لاحتياجاتك الصحية" %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-flask"></i></div>
-                        <h4 class="card__title">{% trans "معامل التحاليل والأشعة" %}</h4>
-                        <p class="card__text">{% trans "مرافق متقدمة للفحوصات الطبية والتصوير" %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-shopping-basket"></i></div>
-                        <h4 class="card__title">{% trans "سوبر ماركت" %}</h4>
-                        <p class="card__text">{% trans "الاحتياجات اليومية والبقالة في موقع واحد مناسب" %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-building"></i></div>
-                        <h4 class="card__title">{% trans "إدارة موحدة" %}</h4>
-                        <p class="card__text">{% trans "جميع الخدمات مدارة تحت سقف واحد بنشاط مستمر" %}</p>
+                    <div class="info-content">
+                        <h4>{% trans "البيئة المحيطة" %}</h4>
+                        <p>{% trans "محاط بمجتمعات سكنية راقية ومرافق حيوية" %}</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Portfolio Download Section -->
-        <section class="section portfolio-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "ملف المشروع" %}</h2>
-                    <div class="section-header__underline"></div>
-                    <p class="section-header__subtitle">{% trans "تعرّف بشكل أعمق على مشروع Ajei والشركة المطوّرة له." %}</p>
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light reveal">
+        <div class="section-header">
+            <div class="section-subtitle">{% trans "تواصل معنا" %}</div>
+            <h2 class="section-title">{% trans "نحن هنا لخدمتك" %}</h2>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
                 </div>
-                <div class="grid grid--2">
-                    <div class="card card--center portfolio-card animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-file-pdf"></i></div>
-                        <h4 class="card__title">{% trans "ملف المشروع" %}</h4>
-                        <p class="card__text">{% trans "تفاصيل كاملة عن مشروع Ajei" %}</p>
-                        <a href="{% static 'pdf/AJEI2025.pdf' %}" class="btn btn--primary" download>
-                            <i class="fas fa-download"></i> {% trans "تحميل PDF" %}
-                        </a>
-                    </div>
-                    <div class="card card--center portfolio-card animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-file-pdf"></i></div>
-                        <h4 class="card__title">{% trans "ملف مشروع الشركة" %}</h4>
-                        <p class="card__text">{% trans "معلومات عن الشركة المطوّرة" %}</p>
-                        <a href="{% static 'pdf/STC Portfolio.pdf' %}" class="btn btn--primary" download>
-                            <i class="fas fa-download"></i> {% trans "تحميل PDF" %}
-                        </a>
-                    </div>
+                <h3 class="contact-title">{% trans "اتصل بنا" %}</h3>
+                <p class="contact-info">
+                    <a href="tel:+201006309009">+20 100 630 9009</a>
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3 class="contact-title">{% trans "واتساب" %}</h3>
+                <p class="contact-info">
+                    <a href="https://wa.me/201006309009" target="_blank">{% trans "راسلنا الآن" %}</a>
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <h3 class="contact-title">{% trans "فيسبوك" %}</h3>
+                <p class="contact-info">
+                    <a href="https://www.facebook.com/profile.php?id=61571119168603" target="_blank">{% trans "تابعنا" %}</a>
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <h3 class="contact-title">{% trans "رمز الاستجابة السريع" %}</h3>
+                <div class="qr-code-img">
+                    <img src="{% static 'images/qr-code.png' %}" alt="QR Code">
                 </div>
             </div>
-        </section>
-
-        <!-- Project Structure Section -->
-        <section id="structure" class="section structure-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "تكوين" %} <span>{% trans "المشروع" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                    <p class="section-header__subtitle">{% trans "تم تخطيط مشروع Ajei بعناية لضمان التكامل الوظيفي وكفاءة التشغيل." %}</p>
-                </div>
-
-                <div class="structure__overview animate-on-scroll">
-                    <div class="card">
-                        <p class="card__text">{% trans "تم اختيار كل عنصر داخل المشروع لضمان حركة يومية مستمرة وتشغيل مستدام." %}</p>
-                        <div class="structure__floors">
-                            <div class="card floor-card">
-                                <h5><i class="fas fa-layer-group"></i> {% trans "Ground Floor" %}</h5>
-                            </div>
-                            <div class="card floor-card">
-                                <h5><i class="fas fa-layer-group"></i> {% trans "First Floor" %}</h5>
-                            </div>
-                            <div class="card floor-card">
-                                <h5><i class="fas fa-layer-group"></i> {% trans "Second Floor" %}</h5>
-                            </div>
-                            <div class="card floor-card">
-                                <h5><i class="fas fa-layer-group"></i> {% trans "Basement" %}</h5>
-                            </div>
-                        </div>
-                        <p><strong>{% trans "Each Floor Area:" %}</strong> 1000 m²</p>
-                        <p class="card__text">{% trans "Activities within the project have been carefully distributed to ensure integration between services and achieve maximum operational efficiency." %}</p>
-                    </div>
-                </div>
-
-                <!-- Ground Floor Details -->
-                <div class="structure__subsection">
-                    <h3 class="structure__subsection-title animate-on-scroll">{% trans "الدور الأرضي" %}</h3>
-                    <div class="grid grid--3">
-                        <div class="card card--center animate-on-scroll">
-                            <div class="card__icon"><i class="fas fa-utensils"></i></div>
-                            <h5 class="card__title">{% trans "مطعم Gad" %}</h5>
-                        </div>
-                        <div class="card card--center animate-on-scroll">
-                            <div class="card__icon"><i class="fas fa-coffee"></i></div>
-                            <h5 class="card__title">{% trans "كافيه Second Cup" %}</h5>
-                        </div>
-                        <div class="card card--center animate-on-scroll">
-                            <div class="card__icon"><i class="fas fa-prescription-bottle"></i></div>
-                            <h5 class="card__title">{% trans "صيدلية" %}</h5>
-                        </div>
-                        <div class="card card--center animate-on-scroll">
-                            <div class="card__icon"><i class="fas fa-x-ray"></i></div>
-                            <h5 class="card__title">{% trans "معمل أشعة" %}</h5>
-                        </div>
-                        <div class="card card--center animate-on-scroll">
-                            <div class="card__icon"><i class="fas fa-microscope"></i></div>
-                            <h5 class="card__title">{% trans "معمل تحاليل" %}</h5>
-                        </div>
-                        <div class="card card--center animate-on-scroll">
-                            <div class="card__icon"><i class="fas fa-store"></i></div>
-                            <h5 class="card__title">{% trans "مساحة تجارية إضافية" %}</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Medical Floors -->
-                <div class="structure__subsection">
-                    <h3 class="structure__subsection-title animate-on-scroll">{% trans "الدور الأول والدور الثاني" %}</h3>
-                    <div class="features__intro animate-on-scroll">
-                        <div class="card">
-                            <p>{% trans "أدوار مخصصة بالكامل للنشاط الطبي" %}</p>
-                            <p class="card__text">{% trans "يتم تشغيلها بواسطة مشغّل طبي متخصص" %}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Basement -->
-                <div class="structure__subsection">
-                    <h3 class="structure__subsection-title animate-on-scroll">{% trans "الأرضي المرتفع" %}</h3>
-                    <div class="features__intro animate-on-scroll">
-                        <div class="card card--center">
-                            <div class="card__icon"><i class="fas fa-shopping-cart"></i></div>
-                            <h4 class="card__title">{% trans "سوبر ماركت" %}</h4>
-                            <p class="card__text">{% trans "مساحة 400 متر مربع" %}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Location Section -->
-        <section id="location" class="section location-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "الموقع والمرافق" %} <span>{% trans "والخدمات" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="location__info animate-on-scroll">
-                    <div class="card">
-                        <h3>{% trans "موقعك الجديد في مدينة حدائق أكتوبر" %}</h3>
-                        <p>{% trans "يقع مشروع Ajei في موقع استراتيجي في قلب مدينة حدائق أكتوبر، محاطًا بـ:" %}</p>
-                        <div class="location__list">
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة كينت كوليج غرب القاهرة" %}</div>
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "هرم لايف" %}</div>
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة ساكسوني الدولية" %}</div>
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدارس ستانفورد مصر الدولية" %}</div>
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة BCCIS غرب" %}</div>
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "حديقة جرين ريفر" %}</div>
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "مدرسة NIS أويست" %}</div>
-                            <div class="location__list-item"><i class="fas fa-map-marker-alt"></i> {% trans "كمباوند أويست" %}</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="location__map-wrapper animate-on-scroll">
-                    <div class="location__map-card">
-                        <div class="location__map-header">
-                            <div class="location__map-badge">
-                                <span><i class="fas fa-map-marker-alt"></i> {% trans "الموقع الاستراتيجي" %}</span>
-                            </div>
-                            <h3 class="location__map-title">{% trans "مشروع Ajei في حدائق أكتوبر" %}</h3>
-                            <p class="location__map-subtitle">{% trans "مشروع Ajei موجود في حدائق أكتوبر (October Gardens City) وهي منطقة سكنية وتجارية نامية في الجزء الغربي من القاهرة الكبرى." %}</p>
-                        </div>
-
-                        <div class="location__map-container">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.8662748576657!2d30.9449!3d30.0358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14585723456789ab%3A0x123456789abcdef0!2sOctober%20Gardens%2C%206th%20of%20October%20City!5e0!3m2!1sen!2seg!4v1234567890123!5m2!1sen!2seg"
-                                allowfullscreen=""
-                                loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                title="{% trans 'Ajei Project Location - October Gardens' %}">
-                            </iframe>
-                        </div>
-
-                        <div class="location__map-link">
-                            <a href="https://maps.app.goo.gl/yAWEurf7B5mq5rj4A?g_st=iw" target="_blank" class="btn btn--primary btn--lg">
-                                <i class="fas fa-map-marker-alt"></i>
-                                {% trans "افتح في خرائط Google" %}
-                            </a>
-                        </div>
-
-                        <h4 class="location__features-title">{% trans "المنطقة اللي Ajei فيها بتتميز بوجود:" %}</h4>
-                        <div class="location__features-underline"></div>
-
-                        <div class="grid grid--3">
-                            <div class="location__feature-card animate-on-scroll">
-                                <div class="location__feature-icon"><i class="fas fa-building"></i></div>
-                                <h5>{% trans "كمبوندات سكنية راقية" %}</h5>
-                                <p>{% trans "محيط سكني متميز بأرقى المجمعات السكنية" %}</p>
-                            </div>
-                            <div class="location__feature-card animate-on-scroll">
-                                <div class="location__feature-icon"><i class="fas fa-graduation-cap"></i></div>
-                                <h5>{% trans "مدارس وجامعات قريبة" %}</h5>
-                                <p>{% trans "مؤسسات تعليمية متميزة على مسافة قريبة" %}</p>
-                            </div>
-                            <div class="location__feature-card animate-on-scroll">
-                                <div class="location__feature-icon"><i class="fas fa-hospital"></i></div>
-                                <h5>{% trans "خدمات طبية ومرافق مهمة" %}</h5>
-                                <p>{% trans "مراكز طبية ومستشفيات متطورة قريبة" %}</p>
-                            </div>
-                            <div class="location__feature-card animate-on-scroll">
-                                <div class="location__feature-icon"><i class="fas fa-road"></i></div>
-                                <h5>{% trans "محاور وشوارع رئيسية" %}</h5>
-                                <p>{% trans "سهولة في الوصول والحركة المرورية" %}</p>
-                            </div>
-                            <div class="location__feature-card animate-on-scroll">
-                                <div class="location__feature-icon"><i class="fas fa-shopping-bag"></i></div>
-                                <h5>{% trans "مراكز ترفيه وتسوق" %}</h5>
-                                <p>{% trans "وجهات ترفيهية وتسويقية على بعد مسافة قصيرة" %}</p>
-                            </div>
-                            <div class="location__feature-card animate-on-scroll">
-                                <div class="location__feature-icon"><i class="fas fa-briefcase"></i></div>
-                                <h5>{% trans "قرب من مراكز الأعمال" %}</h5>
-                                <p>{% trans "طرق رئيسية تسهل التنقل لباقي القاهرة الكبرى" %}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Amenities Section -->
-        <section id="amenities" class="section amenities-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "المرافق" %} <span>{% trans "والخدمات والأنشطة" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="grid grid--3">
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-shopping-cart"></i></div>
-                        <h4 class="card__title">{% trans "سوبر ماركت" %}</h4>
-                        <p class="card__text">{% trans "سوبر ماركت مجهز بالكامل لجميع احتياجاتك اليومية." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-mosque"></i></div>
-                        <h4 class="card__title">{% trans "منطقة الصلاة" %}</h4>
-                        <p class="card__text">{% trans "منطقة صلاة مخصصة لراحة جميع الزوار." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-pills"></i></div>
-                        <h4 class="card__title">{% trans "صيدلية" %}</h4>
-                        <p class="card__text">{% trans "صيدلية متكاملة الخدمات مع طاقم محترف." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-dumbbell"></i></div>
-                        <h4 class="card__title">{% trans "صالة رياضية وسبا" %}</h4>
-                        <p class="card__text">{% trans "مركز لياقة بدنية حديث وسبا فاخر." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-video"></i></div>
-                        <h4 class="card__title">{% trans "كاميرات مراقبة 24 ساعة" %}</h4>
-                        <p class="card__text">{% trans "مراقبة أمنية على مدار الساعة." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-money-bill-wave"></i></div>
-                        <h4 class="card__title">{% trans "صراف آلي" %}</h4>
-                        <p class="card__text">{% trans "خدمات صراف آلي متاحة." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-charging-station"></i></div>
-                        <h4 class="card__title">{% trans "شاحن سيارات كهربائية" %}</h4>
-                        <p class="card__text">{% trans "محطات شحن حديثة للسيارات الكهربائية." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-parking"></i></div>
-                        <h4 class="card__title">{% trans "موقف سيارات" %}</h4>
-                        <p class="card__text">{% trans "مرفق موقف متعدد الطوابق فسيح." %}</p>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-warehouse"></i></div>
-                        <h4 class="card__title">{% trans "منطقة التخزين" %}</h4>
-                        <p class="card__text">{% trans "مرافق تخزين آمنة." %}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Investment Section -->
-        <section id="investment" class="section investment-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "نظام الاستثمار بنظام" %} <span>{% trans "الحصص (Share System)" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="investment__intro animate-on-scroll">
-                    <div class="card">
-                        <p>{% trans "يتم طرح مشروع Ajei بالكامل بنظام الحصص الاستثمارية (Share)." %}</p>
-                        <h4 style="color: var(--color-dark-purple); margin-top: var(--space-lg);">{% trans "ماذا يعني ذلك؟" %}</h4>
-                    </div>
-                </div>
-
-                <div class="grid grid--3 investment__cards">
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-ban"></i></div>
-                        <h4 class="card__title">{% trans "لا يتم بيع وحدات منفصلة" %}</h4>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-chart-pie"></i></div>
-                        <h4 class="card__title">{% trans "يحصل المستثمر على حصة نسبية في:" %}</h4>
-                        <ul class="investment__list">
-                            <li><i class="fas fa-check-circle"></i> {% trans "أرض المشروع" %}</li>
-                            <li><i class="fas fa-check-circle"></i> {% trans "المشروع ككل" %}</li>
-                            <li><i class="fas fa-check-circle"></i> {% trans "العائد التشغيلي" %}</li>
-                        </ul>
-                    </div>
-                    <div class="card card--center animate-on-scroll">
-                        <div class="card__icon"><i class="fas fa-briefcase"></i></div>
-                        <h4 class="card__title">{% trans "الإدارة والتشغيل" %}</h4>
-                        <ul class="investment__list">
-                            <li><i class="fas fa-check-circle"></i> {% trans "إدارة وتشغيل مركزي بواسطة الشركة المطوّرة" %}</li>
-                            <li><i class="fas fa-check-circle"></i> {% trans "لا يتحمّل المستثمر أي مسؤوليات تشغيلية" %}</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="investment__returns animate-on-scroll">
-                    <div class="card">
-                        <h5><i class="fas fa-chart-line"></i> {% trans "العائد" %}</h5>
-                        <ul class="investment__list" style="justify-content: center;">
-                            <li><i class="fas fa-check-circle"></i> {% trans "عائد متغير حسب أداء الأنشطة" %}</li>
-                            <li><i class="fas fa-check-circle"></i> {% trans "محدد ضمن نطاق عائد واضح" %}</li>
-                        </ul>
-                        <p class="card__text" style="margin-top: var(--space-lg);">{% trans "يوفّر هذا النموذج وضوحًا استثماريًا، ومشاركة في النجاح، مع تقليل المخاطر التشغيلية." %}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Video Section -->
-        <section id="video" class="section video-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "تجربة" %} <span>Ajei</span></h2>
-                    <div class="section-header__underline"></div>
-                    <p class="section-header__subtitle">{% trans "اكتشف رؤية المشروع وتصميمه وأجواءه من خلال الفيديو التعريفي." %}</p>
-                </div>
-                <div class="card animate-on-scroll">
-                    <div class="video__wrapper">
-                        <video controls poster="{% static 'images/ajei-background.jpg' %}">
-                            <source src="{% static 'images/ajei_video.mp4' %}" type="video/mp4">
-                            {% trans "Your browser does not support the video tag." %}
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Design & Architecture Section -->
-        <section class="section design-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title" style="color: var(--color-white);">{% trans "التصميم" %} <span>{% trans "والعمارة" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="design__intro animate-on-scroll">
-                    <div class="card card--glass">
-                        <p>{% trans "ادخل إلى عالم مول Ajei واشهد تصميمًا يتحدث لغة المستقبل." %}</p>
-                        <p>{% trans "عمارتنا، بخطوطها الدائرية المتدفقة، تعكس مجالًا مغناطيسيًا - تجذب وترحب وتوحد." %}</p>
-                        <p>{% trans "هذا هو المكان الذي يلتقي فيه التصميم الحديث بالوظيفة." %}</p>
-                    </div>
-                </div>
-
-                <div class="design__floor-plans">
-                    <div class="card card--glass floor-plan-card animate-on-scroll">
-                        <img src="{% static 'images/ground-min.png' %}" alt="Ground Floor Plan">
-                        <h4>{% trans "الطابق الأرضي" %}</h4>
-                    </div>
-                    <div class="card card--glass floor-plan-card animate-on-scroll">
-                        <img src="{% static 'images/first-floor-min.png' %}" alt="First Floor Plan">
-                        <h4>{% trans "الطابق الأول" %}</h4>
-                    </div>
-                    <div class="card card--glass floor-plan-card animate-on-scroll">
-                        <img src="{% static 'images/second-floor-min.png' %}" alt="Second Floor Plan">
-                        <h4>{% trans "الطابق الثاني" %}</h4>
-                    </div>
-                    <div class="card card--glass floor-plan-card animate-on-scroll">
-                        <img src="{% static 'images/roof-floor-min.png' %}" alt="Roof Floor Plan">
-                        <h4>{% trans "طابق السطح" %}</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="section gallery-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "معرض" %} <span>{% trans "المشروع" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="gallery__filters animate-on-scroll">
-                    <button class="gallery__filter active" data-filter="all">{% trans "الكل" %}</button>
-                    <button class="gallery__filter" data-filter="exterior">{% trans "الواجهات الخارجية" %}</button>
-                    <button class="gallery__filter" data-filter="interior">{% trans "المساحات الداخلية" %}</button>
-                </div>
-
-                <div class="gallery__grid">
-                    <a href="{% static 'images/AJEI2025-01-min.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
-                        <img src="{% static 'images/AJEI2025-01-min.png' %}" alt="{% trans 'Ajei Project 2025' %}">
-                        <div class="gallery__overlay">
-                            <h5>{% trans "مشروع Ajei 2025" %}</h5>
-                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </a>
-                    <a href="{% static 'images/extorior/Ajei Mall-1-2.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
-                        <img src="{% static 'images/extorior/Ajei Mall-1-2.png' %}" alt="{% trans 'Mall Exterior' %}">
-                        <div class="gallery__overlay">
-                            <h5>{% trans "منظر المول الخارجي" %}</h5>
-                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </a>
-                    <a href="{% static 'images/extorior/Ajei Mall-1-5.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
-                        <img src="{% static 'images/extorior/Ajei Mall-1-5.png' %}" alt="{% trans 'Mall Exterior' %}">
-                        <div class="gallery__overlay">
-                            <h5>{% trans "منظر المول الخارجي" %}</h5>
-                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </a>
-                    <a href="{% static 'images/interior/GR-02.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
-                        <img src="{% static 'images/interior/GR-02.png' %}" alt="{% trans 'Interior Design' %}">
-                        <div class="gallery__overlay">
-                            <h5>{% trans "التصميم الداخلي" %}</h5>
-                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </a>
-                    <a href="{% static 'images/interior/GR-03.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
-                        <img src="{% static 'images/interior/GR-03.png' %}" alt="{% trans 'Interior Design' %}">
-                        <div class="gallery__overlay">
-                            <h5>{% trans "التصميم الداخلي" %}</h5>
-                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </a>
-                    <a href="{% static 'images/interior/FR-01.png' %}" class="gallery__item glightbox animate-on-scroll" data-gallery="gallery1">
-                        <img src="{% static 'images/interior/FR-01.png' %}" alt="{% trans 'Interior Design' %}">
-                        <div class="gallery__overlay">
-                            <h5>{% trans "التصميم الداخلي" %}</h5>
-                            <div class="gallery__overlay-icon"><i class="fas fa-search-plus"></i></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials/Features Section -->
-        <section id="testimonials" class="section testimonials-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title" style="color: var(--color-white);">{% trans "المشروع" %} <span>{% trans "المميزات الفريدة" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="grid grid--3">
-                    <div class="card card--glass testimonial-card animate-on-scroll">
-                        <div class="testimonial-card__icon"><i class="fas fa-money-check-alt"></i></div>
-                        <h4>{% trans "الدفع المرن" %}</h4>
-                        <p>{% trans "خطط سداد مرنة تبدأ من 0٪ مقدم وحتى 6 سنوات تقسيط." %}</p>
-                    </div>
-                    <div class="card card--glass testimonial-card animate-on-scroll">
-                        <div class="testimonial-card__icon"><i class="fas fa-drafting-compass"></i></div>
-                        <h4>{% trans "المساحات الذكية" %}</h4>
-                        <p>{% trans "مساحات ذكية تجمع بين التصميم الأنيق وأفضل كفاءة للمساحة." %}</p>
-                    </div>
-                    <div class="card card--glass testimonial-card animate-on-scroll">
-                        <div class="testimonial-card__icon"><i class="fas fa-building"></i></div>
-                        <h4>{% trans "الإدارة المحترفة" %}</h4>
-                        <p>{% trans "إدارة مرافق وعقارات محترفة (EGY MAP) واستشاري هندسي (ARKAN CONSULTANTS)." %}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-            <div class="container">
-                <div class="section-header animate-on-scroll">
-                    <h2 class="section-header__title">{% trans "اطلب المزيد من" %} <span>{% trans "المعلومات" %}</span></h2>
-                    <div class="section-header__underline"></div>
-                </div>
-
-                <div class="contact__grid">
-                    <div class="contact-form animate-on-scroll">
-                        <form id="contactForm">
-                            {% csrf_token %}
-                            <div class="contact-form__header">
-                                <h3 class="contact-form__title">{% trans "نموذج تفاصيل التواصل" %}</h3>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-input" placeholder="{% trans '* الاسم الكامل' %}" name="full_name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="{% trans '* رقم الموبايل' %}" name="phone" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-input" placeholder="{% trans '* البريد الإلكتروني' %}" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-input" placeholder="{% trans '* وقت التواصل المفضل' %}" name="preferred_contact_time">
-                            </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-input" placeholder="{% trans '* رقم الواتساب' %}" name="whatsapp_number">
-                            </div>
-                            <div class="form-group">
-                                <select class="form-input" name="interest_type">
-                                    <option value="">{% trans "نوع الاهتمام" %}</option>
-                                    <option value="investment">{% trans "الاستثمار في Ajei" %}</option>
-                                    <option value="share_system">{% trans "نظام الشير" %}</option>
-                                    <option value="expected_returns">{% trans "العائد المتوقع" %}</option>
-                                    <option value="general_info">{% trans "معلومات عامة" %}</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <select class="form-input" name="investment_size">
-                                    <option value="">{% trans "حجم الاستثمار التقريبي" %}</option>
-                                    <option value="under_1m">{% trans "أقل من 1 مليون" %}</option>
-                                    <option value="1m_3m">{% trans "من 1 إلى 3 مليون" %}</option>
-                                    <option value="over_3m">{% trans "أكثر من 3 مليون" %}</option>
-                                    <option value="not_specified">{% trans "لم أحدد بعد" %}</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-input" placeholder="{% trans 'رسالة / استفسار (اختياري)' %}" name="message" rows="4"></textarea>
-                            </div>
-                            <button type="submit" class="form-submit">{% trans 'اطلب تفاصيل المشروع' %}</button>
-                            <p class="form-note">
-                                <i class="fas fa-lock"></i>
-                                {% trans "بياناتك في أمان تام، وسيتم التواصل معك من فريق Ajei في أقرب وقت" %}
-                            </p>
-                        </form>
-                    </div>
-
-                    <div class="contact-info animate-on-scroll">
-                        <h3 class="contact-info__title">{% trans "معلومات التواصل" %}</h3>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="contact-info__content">
-                                <h5>{% trans "زرنا" %}</h5>
-                                <p>{{ address }}</p>
-                            </div>
-                        </div>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon"><i class="fas fa-phone"></i></div>
-                            <div class="contact-info__content">
-                                <h5>{% trans "الهاتف" %}</h5>
-                                <p>{{ contact_phone }}</p>
-                            </div>
-                        </div>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon"><i class="fas fa-envelope"></i></div>
-                            <div class="contact-info__content">
-                                <h5>{% trans "البريد الإلكتروني" %}</h5>
-                                <p>{{ contact_email }}</p>
-                            </div>
-                        </div>
-                        <div class="contact-info__item">
-                            <div class="contact-info__icon"><i class="fas fa-map-pin"></i></div>
-                            <div class="contact-info__content">
-                                <h5>{% trans "الموقع" %}</h5>
-                                <p>{% trans "مدينة حدائق أكتوبر - بالقرب من Kent College" %}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__about">
-                    <div class="footer__logo">
-                        <i class="fas fa-building-flag"></i>
-                        <img src="{% static 'images/ajei_logo.png' %}" alt="Ajei">
-                    </div>
-                    <p class="footer__description">{% trans "مشروع تجاري-طبي متكامل مصمم لخدمة احتياجاتك اليومية في مدينة حدائق أكتوبر." %}</p>
-                    <div class="footer__social">
-                        <a href="https://www.facebook.com/profile.php?id=61571119168603" target="_blank" class="footer__social-link" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/01016638824" target="_blank" class="footer__social-link" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer__nav">
-                    <h5 class="footer__links-title">{% trans "روابط سريعة" %}</h5>
-                    <ul class="footer__links">
-                        <li><a href="#home">{% trans "الرئيسية" %}</a></li>
-                        <li><a href="#about">{% trans "عن Ajei" %}</a></li>
-                        <li><a href="#structure">{% trans "تكوين المشروع" %}</a></li>
-                        <li><a href="#location">{% trans "الموقع" %}</a></li>
-                        <li><a href="#investment">{% trans "الاستثمار" %}</a></li>
-                        <li><a href="#contact">{% trans "تواصل معنا" %}</a></li>
-                    </ul>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <img src="{% static 'images/ajei_logo.png' %}" alt="Ajei" class="footer-logo">
+                <p>{% trans "مشروع تجاري–طبي متكامل في قلب أكتوبر جاردنز" %}</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61571119168603" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/201006309009" target="_blank" class="social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
             </div>
-            <div class="footer__bottom">
-                <p class="footer__copyright">&copy; 2026 {% trans "مشروع Ajei." %} {% trans "جميع الحقوق محفوظة." %}</p>
-                <div class="footer__legal">
-                    <a href="#">{% trans "سياسة الخصوصية" %}</a>
-                    <a href="#">{% trans "شروط الخدمة" %}</a>
-                </div>
+
+            <div class="footer-section">
+                <h3>{% trans "روابط سريعة" %}</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">{% trans "عن المشروع" %}</a></li>
+                    <li><a href="#features">{% trans "المميزات" %}</a></li>
+                    <li><a href="#gallery">{% trans "المعرض" %}</a></li>
+                    <li><a href="#location">{% trans "الموقع" %}</a></li>
+                </ul>
             </div>
+
+            <div class="footer-section">
+                <h3>{% trans "معلومات التواصل" %}</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> {% trans "أكتوبر جاردنز، السادس من أكتوبر" %}</li>
+                    <li><i class="fas fa-phone"></i> +20 100 630 9009</li>
+                    <li><i class="fas fa-envelope"></i> info@ajeiproject.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 {% trans "مشروع" %} Ajei. {% trans "جميع الحقوق محفوظة" %}.</p>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/201016638824?text=مرحباً، أريد معرفة المزيد عن مشروع Ajei" target="_blank" class="whatsapp-float" title="{% trans 'تواصل معنا عبر WhatsApp' %}">
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/201006309009?text=مرحباً، أريد معرفة المزيد عن مشروع Ajei"
+       target="_blank"
+       class="whatsapp-float"
+       title="{% trans 'تواصل معنا عبر واتساب' %}">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">
         <i class="fas fa-arrow-up"></i>
-    </button>
+    </div>
 
-    <!-- GLightbox JS -->
-    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-
-    <!-- Custom JS -->
+    <!-- JavaScript -->
     <script>
-        // Hide preloader on page load
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-                setTimeout(() => preloader.remove(), 500);
-            }, 500);
-        });
+        // Gallery Tabs
+        document.querySelectorAll('.gallery-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
 
-        // Initialize GLightbox
-        const lightbox = GLightbox({
-            touchNavigation: true,
-            loop: true,
-            autoplayVideos: true
-        });
-
-        // Scroll animations with Intersection Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                document.querySelectorAll('.gallery-grid').forEach(g => g.classList.add('hidden'));
+                const tabName = this.getAttribute('data-tab');
+                document.getElementById(tabName).classList.remove('hidden');
             });
-        }, observerOptions);
+        });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        // Scroll to Top
+        const scrollTopBtn = document.getElementById('scrollTop');
 
-        // Header scroll effect
-        const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
         });
 
-        // Mobile navigation toggle
-        const navToggle = document.getElementById('navToggle');
-        const nav = document.getElementById('nav');
-
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
-
-        // Close mobile nav on link click
-        document.querySelectorAll('.nav__link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                nav.classList.remove('active');
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
 
-        // Smooth scroll for navigation links
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offset = 80;
-                    window.scrollTo({
-                        top: target.offsetTop - offset,
-                        behavior: 'smooth'
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
-        // Scroll to top button
-        const scrollTopBtn = document.getElementById('scrollTop');
+        // Form validation
+        document.querySelector('.hero-form').addEventListener('submit', function(e) {
+            const name = this.querySelector('[name="name"]').value.trim();
+            const email = this.querySelector('[name="email"]').value.trim();
+            const phone = this.querySelector('[name="phone"]').value.trim();
+
+            if (!name || !email || !phone) {
+                e.preventDefault();
+                alert('{% trans "يرجى ملء جميع الحقول المطلوبة" %}');
+            }
+        });
+
+        // Modern Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
-            scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Mobile Menu Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
         });
 
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> {% trans "Sending..." %}';
-
-            fetch('{% url "ajei_contact_submit" %}', {
-                method: 'POST',
-                body: formData,
-                headers: { 'X-CSRFToken': '{{ csrf_token }}' }
-            })
-            .then(response => response.json())
-            .then(data => {
-                const alert = document.createElement('div');
-                alert.className = data.success ? 'alert alert--success' : 'alert alert--error';
-                alert.innerHTML = `
-                    <i class="fas fa-${data.success ? 'check-circle' : 'exclamation-circle'}"></i>
-                    <span>${data.message}</span>
-                    <span class="alert__close" onclick="this.parentElement.remove()">&times;</span>
-                `;
-                this.insertAdjacentElement('afterend', alert);
-                if (data.success) this.reset();
-                setTimeout(() => alert.remove(), 5000);
-            })
-            .catch(() => {
-                const alert = document.createElement('div');
-                alert.className = 'alert alert--error';
-                alert.innerHTML = `
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span>{% trans "An error occurred. Please try again." %}</span>
-                    <span class="alert__close" onclick="this.parentElement.remove()">&times;</span>
-                `;
-                this.insertAdjacentElement('afterend', alert);
-                setTimeout(() => alert.remove(), 5000);
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
             });
-        });
+        }, { threshold: 0.1 });
 
-        // Gallery filter (basic implementation)
-        document.querySelectorAll('.gallery__filter').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelector('.gallery__filter.active').classList.remove('active');
-                this.classList.add('active');
-            });
-        });
+        revealElements.forEach(el => revealObserver.observe(el));
     </script>
+
 </body>
 </html>

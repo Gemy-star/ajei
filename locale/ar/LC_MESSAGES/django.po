@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+﻿# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -1263,3 +1263,11 @@ msgstr "يرجى ملء جميع الحقول المطلوبة"
 #: .\templates\landing_page\ajei_landing.html
 msgid "رمز الاستجابة السريع"
 msgstr "رمز الاستجابة السريع"
+
+#: .\templates\landing_page\ajei_landing.html
+msgid "مالك المشروع"
+msgstr "مالك المشروع"
+
+#: .\templates\landing_page\ajei_landing.html
+msgid "شركة مصرية رائدة في مجال التطوير العقاري"
+msgstr "شركة مصرية رائدة في مجال التطوير العقاري"

@@ -26,6 +26,20 @@ def ajei_landing_page(request):
     if lang in ['en', 'ar']:
         translation.activate(lang)
         request.session['django_language'] = lang
+        request.session.modified = True
+        # Create response and set language cookie
+        response = redirect(request.path)
+        response.set_cookie(
+            settings.LANGUAGE_COOKIE_NAME,
+            lang,
+            max_age=settings.LANGUAGE_COOKIE_AGE,
+            path=settings.LANGUAGE_COOKIE_PATH,
+            domain=settings.LANGUAGE_COOKIE_DOMAIN,
+            secure=settings.LANGUAGE_COOKIE_SECURE,
+            httponly=settings.LANGUAGE_COOKIE_HTTPONLY,
+            samesite=settings.LANGUAGE_COOKIE_SAMESITE,
+        )
+        return response
 
     context = {
         'config': config,
@@ -42,6 +56,20 @@ def ajei_page(request):
     if lang in ['en', 'ar']:
         translation.activate(lang)
         request.session['django_language'] = lang
+        request.session.modified = True
+        # Create response and set language cookie
+        response = redirect(request.path)
+        response.set_cookie(
+            settings.LANGUAGE_COOKIE_NAME,
+            lang,
+            max_age=settings.LANGUAGE_COOKIE_AGE,
+            path=settings.LANGUAGE_COOKIE_PATH,
+            domain=settings.LANGUAGE_COOKIE_DOMAIN,
+            secure=settings.LANGUAGE_COOKIE_SECURE,
+            httponly=settings.LANGUAGE_COOKIE_HTTPONLY,
+            samesite=settings.LANGUAGE_COOKIE_SAMESITE,
+        )
+        return response
 
     context = {
         'config': config,
