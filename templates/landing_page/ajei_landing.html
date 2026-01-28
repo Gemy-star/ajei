@@ -527,12 +527,21 @@
             word-wrap: break-word;
         }
 
+        /* RTL support for mixed content */
+        .about-content h3,
+        .section-title {
+            direction: inherit;
+            unicode-bidi: plaintext;
+        }
+
         .about-content p {
             font-size: 1.1rem;
             color: var(--text-light);
             margin-bottom: 1.25rem;
             line-height: 1.8;
             word-wrap: break-word;
+            direction: inherit;
+            unicode-bidi: plaintext;
         }
 
         .about-image {
@@ -1357,16 +1366,16 @@
             }
 
             .feature-title {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
                 word-wrap: break-word;
             }
 
             .feature-description {
-                font-size: 0.85rem;
+                font-size: 1rem;
             }
 
             .feature-list li {
-                font-size: 0.85rem;
+                font-size: 1rem;
                 word-wrap: break-word;
             }
 
@@ -1691,17 +1700,17 @@
             }
 
             .feature-title {
-                font-size: 1.05rem;
+                font-size: 1.2rem;
             }
 
             .feature-description {
-                font-size: 0.8rem;
+                font-size: 0.95rem;
             }
 
             .feature-list li {
                 padding: 0.6rem 0;
                 padding-left: 1.5rem;
-                font-size: 0.8rem;
+                font-size: 0.95rem;
             }
 
             .about-content h3 {
@@ -1837,8 +1846,8 @@
 
     <!-- Language Switcher -->
     <div class="lang-switcher">
-        <a href="?lang=ar" class="lang-btn {% if LANGUAGE_CODE == 'ar' %}active{% endif %}">العربية</a>
-        <a href="?lang=en" class="lang-btn {% if LANGUAGE_CODE == 'en' %}active{% endif %}">English</a>
+        <a href="?lang=ar" class="lang-btn {% if current_language == 'ar' %}active{% endif %}">العربية</a>
+        <a href="?lang=en" class="lang-btn {% if current_language == 'en' %}active{% endif %}">English</a>
     </div>
 
     <!-- Hero Section (No Header) -->

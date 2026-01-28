@@ -46,8 +46,12 @@ def ajei_landing_page(request):
         )
         return response
 
+    # Get current language
+    current_lang = translation.get_language()
+
     context = {
         "config": config,
+        "current_language": current_lang,
     }
     return render(request, "landing_page/ajei_landing.html", context)
 
@@ -76,8 +80,12 @@ def ajei_page(request):
         )
         return response
 
+    # Get current language
+    current_lang = translation.get_language()
+
     context = {
         "config": config,
+        "current_language": current_lang,
     }
     return render(request, "landing_page/ajei.html", context)
 
