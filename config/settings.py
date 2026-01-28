@@ -196,6 +196,14 @@ ROSETTA_REQUIRES_AUTH = True
 ROSETTA_ENABLE_TRANSLATION_SUGGESTIONS = True
 ROSETTA_POFILE_WRAP_WIDTH = 0
 
+
+# Allow superusers and staff to access Rosetta
+def rosetta_access_control(user):
+    return user.is_authenticated and (user.is_staff or user.is_superuser)
+
+
+ROSETTA_ACCESS_CONTROL_FUNCTION = rosetta_access_control
+
 # Authentication URLs
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/dashboard/"
