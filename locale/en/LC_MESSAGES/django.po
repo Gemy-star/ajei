@@ -256,7 +256,7 @@ msgstr "Ajei is an integrated commercial-medical project, designed to work as on
 
 #: .\templates\landing_page\ajei.html:2231 .\templates\landing_page\ajei_landing.html:1919
 msgid "يجمع بين الخدمات اليومية الأساسية في مكان واحد، مما يخلق حركة مستمرة وقيمة تشغيلية حقيقية."
-msgstr ""
+msgstr "It brings together essential daily services in one place, creating continuous movement and real operational value."
 
 #: .\templates\landing_page\ajei.html:2234 .\templates\landing_page\ajei_landing.html:1922
 msgid "Ajei ليس مولًا تقليديًا،"
@@ -264,7 +264,7 @@ msgstr "Ajei is not a traditional mall,"
 
 #: .\templates\landing_page\ajei.html:2237 .\templates\landing_page\ajei_landing.html:1925
 msgid "بل هو مركز خدمات مركزي مبني حول نمط الحياة اليومية، حيث تتكامل الخدمات والحركة والوظائف بسلاسة."
-msgstr ""
+msgstr "But a centralized service center built around daily lifestyle, where services, movement and functions integrate seamlessly."
 
 #: .\templates\landing_page\ajei.html:2241 .\templates\landing_page\ajei_landing.html:1929
 msgid "مالك المشروع"
@@ -425,7 +425,7 @@ msgstr "Distinguished Strategic Location"
 
 #: .\templates\landing_page\ajei.html:2523 .\templates\landing_page\ajei_landing.html:2233
 msgid "يقع مشروع Ajei في قلب أكتوبر جاردنز بمدينة السادس من أكتوبر، في موقع حيوي يسهل الوصول إليه"
-msgstr ""
+msgstr "Ajei project is located in the heart of October Gardens in 6th of October City, in a vital location that is easy to access"
 
 #: .\templates\landing_page\ajei.html:2531 .\templates\landing_page\ajei_landing.html:2241
 msgid "موقع المشروع على الخريطة"
