@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الترجمات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #f5f6fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #17112A, #31292E);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #17112A;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .card h2 {
+            color: #17112A;
+            margin-bottom: 1rem;
+        }
+
+        .translation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .translation-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .translation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .translation-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .translation-card p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border: 1px solid #90caf9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box h3 {
+            color: #1976d2;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-box ul {
+            list-style-position: inside;
+            color: #1976d2;
+        }
+
+        .info-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .translation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            iframe {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>إدارة الترجمات</h1>
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">← العودة للوحة التحكم</a>
+    </div>
+
+    <div class="container">
+        <div class="info-box">
+            <h3>📝 كيفية استخدام إدارة الترجمات</h3>
+            <ul>
+                <li>اختر اللغة التي تريد تحريرها من الأسفل</li>
+                <li>ستفتح أداة Rosetta لإدارة الترجمات</li>
+                <li>يمكنك تعديل النصوص المترجمة مباشرة</li>
+                <li>احفظ التغييرات وسيتم تطبيقها تلقائياً على الموقع</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>اختر اللغة للتحرير</h2>
+            <div class="translation-grid">
+                {% for lang in languages %}
+                <div class="translation-card">
+                    <div class="flag">{{ lang.flag }}</div>
+                    <h3>{{ lang.name }}</h3>
+                    <p>{{ lang.description }}</p>
+                    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary" style="margin-bottom: 0.5rem;">عرض الملف</a>
+                    <p style="font-size: 0.85rem; color: #95a5a6; margin-top: 0.5rem;">
+                        للتحرير، استخدم <a href="/rosetta/" target="_blank" style="color: #667eea;">Rosetta</a> واختر الملف المناسب
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 2rem; background: #fff3cd; border-left: 4px solid #ffc107;">
+            <h3>⚠️ ملاحظة هامة</h3>
+            <p><strong>للوصول المباشر إلى Rosetta:</strong></p>
+            <ol>
+                <li>افتح <a href="/rosetta/" target="_blank" style="color: #667eea; font-weight: bold;">/rosetta/</a> في علامة تبويب جديدة</li>
+                <li>اختر الملف الذي تريد تحريره من القائمة</li>
+                <li>قم بتحرير الترجمات مباشرة</li>
+                <li>احفظ التغييرات</li>
+            </ol>
+            <a href="/rosetta/" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
+                فتح Rosetta →
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>معلومات إضافية</h2>
+            <p style="color: #7f8c8d; line-height: 1.8;">
+                Rosetta هي أداة قوية لإدارة ترجمات Django. يمكنك من خلالها:
+            </p>
+            <ul style="margin: 1rem 0 1rem 2rem; color: #7f8c8d;">
+                <li>البحث عن نصوص معينة</li>
+                <li>ترجمة النصوص الناقصة</li>
+                <li>مراجعة الترجمات الموجودة</li>
+                <li>تصدير واستيراد ملفات الترجمة</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

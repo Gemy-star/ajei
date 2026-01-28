@@ -7,1269 +7,511 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-26 14:37+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2026-01-28 14:42+0200\n"
+"PO-Revision-Date: 2026-01-28 15:00+0000\n"
+"Last-Translator:   <admin@ajei.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.10.3\n"
 
 #: .\ajei\admin.py:47
 msgid "Contact Information"
-msgstr ""
+msgstr "Contact Information"
 
 #: .\ajei\admin.py:50
 msgid "Investment Details"
-msgstr ""
+msgstr "Investment Details"
 
 #: .\ajei\admin.py:53
 msgid "Status & Follow-up"
-msgstr ""
+msgstr "Status & Follow-up"
 
 #: .\ajei\admin.py:57
 msgid "Technical Information"
-msgstr ""
+msgstr "Technical Information"
 
 #: .\ajei\admin.py:61
 msgid "Timestamps"
-msgstr ""
+msgstr "Timestamps"
 
 #: .\ajei\admin.py:91 .\ajei\models.py:32
 msgid "Investment Type"
-msgstr ""
+msgstr "Investment Type"
 
 #: .\ajei\admin.py:109 .\ajei\models.py:42
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: .\ajei\admin.py:119 .\ajei\models.py:19
 msgid "Contacted"
-msgstr ""
+msgstr "Contacted"
 
 #: .\ajei\admin.py:125
 msgid "Mark as Contacted"
-msgstr ""
+msgstr "Mark as Contacted"
 
 #: .\ajei\admin.py:131
 msgid "Mark as Qualified Lead"
-msgstr ""
+msgstr "Mark as Qualified Lead"
 
 #: .\ajei\admin.py:137
 msgid "Mark as Converted"
-msgstr ""
+msgstr "Mark as Converted"
 
 #: .\ajei\admin.py:143
 msgid "Mark as Closed"
-msgstr ""
+msgstr "Mark as Closed"
 
 #: .\ajei\models.py:10
 msgid "Medical Unit"
-msgstr ""
+msgstr "Medical Unit"
 
 #: .\ajei\models.py:11
 msgid "Commercial Unit"
-msgstr ""
+msgstr "Commercial Unit"
 
 #: .\ajei\models.py:12
 msgid "Pharmacy"
-msgstr ""
+msgstr "Pharmacy"
 
 #: .\ajei\models.py:13
 msgid "Restaurant/Cafe"
-msgstr ""
+msgstr "Restaurant/Cafe"
 
 #: .\ajei\models.py:14
 msgid "Other"
-msgstr ""
+msgstr "Other"
 
 #: .\ajei\models.py:18
 msgid "New"
-msgstr ""
+msgstr "New"
 
 #: .\ajei\models.py:20
 msgid "Qualified Lead"
-msgstr ""
+msgstr "Qualified Lead"
 
 #: .\ajei\models.py:21
 msgid "Converted"
-msgstr ""
+msgstr "Converted"
 
 #: .\ajei\models.py:22
 msgid "Closed"
-msgstr ""
+msgstr "Closed"
 
 #: .\ajei\models.py:26
 msgid "Full Name"
-msgstr ""
+msgstr "Full Name"
 
 #: .\ajei\models.py:27
 msgid "Email Address"
-msgstr ""
+msgstr "Email Address"
 
 #: .\ajei\models.py:28
 msgid "Phone Number"
-msgstr ""
+msgstr "Phone Number"
 
 #: .\ajei\models.py:38
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 #: .\ajei\models.py:47
 msgid "Admin Notes"
-msgstr ""
+msgstr "Admin Notes"
 
 #: .\ajei\models.py:50
 msgid "IP Address"
-msgstr ""
+msgstr "IP Address"
 
 #: .\ajei\models.py:51
 msgid "User Agent"
-msgstr ""
+msgstr "User Agent"
 
 #: .\ajei\models.py:52
 msgid "Referrer URL"
-msgstr ""
+msgstr "Referrer URL"
 
 #: .\ajei\models.py:55
 msgid "Submitted At"
-msgstr ""
+msgstr "Submitted At"
 
 #: .\ajei\models.py:56
 msgid "Last Updated"
-msgstr ""
+msgstr "Last Updated"
 
 #: .\ajei\models.py:57
 msgid "Contacted At"
-msgstr ""
+msgstr "Contacted At"
 
 #: .\ajei\models.py:60
 msgid "Contact Submission"
-msgstr ""
+msgstr "Contact Submission"
 
 #: .\ajei\models.py:61
 msgid "Contact Submissions"
-msgstr ""
+msgstr "Contact Submissions"
 
 #: .\ajei\models.py:74
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
-#: .\templates\landing_page\ajei.html:7 .\templates\landing_page\ajei.html:26
-msgid "Ajei Project - Integrated Medical-Commercial Center | STC Developments"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:8
-msgid ""
-"Ajei is an integrated medical-commercial project in October Gardens serving "
-"your daily needs. A unique Central Hub concept combining medical services, "
-"restaurants, cafes, pharmacy, and supermarket under unified management."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:27
-msgid ""
-"Ajei is an integrated medical-commercial project in October Gardens serving "
-"your daily needs."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:1967
-msgid "Loading Ajei Mall"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:1994
-#: .\templates\landing_page\ajei.html:2667
-msgid "الرئيسية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:1995
-#: .\templates\landing_page\ajei.html:2668
-msgid "عن Ajei"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:1996
-#: .\templates\landing_page\ajei.html:2669
-msgid "تكوين المشروع"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:1997
-#: .\templates\landing_page\ajei.html:2639
-#: .\templates\landing_page\ajei.html:2670
-#: .\templates\landing_page\ajei_landing.html:1252
-#: .\templates\landing_page\ajei_landing.html:1365
-msgid "الموقع"
-msgstr "Location"
-
-#: .\templates\landing_page\ajei.html:1998
-#: .\templates\landing_page\ajei.html:2671
-msgid "الاستثمار"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:1999
-#: .\templates\landing_page\ajei.html:2672
-#: .\templates\landing_page\ajei_landing.html:1306
-msgid "تواصل معنا"
-msgstr "Contact Us"
-
-#: .\templates\landing_page\ajei.html:2007
-#: .\templates\landing_page\ajei_landing.html:1325
-msgid "واتساب"
-msgstr "WhatsApp"
-
-#: .\templates\landing_page\ajei.html:2023
-#: .\templates\landing_page\ajei_landing.html:942
-msgid "أكثر من مجرد مول… وجهة يومية متكاملة"
-msgstr "More than just a mall... an integrated daily destination"
-
-#: .\templates\landing_page\ajei.html:2024
-#: .\templates\landing_page\ajei_landing.html:944
-msgid ""
-"مشروع تجاري–طبي متكامل، مصمم لخدمة الاحتياجات اليومية من خلال إدارة موحدة "
-"ونموذج استثماري ذكي."
-msgstr "An integrated commercial-medical project, designed to serve daily needs through unified management and a smart investment model."
-
-#: .\templates\landing_page\ajei.html:2027
-msgid "حدائق أكتوبر"
-msgstr "October Gardens"
-
-#: .\templates\landing_page\ajei.html:2030
-#: .\templates\landing_page\ajei.html:2605
-msgid "اطلب تفاصيل المشروع"
-msgstr "Request Project Details"
-
-#: .\templates\landing_page\ajei.html:2031
-msgid "اكتشف المزيد"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2044
-msgid "ما هو"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2044
-msgid "مشروع Ajei؟"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2050
-#: .\templates\landing_page\ajei_landing.html:1008
-msgid "Ajei هو مشروع تجاري–طبي متكامل، تم تصميمه ليعمل كنظام واحد مترابط."
-msgstr ""
-"Ajei is an integrated commercial-medical project, designed to work as one "
-"interconnected system."
-
-#: .\templates\landing_page\ajei.html:2051
-#: .\templates\landing_page\ajei_landing.html:1011
-msgid ""
-"يجمع بين الخدمات اليومية الأساسية في مكان واحد، مما يخلق حركة مستمرة وقيمة "
-"تشغيلية حقيقية."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2052
-msgid ""
-"Ajei ليس مولًا تقليديًا، بل هو مركز خدمات مركزي مبني حول نمط الحياة اليومية."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2059
-msgid "الخدمات الطبية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2060
-msgid "منشآت رعاية صحية شاملة بمشغلين طبيين محترفين"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2064
-msgid "المطاعم والمقاهي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2065
-msgid "تجارب طعام ومقاهي راقية للاستمتاع اليومي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2069
-msgid "الصيدلية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2070
-msgid "صيدلية متكاملة الخدمات لاحتياجاتك الصحية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2074
-msgid "معامل التحاليل والأشعة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2075
-msgid "مرافق متقدمة للفحوصات الطبية والتصوير"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2079
-#: .\templates\landing_page\ajei.html:2199
-#: .\templates\landing_page\ajei.html:2310
-#: .\templates\landing_page\ajei_landing.html:1044
-msgid "سوبر ماركت"
-msgstr "Supermarket"
-
-#: .\templates\landing_page\ajei.html:2080
-msgid "الاحتياجات اليومية والبقالة في موقع واحد مناسب"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2084
-msgid "إدارة موحدة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2085
-msgid "جميع الخدمات مدارة تحت سقف واحد بنشاط مستمر"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2095
-#: .\templates\landing_page\ajei.html:2102
-msgid "ملف المشروع"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2097
-msgid "تعرّف بشكل أعمق على مشروع Ajei والشركة المطوّرة له."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2103
-msgid "تفاصيل كاملة عن مشروع Ajei"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2105
-#: .\templates\landing_page\ajei.html:2113
-msgid "تحميل PDF"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2110
-msgid "ملف مشروع الشركة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2111
-msgid "معلومات عن الشركة المطوّرة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2124
-msgid "تكوين"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2124
-#: .\templates\landing_page\ajei.html:2469
-#: .\templates\landing_page\ajei.html:2530
-msgid "المشروع"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2126
-msgid "تم تخطيط مشروع Ajei بعناية لضمان التكامل الوظيفي وكفاءة التشغيل."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2131
-msgid "تم اختيار كل عنصر داخل المشروع لضمان حركة يومية مستمرة وتشغيل مستدام."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2134
-msgid "Ground Floor"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2137
-msgid "First Floor"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2140
-msgid "Second Floor"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2143
-msgid "Basement"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2146
-msgid "Each Floor Area:"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2147
-msgid ""
-"Activities within the project have been carefully distributed to ensure "
-"integration between services and achieve maximum operational efficiency."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2153
-msgid "الدور الأرضي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2157
-msgid "مطعم Gad"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2161
-msgid "كافيه Second Cup"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2165
-#: .\templates\landing_page\ajei.html:2320
-#: .\templates\landing_page\ajei_landing.html:984
-#: .\templates\landing_page\ajei_landing.html:1042
-#: .\templates\landing_page\ajei_landing.html:1073
-msgid "صيدلية"
-msgstr "Pharmacy"
-
-#: .\templates\landing_page\ajei.html:2169
-msgid "معمل أشعة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2173
-#: .\templates\landing_page\ajei_landing.html:1070
-msgid "معمل تحاليل"
-msgstr "Laboratory"
-
-#: .\templates\landing_page\ajei.html:2177
-msgid "مساحة تجارية إضافية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2184
-msgid "الدور الأول والدور الثاني"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2187
-msgid "أدوار مخصصة بالكامل للنشاط الطبي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2188
-msgid "يتم تشغيلها بواسطة مشغّل طبي متخصص"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2195
-msgid "الأرضي المرتفع"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2200
-msgid "مساحة 400 متر مربع"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2211
-msgid "الموقع والمرافق"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2211
-msgid "والخدمات"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2217
-msgid "موقعك الجديد في مدينة حدائق أكتوبر"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2218
-msgid "يقع مشروع Ajei في موقع استراتيجي في قلب مدينة حدائق أكتوبر، محاطًا بـ:"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2220
-msgid "مدرسة كينت كوليج غرب القاهرة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2221
-msgid "هرم لايف"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2222
-msgid "مدرسة ساكسوني الدولية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2223
-msgid "مدارس ستانفورد مصر الدولية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2224
-msgid "مدرسة BCCIS غرب"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2225
-msgid "حديقة جرين ريفر"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2226
-msgid "مدرسة NIS أويست"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2227
-msgid "كمباوند أويست"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2236
-msgid "الموقع الاستراتيجي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2238
-msgid "مشروع Ajei في حدائق أكتوبر"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2239
-msgid ""
-"مشروع Ajei موجود في حدائق أكتوبر (October Gardens City) وهي منطقة سكنية "
-"وتجارية نامية في الجزء الغربي من القاهرة الكبرى."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2248
-msgid "Ajei Project Location - October Gardens"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2255
-msgid "افتح في خرائط Google"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2259
-msgid "المنطقة اللي Ajei فيها بتتميز بوجود:"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2265
-msgid "كمبوندات سكنية راقية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2266
-msgid "محيط سكني متميز بأرقى المجمعات السكنية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2270
-msgid "مدارس وجامعات قريبة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2271
-msgid "مؤسسات تعليمية متميزة على مسافة قريبة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2275
-msgid "خدمات طبية ومرافق مهمة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2276
-msgid "مراكز طبية ومستشفيات متطورة قريبة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2280
-msgid "محاور وشوارع رئيسية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2281
-msgid "سهولة في الوصول والحركة المرورية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2285
-msgid "مراكز ترفيه وتسوق"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2286
-msgid "وجهات ترفيهية وتسويقية على بعد مسافة قصيرة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2290
-msgid "قرب من مراكز الأعمال"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2291
-msgid "طرق رئيسية تسهل التنقل لباقي القاهرة الكبرى"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2303
-msgid "المرافق"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2303
-msgid "والخدمات والأنشطة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2311
-msgid "سوبر ماركت مجهز بالكامل لجميع احتياجاتك اليومية."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2315
-msgid "منطقة الصلاة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2316
-msgid "منطقة صلاة مخصصة لراحة جميع الزوار."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2321
-msgid "صيدلية متكاملة الخدمات مع طاقم محترف."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2325
-msgid "صالة رياضية وسبا"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2326
-msgid "مركز لياقة بدنية حديث وسبا فاخر."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2330
-msgid "كاميرات مراقبة 24 ساعة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2331
-msgid "مراقبة أمنية على مدار الساعة."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2335
-msgid "صراف آلي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2336
-msgid "خدمات صراف آلي متاحة."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2340
-msgid "شاحن سيارات كهربائية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2341
-msgid "محطات شحن حديثة للسيارات الكهربائية."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2345
-msgid "موقف سيارات"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2346
-msgid "مرفق موقف متعدد الطوابق فسيح."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2350
-msgid "منطقة التخزين"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2351
-msgid "مرافق تخزين آمنة."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2361
-msgid "نظام الاستثمار بنظام"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2361
-msgid "الحصص (Share System)"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2367
-msgid "يتم طرح مشروع Ajei بالكامل بنظام الحصص الاستثمارية (Share)."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2368
-msgid "ماذا يعني ذلك؟"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2375
-msgid "لا يتم بيع وحدات منفصلة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2379
-msgid "يحصل المستثمر على حصة نسبية في:"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2381
-msgid "أرض المشروع"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2382
-msgid "المشروع ككل"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2383
-msgid "العائد التشغيلي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2388
-msgid "الإدارة والتشغيل"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2390
-msgid "إدارة وتشغيل مركزي بواسطة الشركة المطوّرة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2391
-msgid "لا يتحمّل المستثمر أي مسؤوليات تشغيلية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2398
-msgid "العائد"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2400
-msgid "عائد متغير حسب أداء الأنشطة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2401
-msgid "محدد ضمن نطاق عائد واضح"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2403
-msgid ""
-"يوفّر هذا النموذج وضوحًا استثماريًا، ومشاركة في النجاح، مع تقليل المخاطر "
-"التشغيلية."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2413
-msgid "تجربة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2415
-msgid "اكتشف رؤية المشروع وتصميمه وأجواءه من خلال الفيديو التعريفي."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2421
-#: .\templates\landing_page\ajei_landing.html:1164
-msgid "Your browser does not support the video tag."
-msgstr "Your browser does not support the video tag."
-
-#: .\templates\landing_page\ajei.html:2432
-msgid "التصميم"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2432
-msgid "والعمارة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2438
-msgid "ادخل إلى عالم مول Ajei واشهد تصميمًا يتحدث لغة المستقبل."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2439
-msgid ""
-"عمارتنا، بخطوطها الدائرية المتدفقة، تعكس مجالًا مغناطيسيًا - تجذب وترحب وتوحد."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2440
-msgid "هذا هو المكان الذي يلتقي فيه التصميم الحديث بالوظيفة."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2447
-#: .\templates\landing_page\ajei_landing.html:1039
-#: .\templates\landing_page\ajei_landing.html:1182
-msgid "الطابق الأرضي"
-msgstr "Ground Floor"
-
-#: .\templates\landing_page\ajei.html:2451
-#: .\templates\landing_page\ajei_landing.html:1053
-#: .\templates\landing_page\ajei_landing.html:1191
-msgid "الطابق الأول"
-msgstr "First Floor"
-
-#: .\templates\landing_page\ajei.html:2455
-#: .\templates\landing_page\ajei_landing.html:1067
-#: .\templates\landing_page\ajei_landing.html:1200
-msgid "الطابق الثاني"
-msgstr "Second Floor"
-
-#: .\templates\landing_page\ajei.html:2459
-msgid "طابق السطح"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2469
-msgid "معرض"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2474
-msgid "الكل"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2475
-msgid "الواجهات الخارجية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2476
-msgid "المساحات الداخلية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2481
-msgid "Ajei Project 2025"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2483
-msgid "مشروع Ajei 2025"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2488
-#: .\templates\landing_page\ajei.html:2495
-msgid "Mall Exterior"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2490
-#: .\templates\landing_page\ajei.html:2497
-msgid "منظر المول الخارجي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2502
-#: .\templates\landing_page\ajei.html:2509
-#: .\templates\landing_page\ajei.html:2516
-msgid "Interior Design"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2504
-#: .\templates\landing_page\ajei.html:2511
-#: .\templates\landing_page\ajei.html:2518
-#: .\templates\landing_page\ajei_landing.html:1102
-msgid "التصميم الداخلي"
-msgstr "Interior Design"
-
-#: .\templates\landing_page\ajei.html:2530
-msgid "المميزات الفريدة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2537
-msgid "الدفع المرن"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2538
-msgid "خطط سداد مرنة تبدأ من 0٪ مقدم وحتى 6 سنوات تقسيط."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2542
-msgid "المساحات الذكية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2543
-msgid "مساحات ذكية تجمع بين التصميم الأنيق وأفضل كفاءة للمساحة."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2547
-msgid "الإدارة المحترفة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2548
-msgid ""
-"إدارة مرافق وعقارات محترفة (EGY MAP) واستشاري هندسي (ARKAN CONSULTANTS)."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2558
-msgid "اطلب المزيد من"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2558
-msgid "المعلومات"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2567
-msgid "نموذج تفاصيل التواصل"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2570
-msgid "* الاسم الكامل"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2573
-msgid "* رقم الموبايل"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2576
-msgid "* البريد الإلكتروني"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2579
-msgid "* وقت التواصل المفضل"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2582
-msgid "* رقم الواتساب"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2586
-msgid "نوع الاهتمام"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2587
-msgid "الاستثمار في Ajei"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2588
-msgid "نظام الشير"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2589
-msgid "العائد المتوقع"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2590
-msgid "معلومات عامة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2595
-msgid "حجم الاستثمار التقريبي"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2596
-msgid "أقل من 1 مليون"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2597
-msgid "من 1 إلى 3 مليون"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2598
-msgid "أكثر من 3 مليون"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2599
-msgid "لم أحدد بعد"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2603
-msgid "رسالة / استفسار (اختياري)"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2608
-msgid "بياناتك في أمان تام، وسيتم التواصل معك من فريق Ajei في أقرب وقت"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2614
-#: .\templates\landing_page\ajei_landing.html:1370
-msgid "معلومات التواصل"
-msgstr "Contact Information"
-
-#: .\templates\landing_page\ajei.html:2618
-msgid "زرنا"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2625
-msgid "الهاتف"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2632
-#: .\templates\landing_page\ajei_landing.html:972
-msgid "البريد الإلكتروني"
-msgstr "Email Address"
-
-#: .\templates\landing_page\ajei.html:2640
-msgid "مدينة حدائق أكتوبر - بالقرب من Kent College"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2658
-msgid ""
-"مشروع تجاري-طبي متكامل مصمم لخدمة احتياجاتك اليومية في مدينة حدائق أكتوبر."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2665
-#: .\templates\landing_page\ajei_landing.html:1360
-msgid "روابط سريعة"
-msgstr "Quick Links"
-
-#: .\templates\landing_page\ajei.html:2677
-msgid "مشروع Ajei."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2677
-msgid "جميع الحقوق محفوظة."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2679
-msgid "سياسة الخصوصية"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2680
-msgid "شروط الخدمة"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2687
-msgid "تواصل معنا عبر WhatsApp"
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2790
-msgid "Sending..."
-msgstr ""
-
-#: .\templates\landing_page\ajei.html:2815
-msgid "An error occurred. Please try again."
-msgstr ""
-
-#: .\templates\landing_page\ajei_landing.html:7
-#: .\templates\landing_page\ajei_landing.html:15
+#: .\templates\landing_page\ajei.html:7 .\templates\landing_page\ajei.html:15 .\templates\landing_page\ajei_landing.html:7 .\templates\landing_page\ajei_landing.html:15
 msgid "Ajei - Integrated Medical-Commercial Center"
-msgstr ""
+msgstr "Ajei - Integrated Medical-Commercial Center"
 
-#: .\templates\landing_page\ajei_landing.html:8
-#: .\templates\landing_page\ajei_landing.html:16
-msgid ""
-"Ajei is an integrated medical-commercial project serving your daily needs in "
-"October Gardens"
-msgstr ""
+#: .\templates\landing_page\ajei.html:8 .\templates\landing_page\ajei.html:16 .\templates\landing_page\ajei_landing.html:8 .\templates\landing_page\ajei_landing.html:16
+msgid "Ajei is an integrated medical-commercial project serving your daily needs in October Gardens"
+msgstr "Ajei is an integrated medical-commercial project serving your daily needs in October Gardens"
 
-#: .\templates\landing_page\ajei_landing.html:941
-msgid "Ajei"
-msgstr ""
-
-#: .\templates\landing_page\ajei_landing.html:948
-msgid "أكتوبر جاردنز - السادس من أكتوبر"
-msgstr "October Gardens - 6th of October City"
-
-#: .\templates\landing_page\ajei_landing.html:956
-msgid "ابدأ استثمارك"
-msgstr "Start Your Investment"
-
-#: .\templates\landing_page\ajei_landing.html:968
-msgid "الاسم الكامل"
-msgstr "Full Name"
-
-#: .\templates\landing_page\ajei_landing.html:976
-msgid "رقم الهاتف"
-msgstr "Phone Number"
-
-#: .\templates\landing_page\ajei_landing.html:981
-msgid "نوع الاستثمار"
-msgstr "Investment Type"
-
-#: .\templates\landing_page\ajei_landing.html:982
-msgid "عيادة طبية"
-msgstr "Medical Clinic"
-
-#: .\templates\landing_page\ajei_landing.html:983
-msgid "وحدة تجارية"
-msgstr "Commercial Unit"
-
-#: .\templates\landing_page\ajei_landing.html:985
-msgid "مطعم/كافيه"
-msgstr "Restaurant/Cafe"
-
-#: .\templates\landing_page\ajei_landing.html:986
-msgid "أخرى"
-msgstr "Other"
-
-#: .\templates\landing_page\ajei_landing.html:991
-msgid "رسالتك (اختياري)"
-msgstr "Your Message (Optional)"
-
-#: .\templates\landing_page\ajei_landing.html:995
-msgid "إرسال"
-msgstr "Submit"
-
-#: .\templates\landing_page\ajei_landing.html:1005
-#: .\templates\landing_page\ajei_landing.html:1362
+#: .\templates\landing_page\ajei.html:2145 .\templates\landing_page\ajei.html:2225 .\templates\landing_page\ajei.html:2645 .\templates\landing_page\ajei_landing.html:1913 .\templates\landing_page\ajei_landing.html:2375
 msgid "عن المشروع"
 msgstr "About the Project"
 
-#: .\templates\landing_page\ajei_landing.html:1006
-msgid "ما هو مشروع Ajei؟"
-msgstr "What is Ajei Project?"
-
-#: .\templates\landing_page\ajei_landing.html:1014
-msgid "Ajei ليس مولًا تقليديًا،"
-msgstr "Ajei is not a traditional mall,"
-
-#: .\templates\landing_page\ajei_landing.html:1017
-msgid ""
-"بل هو مركز خدمات مركزي مبني حول نمط الحياة اليومية، حيث تتكامل الخدمات "
-"والحركة والوظائف بسلاسة."
-msgstr ""
-
-#: .\templates\landing_page\ajei_landing.html:1030
-#: .\templates\landing_page\ajei_landing.html:1363
+#: .\templates\landing_page\ajei.html:2146 .\templates\landing_page\ajei.html:2264 .\templates\landing_page\ajei.html:2646 .\templates\landing_page\ajei_landing.html:1954 .\templates\landing_page\ajei_landing.html:2376
 msgid "المميزات"
 msgstr "Features"
 
-#: .\templates\landing_page\ajei_landing.html:1031
-msgid "لماذا تستثمر في Ajei؟"
-msgstr "Why Invest in Ajei?"
-
-#: .\templates\landing_page\ajei_landing.html:1040
-msgid "خدمات يومية أساسية"
-msgstr "Essential Daily Services"
-
-#: .\templates\landing_page\ajei_landing.html:1043
-msgid "مطعم وكافيه"
-msgstr "Restaurant & Cafe"
-
-#: .\templates\landing_page\ajei_landing.html:1045
-msgid "محل ملابس"
-msgstr "Clothing Store"
-
-#: .\templates\landing_page\ajei_landing.html:1054
-msgid "عيادات طبية متخصصة"
-msgstr "Specialized Medical Clinics"
-
-#: .\templates\landing_page\ajei_landing.html:1056
-msgid "عيادة أطفال"
-msgstr "Pediatric Clinic"
-
-#: .\templates\landing_page\ajei_landing.html:1057
-msgid "عيادة أسنان"
-msgstr "Dental Clinic"
-
-#: .\templates\landing_page\ajei_landing.html:1058
-msgid "عيادة باطنة"
-msgstr "Internal Medicine Clinic"
-
-#: .\templates\landing_page\ajei_landing.html:1059
-msgid "عيادة نساء وتوليد"
-msgstr "Obstetrics & Gynecology Clinic"
-
-#: .\templates\landing_page\ajei_landing.html:1068
-msgid "مركز طبي متكامل"
-msgstr "Integrated Medical Center"
-
-#: .\templates\landing_page\ajei_landing.html:1071
-msgid "مركز أشعة"
-msgstr "Radiology Center"
-
-#: .\templates\landing_page\ajei_landing.html:1072
-msgid "عيادات تخصصية"
-msgstr "Specialized Clinics"
-
-#: .\templates\landing_page\ajei_landing.html:1081
-#: .\templates\landing_page\ajei_landing.html:1209
-msgid "الطابق الأخير"
-msgstr "Top Floor"
-
-#: .\templates\landing_page\ajei_landing.html:1082
-msgid "مساحات تجارية ومكاتب"
-msgstr "Commercial Spaces & Offices"
-
-#: .\templates\landing_page\ajei_landing.html:1084
-msgid "مكاتب إدارية"
-msgstr "Administrative Offices"
-
-#: .\templates\landing_page\ajei_landing.html:1085
-msgid "شركات ومراكز"
-msgstr "Companies & Centers"
-
-#: .\templates\landing_page\ajei_landing.html:1086
-msgid "مساحات عمل"
-msgstr "Workspaces"
-
-#: .\templates\landing_page\ajei_landing.html:1087
-msgid "قاعات اجتماعات"
-msgstr "Meeting Rooms"
-
-#: .\templates\landing_page\ajei_landing.html:1096
-#: .\templates\landing_page\ajei_landing.html:1364
+#: .\templates\landing_page\ajei.html:2147 .\templates\landing_page\ajei.html:2335 .\templates\landing_page\ajei.html:2647 .\templates\landing_page\ajei_landing.html:2035 .\templates\landing_page\ajei_landing.html:2377
 msgid "المعرض"
 msgstr "Gallery"
 
-#: .\templates\landing_page\ajei_landing.html:1097
+#: .\templates\landing_page\ajei.html:2148 .\templates\landing_page\ajei.html:2518 .\templates\landing_page\ajei.html:2648 .\templates\landing_page\ajei_landing.html:2228 .\templates\landing_page\ajei_landing.html:2378
+msgid "الموقع"
+msgstr "Location"
+
+#: .\templates\landing_page\ajei.html:2149 .\templates\landing_page\ajei.html:2577 .\templates\landing_page\ajei_landing.html:2295
+msgid "تواصل معنا"
+msgstr "Contact Us"
+
+#: .\templates\landing_page\ajei.html:2162 .\templates\landing_page\ajei_landing.html:1848
+msgid "أكثر من مجرد مول… وجهة يومية متكاملة"
+msgstr "More than just a mall... an integrated daily destination"
+
+#: .\templates\landing_page\ajei.html:2164 .\templates\landing_page\ajei_landing.html:1850
+msgid "مشروع تجاري–طبي متكامل، مصمم لخدمة الاحتياجات اليومية من خلال إدارة موحدة ونموذج استثماري ذكي."
+msgstr "An integrated commercial-medical project, designed to serve daily needs through unified management and a smart investment model."
+
+#: .\templates\landing_page\ajei.html:2168 .\templates\landing_page\ajei_landing.html:1856
+msgid "أكتوبر جاردنز - السادس من أكتوبر"
+msgstr "October Gardens - 6th of October City"
+
+#: .\templates\landing_page\ajei.html:2176 .\templates\landing_page\ajei_landing.html:1864
+msgid "ابدأ استثمارك"
+msgstr "Start Your Investment"
+
+#: .\templates\landing_page\ajei.html:2188 .\templates\landing_page\ajei_landing.html:1876
+msgid "الاسم الكامل"
+msgstr "Full Name"
+
+#: .\templates\landing_page\ajei.html:2192 .\templates\landing_page\ajei_landing.html:1880
+msgid "البريد الإلكتروني"
+msgstr "Email Address"
+
+#: .\templates\landing_page\ajei.html:2196 .\templates\landing_page\ajei_landing.html:1884
+msgid "رقم الهاتف"
+msgstr "Phone Number"
+
+#: .\templates\landing_page\ajei.html:2201 .\templates\landing_page\ajei_landing.html:1889
+msgid "نوع الاستثمار"
+msgstr "Investment Type"
+
+#: .\templates\landing_page\ajei.html:2202 .\templates\landing_page\ajei_landing.html:1890
+msgid "عيادة طبية"
+msgstr "Medical Clinic"
+
+#: .\templates\landing_page\ajei.html:2203 .\templates\landing_page\ajei_landing.html:1891
+msgid "وحدة تجارية"
+msgstr "Commercial Unit"
+
+#: .\templates\landing_page\ajei.html:2204 .\templates\landing_page\ajei.html:2278 .\templates\landing_page\ajei.html:2309 .\templates\landing_page\ajei_landing.html:1892 .\templates\landing_page\ajei_landing.html:1970 .\templates\landing_page\ajei_landing.html:2005
+msgid "صيدلية"
+msgstr "Pharmacy"
+
+#: .\templates\landing_page\ajei.html:2205 .\templates\landing_page\ajei_landing.html:1893
+msgid "مطعم/كافيه"
+msgstr "Restaurant/Cafe"
+
+#: .\templates\landing_page\ajei.html:2206 .\templates\landing_page\ajei_landing.html:1894
+msgid "أخرى"
+msgstr "Other"
+
+#: .\templates\landing_page\ajei.html:2211 .\templates\landing_page\ajei_landing.html:1899
+msgid "رسالتك (اختياري)"
+msgstr "Your Message (Optional)"
+
+#: .\templates\landing_page\ajei.html:2215 .\templates\landing_page\ajei_landing.html:1903
+msgid "إرسال"
+msgstr "Submit"
+
+#: .\templates\landing_page\ajei.html:2226 .\templates\landing_page\ajei_landing.html:1914
+msgid "ما هو مشروع Ajei؟"
+msgstr "What is Ajei Project?"
+
+#: .\templates\landing_page\ajei.html:2228 .\templates\landing_page\ajei_landing.html:1916
+msgid "Ajei هو مشروع تجاري–طبي متكامل، تم تصميمه ليعمل كنظام واحد مترابط."
+msgstr "Ajei is an integrated commercial-medical project, designed to work as one interconnected system."
+
+#: .\templates\landing_page\ajei.html:2231 .\templates\landing_page\ajei_landing.html:1919
+msgid "يجمع بين الخدمات اليومية الأساسية في مكان واحد، مما يخلق حركة مستمرة وقيمة تشغيلية حقيقية."
+msgstr ""
+
+#: .\templates\landing_page\ajei.html:2234 .\templates\landing_page\ajei_landing.html:1922
+msgid "Ajei ليس مولًا تقليديًا،"
+msgstr "Ajei is not a traditional mall,"
+
+#: .\templates\landing_page\ajei.html:2237 .\templates\landing_page\ajei_landing.html:1925
+msgid "بل هو مركز خدمات مركزي مبني حول نمط الحياة اليومية، حيث تتكامل الخدمات والحركة والوظائف بسلاسة."
+msgstr ""
+
+#: .\templates\landing_page\ajei.html:2241 .\templates\landing_page\ajei_landing.html:1929
+msgid "مالك المشروع"
+msgstr "Project Owner"
+
+#: .\templates\landing_page\ajei.html:2246 .\templates\landing_page\ajei_landing.html:1934
+msgid "شركة مصرية رائدة في مجال التطوير العقاري"
+msgstr "Leading Egyptian Real Estate Development Company"
+
+#: .\templates\landing_page\ajei.html:2266 .\templates\landing_page\ajei_landing.html:1956
+msgid "لماذا تستثمر في Ajei؟"
+msgstr "Why Invest in Ajei?"
+
+#: .\templates\landing_page\ajei.html:2275 .\templates\landing_page\ajei.html:2433 .\templates\landing_page\ajei_landing.html:1967 .\templates\landing_page\ajei_landing.html:2137
+msgid "الطابق الأرضي"
+msgstr "Ground Floor"
+
+#: .\templates\landing_page\ajei.html:2276 .\templates\landing_page\ajei_landing.html:1968
+msgid "خدمات يومية أساسية"
+msgstr "Essential Daily Services"
+
+#: .\templates\landing_page\ajei.html:2279 .\templates\landing_page\ajei_landing.html:1971
+msgid "مطعم وكافيه"
+msgstr "Restaurant & Cafe"
+
+#: .\templates\landing_page\ajei.html:2280 .\templates\landing_page\ajei_landing.html:1972
+msgid "سوبر ماركت"
+msgstr "Supermarket"
+
+#: .\templates\landing_page\ajei.html:2281 .\templates\landing_page\ajei_landing.html:1973
+msgid "محل ملابس"
+msgstr "Clothing Store"
+
+#: .\templates\landing_page\ajei.html:2289 .\templates\landing_page\ajei.html:2442 .\templates\landing_page\ajei_landing.html:1983 .\templates\landing_page\ajei_landing.html:2146
+msgid "الطابق الأول"
+msgstr "First Floor"
+
+#: .\templates\landing_page\ajei.html:2290 .\templates\landing_page\ajei_landing.html:1984
+msgid "عيادات طبية متخصصة"
+msgstr "Specialized Medical Clinics"
+
+#: .\templates\landing_page\ajei.html:2292 .\templates\landing_page\ajei_landing.html:1986
+msgid "عيادة أطفال"
+msgstr "Pediatric Clinic"
+
+#: .\templates\landing_page\ajei.html:2293 .\templates\landing_page\ajei_landing.html:1987
+msgid "عيادة أسنان"
+msgstr "Dental Clinic"
+
+#: .\templates\landing_page\ajei.html:2294 .\templates\landing_page\ajei_landing.html:1988
+msgid "عيادة باطنة"
+msgstr "Internal Medicine Clinic"
+
+#: .\templates\landing_page\ajei.html:2295 .\templates\landing_page\ajei_landing.html:1989
+msgid "عيادة نساء وتوليد"
+msgstr "Obstetrics & Gynecology Clinic"
+
+#: .\templates\landing_page\ajei.html:2303 .\templates\landing_page\ajei.html:2451 .\templates\landing_page\ajei_landing.html:1999 .\templates\landing_page\ajei_landing.html:2155
+msgid "الطابق الثاني"
+msgstr "Second Floor"
+
+#: .\templates\landing_page\ajei.html:2304 .\templates\landing_page\ajei_landing.html:2000
+msgid "مركز طبي متكامل"
+msgstr "Integrated Medical Center"
+
+#: .\templates\landing_page\ajei.html:2306 .\templates\landing_page\ajei_landing.html:2002
+msgid "معمل تحاليل"
+msgstr "Laboratory"
+
+#: .\templates\landing_page\ajei.html:2307 .\templates\landing_page\ajei_landing.html:2003
+msgid "مركز أشعة"
+msgstr "Radiology Center"
+
+#: .\templates\landing_page\ajei.html:2308 .\templates\landing_page\ajei_landing.html:2004
+msgid "عيادات تخصصية"
+msgstr "Specialized Clinics"
+
+#: .\templates\landing_page\ajei.html:2317 .\templates\landing_page\ajei.html:2460 .\templates\landing_page\ajei_landing.html:2015 .\templates\landing_page\ajei_landing.html:2164
+msgid "الطابق الأخير"
+msgstr "Top Floor"
+
+#: .\templates\landing_page\ajei.html:2318 .\templates\landing_page\ajei_landing.html:2016
+msgid "مساحات تجارية ومكاتب"
+msgstr "Commercial Spaces & Offices"
+
+#: .\templates\landing_page\ajei.html:2320 .\templates\landing_page\ajei_landing.html:2018
+msgid "مكاتب إدارية"
+msgstr "Administrative Offices"
+
+#: .\templates\landing_page\ajei.html:2321 .\templates\landing_page\ajei_landing.html:2019
+msgid "شركات ومراكز"
+msgstr "Companies & Centers"
+
+#: .\templates\landing_page\ajei.html:2322 .\templates\landing_page\ajei_landing.html:2020
+msgid "مساحات عمل"
+msgstr "Workspaces"
+
+#: .\templates\landing_page\ajei.html:2323 .\templates\landing_page\ajei_landing.html:2021
+msgid "قاعات اجتماعات"
+msgstr "Meeting Rooms"
+
+#: .\templates\landing_page\ajei.html:2337 .\templates\landing_page\ajei_landing.html:2037
 msgid "تصاميم المشروع"
 msgstr "Project Designs"
 
-#: .\templates\landing_page\ajei_landing.html:1101
+#: .\templates\landing_page\ajei.html:2342 .\templates\landing_page\ajei_landing.html:2042
 msgid "التصميم الخارجي"
 msgstr "Exterior Design"
 
-#: .\templates\landing_page\ajei_landing.html:1103
+#: .\templates\landing_page\ajei.html:2343 .\templates\landing_page\ajei_landing.html:2043
+msgid "التصميم الداخلي"
+msgstr "Interior Design"
+
+#: .\templates\landing_page\ajei.html:2344 .\templates\landing_page\ajei_landing.html:2044
 msgid "المركز الطبي"
 msgstr "Medical Center"
 
-#: .\templates\landing_page\ajei_landing.html:1157
+#: .\templates\landing_page\ajei.html:2401 .\templates\landing_page\ajei_landing.html:2103
 msgid "فيديو"
 msgstr "Video"
 
-#: .\templates\landing_page\ajei_landing.html:1158
+#: .\templates\landing_page\ajei.html:2403 .\templates\landing_page\ajei_landing.html:2105
 msgid "جولة افتراضية في المشروع"
 msgstr "Virtual Tour of the Project"
 
-#: .\templates\landing_page\ajei_landing.html:1172
+#: .\templates\landing_page\ajei.html:2410 .\templates\landing_page\ajei_landing.html:2112
+msgid "Your browser does not support the video tag."
+msgstr "Your browser does not support the video tag."
+
+#: .\templates\landing_page\ajei.html:2421 .\templates\landing_page\ajei_landing.html:2125
 msgid "المخططات"
 msgstr "Floor Plans"
 
-#: .\templates\landing_page\ajei_landing.html:1173
+#: .\templates\landing_page\ajei.html:2423 .\templates\landing_page\ajei_landing.html:2127
 msgid "مخططات الطوابق"
 msgstr "Floor Plans"
 
-#: .\templates\landing_page\ajei_landing.html:1218
+#: .\templates\landing_page\ajei.html:2472 .\templates\landing_page\ajei_landing.html:2178
 msgid "شركاء النجاح"
 msgstr "Success Partners"
 
-#: .\templates\landing_page\ajei_landing.html:1219
+#: .\templates\landing_page\ajei.html:2474 .\templates\landing_page\ajei_landing.html:2180
 msgid "شركاؤنا"
 msgstr "Our Partners"
 
-#: .\templates\landing_page\ajei_landing.html:1235
+#: .\templates\landing_page\ajei.html:2496 .\templates\landing_page\ajei_landing.html:2204
 msgid "الفروع"
 msgstr "Branches"
 
-#: .\templates\landing_page\ajei_landing.html:1236
-#, fuzzy
+#: .\templates\landing_page\ajei.html:2498 .\templates\landing_page\ajei_landing.html:2206
 #| msgid "معلومات التواصل"
 msgid "العلامات التجارية"
 msgstr "Contact Information"
 
-#: .\templates\landing_page\ajei_landing.html:1253
+#: .\templates\landing_page\ajei.html:2520 .\templates\landing_page\ajei_landing.html:2230
 msgid "موقع استراتيجي متميز"
 msgstr "Distinguished Strategic Location"
 
-#: .\templates\landing_page\ajei_landing.html:1255
-msgid ""
-"يقع مشروع Ajei في قلب أكتوبر جاردنز بمدينة السادس من أكتوبر، في موقع حيوي "
-"يسهل الوصول إليه"
+#: .\templates\landing_page\ajei.html:2523 .\templates\landing_page\ajei_landing.html:2233
+msgid "يقع مشروع Ajei في قلب أكتوبر جاردنز بمدينة السادس من أكتوبر، في موقع حيوي يسهل الوصول إليه"
 msgstr ""
 
-#: .\templates\landing_page\ajei_landing.html:1263
+#: .\templates\landing_page\ajei.html:2531 .\templates\landing_page\ajei_landing.html:2241
 msgid "موقع المشروع على الخريطة"
 msgstr "Project Location on Map"
 
-#: .\templates\landing_page\ajei_landing.html:1275
+#: .\templates\landing_page\ajei.html:2543 .\templates\landing_page\ajei_landing.html:2255
 msgid "العنوان"
 msgstr "Address"
 
-#: .\templates\landing_page\ajei_landing.html:1276
+#: .\templates\landing_page\ajei.html:2544 .\templates\landing_page\ajei_landing.html:2256
 msgid "أكتوبر جاردنز، السادس من أكتوبر، الجيزة"
 msgstr "October Gardens, 6th of October, Giza"
 
-#: .\templates\landing_page\ajei_landing.html:1285
+#: .\templates\landing_page\ajei.html:2553 .\templates\landing_page\ajei_landing.html:2267
 msgid "سهولة الوصول"
 msgstr "Easy Access"
 
-#: .\templates\landing_page\ajei_landing.html:1286
+#: .\templates\landing_page\ajei.html:2554 .\templates\landing_page\ajei_landing.html:2268
 msgid "قريب من الطريق الدائري ومحور 26 يوليو"
 msgstr "Close to Ring Road and 26th of July Axis"
 
-#: .\templates\landing_page\ajei_landing.html:1295
+#: .\templates\landing_page\ajei.html:2563 .\templates\landing_page\ajei_landing.html:2279
 msgid "البيئة المحيطة"
 msgstr "Surrounding Area"
 
-#: .\templates\landing_page\ajei_landing.html:1296
+#: .\templates\landing_page\ajei.html:2564 .\templates\landing_page\ajei_landing.html:2280
 msgid "محاط بمجتمعات سكنية راقية ومرافق حيوية"
 msgstr "Surrounded by upscale residential communities and vital facilities"
 
-#: .\templates\landing_page\ajei_landing.html:1307
+#: .\templates\landing_page\ajei.html:2579 .\templates\landing_page\ajei_landing.html:2297
 msgid "نحن هنا لخدمتك"
 msgstr "We Are Here to Serve You"
 
-#: .\templates\landing_page\ajei_landing.html:1315
+#: .\templates\landing_page\ajei.html:2588 .\templates\landing_page\ajei_landing.html:2308
 msgid "اتصل بنا"
 msgstr "Call Us"
 
-#: .\templates\landing_page\ajei_landing.html:1327
+#: .\templates\landing_page\ajei.html:2598 .\templates\landing_page\ajei_landing.html:2320
+msgid "واتساب"
+msgstr "WhatsApp"
+
+#: .\templates\landing_page\ajei.html:2600 .\templates\landing_page\ajei_landing.html:2322
 msgid "راسلنا الآن"
 msgstr "Message Us Now"
 
-#: .\templates\landing_page\ajei_landing.html:1335
+#: .\templates\landing_page\ajei.html:2608 .\templates\landing_page\ajei_landing.html:2332
 msgid "فيسبوك"
 msgstr "Facebook"
 
-#: .\templates\landing_page\ajei_landing.html:1337
+#: .\templates\landing_page\ajei.html:2610 .\templates\landing_page\ajei_landing.html:2334
 msgid "تابعنا"
 msgstr "Follow Us"
 
-#: .\templates\landing_page\ajei_landing.html:1348
-msgid "مشروع تجاري–طبي متكامل في قلب أكتوبر جاردنز"
-msgstr ""
-"An integrated commercial-medical project in the heart of October Gardens"
-
-#: .\templates\landing_page\ajei_landing.html:1372
-msgid "أكتوبر جاردنز، السادس من أكتوبر"
-msgstr "October Gardens, 6th of October"
-
-#: .\templates\landing_page\ajei_landing.html:1380
-msgid "جميع الحقوق محفوظة"
-msgstr "All Rights Reserved"
-
-#: .\templates\landing_page\ajei_landing.html:1388
-msgid "تواصل معنا عبر واتساب"
-msgstr "Contact us via WhatsApp"
-
-#: .\templates\landing_page\ajei_landing.html:1451
-msgid "يرجى ملء جميع الحقول المطلوبة"
-msgstr "Please fill in all required fields"
-
-#: .\templates\landing_page\ajei_landing.html
+#: .\templates\landing_page\ajei.html:2618 .\templates\landing_page\ajei_landing.html:2344
 msgid "رمز الاستجابة السريع"
 msgstr "Scan QR Code"
 
-#: .\templates\landing_page\ajei_landing.html
-msgid "مالك المشروع"
-msgstr "Project Owner"
+#: .\templates\landing_page\ajei.html:2631 .\templates\landing_page\ajei_landing.html:2357
+msgid "مشروع تجاري–طبي متكامل في قلب أكتوبر جاردنز"
+msgstr "An integrated commercial-medical project in the heart of October Gardens"
 
-#: .\templates\landing_page\ajei_landing.html
-msgid "شركة مصرية رائدة في مجال التطوير العقاري"
-msgstr "Leading Egyptian Real Estate Development Company"
+#: .\templates\landing_page\ajei.html:2643 .\templates\landing_page\ajei_landing.html:2373
+msgid "روابط سريعة"
+msgstr "Quick Links"
+
+#: .\templates\landing_page\ajei.html:2653 .\templates\landing_page\ajei_landing.html:2383
+msgid "معلومات التواصل"
+msgstr "Contact Information"
+
+#: .\templates\landing_page\ajei.html:2655 .\templates\landing_page\ajei_landing.html:2389
+msgid "أكتوبر جاردنز، السادس من أكتوبر"
+msgstr "October Gardens, 6th of October"
+
+#: .\templates\landing_page\ajei.html:2663 .\templates\landing_page\ajei_landing.html:2409
+#| msgid "عن المشروع"
+msgid "مشروع"
+msgstr "About the Project"
+
+#: .\templates\landing_page\ajei.html:2663 .\templates\landing_page\ajei_landing.html:2409
+msgid "جميع الحقوق محفوظة"
+msgstr "All Rights Reserved"
+
+#: .\templates\landing_page\ajei.html:2672 .\templates\landing_page\ajei_landing.html:2418
+msgid "تواصل معنا عبر واتساب"
+msgstr "Contact us via WhatsApp"
+
+#: .\templates\landing_page\ajei.html:2735 .\templates\landing_page\ajei_landing.html:2485
+msgid "يرجى ملء جميع الحقول المطلوبة"
+msgstr "Please fill in all required fields"

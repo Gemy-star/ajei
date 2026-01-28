@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&6j1p2pz_h#mx&r$6tnmke@3@^!+qtmeb9(u2yp^ov-p9c-8(q'
+SECRET_KEY = "django-insecure-&6j1p2pz_h#mx&r$6tnmke@3@^!+qtmeb9(u2yp^ov-p9c-8(q"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,58 +31,59 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'constance',
-    'constance.backends.database',
-    'rosetta',
-    'ajei',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "constance",
+    "constance.backends.database",
+    "rosetta",
+    "ajei",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "ajei.middleware.PageViewTrackingMiddleware",
 ]
 
-ROOT_URLCONF = 'config.urls'
+ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.template.context_processors.i18n',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.template.context_processors.i18n",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -92,16 +93,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -109,18 +110,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = "en"
 
 LANGUAGES = [
-    ('en', 'English'),
-    ('ar', 'Arabic'),
+    ("en", "English"),
+    ("ar", "Arabic"),
 ]
 
 LOCALE_PATHS = [
-    BASE_DIR / 'locale',
+    BASE_DIR / "locale",
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -130,48 +131,87 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / "static",
 ]
 
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
 # Media files
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Django Constance Configuration
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_BACKEND = "constance.backends.database.DatabaseBackend"
 
 CONSTANCE_CONFIG = {
-    'SITE_NAME': ('Ajei Project', 'Name of the site'),
-    'SITE_DESCRIPTION': ('Integrated Medical-Commercial Center', 'Site description'),
-    'CONTACT_EMAIL': ('info@ajeiproject.com', 'Contact email address'),
-    'CONTACT_PHONE': ('+201016638824', 'Contact phone number'),
-    'WHATSAPP_NUMBER': ('201016638824', 'WhatsApp number without +'),
-    'FACEBOOK_URL': ('https://www.facebook.com/profile.php?id=61571119168603', 'Facebook page URL'),
-    'LOCATION_ADDRESS': ('October Gardens, 6th of October City', 'Project location address'),
-    'GOOGLE_MAPS_EMBED': ('https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.8662748576657!2d30.9449!3d30.0358', 'Google Maps embed URL'),
-    'GOOGLE_ADS_ID': ('', 'Google Ads/Analytics ID'),
-    'ENABLE_CONTACT_FORM': (True, 'Enable contact form submissions'),
-    'MAINTENANCE_MODE': (False, 'Enable maintenance mode'),
+    "SITE_NAME": ("Ajei Project", "Name of the site"),
+    "SITE_DESCRIPTION": ("Integrated Medical-Commercial Center", "Site description"),
+    "CONTACT_EMAIL": ("info@ajeiproject.com", "Contact email address"),
+    "CONTACT_PHONE": ("+201016638824", "Contact phone number"),
+    "WHATSAPP_NUMBER": ("201016638824", "WhatsApp number without +"),
+    "FACEBOOK_URL": (
+        "https://www.facebook.com/profile.php?id=61571119168603",
+        "Facebook page URL",
+    ),
+    "LOCATION_ADDRESS": (
+        "October Gardens, 6th of October City",
+        "Project location address",
+    ),
+    "GOOGLE_MAPS_EMBED": (
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.8662748576657!2d30.9449!3d30.0358",
+        "Google Maps embed URL",
+    ),
+    "GOOGLE_ADS_ID": ("", "Google Ads/Analytics ID"),
+    "ENABLE_CONTACT_FORM": (True, "Enable contact form submissions"),
+    "MAINTENANCE_MODE": (False, "Enable maintenance mode"),
 }
 
 CONSTANCE_CONFIG_FIELDSETS = {
-    'General Settings': ('SITE_NAME', 'SITE_DESCRIPTION', 'MAINTENANCE_MODE'),
-    'Contact Information': ('CONTACT_EMAIL', 'CONTACT_PHONE', 'WHATSAPP_NUMBER', 'LOCATION_ADDRESS'),
-    'Social Media': ('FACEBOOK_URL',),
-    'Maps & Analytics': ('GOOGLE_MAPS_EMBED', 'GOOGLE_ADS_ID'),
-    'Features': ('ENABLE_CONTACT_FORM',),
+    "General Settings": ("SITE_NAME", "SITE_DESCRIPTION", "MAINTENANCE_MODE"),
+    "Contact Information": (
+        "CONTACT_EMAIL",
+        "CONTACT_PHONE",
+        "WHATSAPP_NUMBER",
+        "LOCATION_ADDRESS",
+    ),
+    "Social Media": ("FACEBOOK_URL",),
+    "Maps & Analytics": ("GOOGLE_MAPS_EMBED", "GOOGLE_ADS_ID"),
+    "Features": ("ENABLE_CONTACT_FORM",),
 }
+
+# Rosetta Configuration
+ROSETTA_REQUIRES_AUTH = True
+ROSETTA_ENABLE_TRANSLATION_SUGGESTIONS = True
+ROSETTA_POFILE_WRAP_WIDTH = 0
+
+# Authentication URLs
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/dashboard/"
+LOGOUT_REDIRECT_URL = "/"
+
+# Session Configuration
+SESSION_COOKIE_SECURE = False  # Set to True only in production with HTTPS
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "Lax"
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+SESSION_COOKIE_AGE = 1209600  # 2 weeks (in seconds)
+SESSION_SAVE_EVERY_REQUEST = True  # Extend session on every request
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Keep session after browser closes
+
+# CSRF Configuration
+CSRF_COOKIE_SECURE = False  # Set to True only in production with HTTPS
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = "Lax"
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "http://localhost:8000"]

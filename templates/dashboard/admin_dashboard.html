@@ -1,0 +1,609 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - Ajei Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #f5f6fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #17112A, #31292E);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dashboard-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #e94560;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #d63851;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #17112A;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #17112A;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-subtitle {
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #17112A;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: right;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-new {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-contacted {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .status-qualified {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .status-converted {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .status-closed {
+            background: #eceff1;
+            color: #546e7a;
+        }
+
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .chart-box {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .chart-box h4 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .chart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: white;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+        }
+
+        .chart-label {
+            font-weight: 600;
+        }
+
+        .chart-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #95a5a6;
+        }
+
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .dashboard-header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.4rem;
+            }
+
+            .header-actions {
+                width: 100%;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .chart-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .chart-box {
+                min-height: 250px;
+            }
+
+            table {
+                font-size: 0.85rem;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            th, td {
+                padding: 0.5rem 0.25rem;
+                white-space: nowrap;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        .logout-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .logout-link:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>لوحة التحكم - Ajei</h1>
+        <div class="header-actions">
+            <a href="{% url 'landing_page' %}" class="btn btn-secondary btn-small">الموقع الرئيسي</a>
+            <a href="{% url 'translations_page' %}" class="btn btn-primary btn-small">إدارة الترجمات</a>
+            <a href="{% url 'logout' %}" class="logout-link">تسجيل الخروج</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Statistics Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>إجمالي المشاهدات</h3>
+                <div class="stat-value">{{ total_views|default:0 }}</div>
+                <div class="stat-subtitle">اليوم: {{ views_today|default:0 }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>مشاهدات هذا الأسبوع</h3>
+                <div class="stat-value">{{ views_this_week|default:0 }}</div>
+                <div class="stat-subtitle">زوار فريدون: {{ unique_visitors_week|default:0 }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>إجمالي الطلبات</h3>
+                <div class="stat-value">{{ total_contacts|default:0 }}</div>
+                <div class="stat-subtitle">جديد: {{ new_contacts|default:0 }}</div>
+            </div>
+            <div class="stat-card">
+                <h3>طلبات هذا الشهر</h3>
+                <div class="stat-value">{{ contacts_this_month|default:0 }}</div>
+                <div class="stat-subtitle">هذا الأسبوع: {{ contacts_this_week|default:0 }}</div>
+            </div>
+        </div>
+
+        <!-- Recent Contacts -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">طلبات التواصل الأخيرة</h2>
+                <a href="{% url 'contact_list' %}" class="btn btn-secondary btn-small">عرض الكل</a>
+            </div>
+            {% if recent_contacts %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>الهاتف</th>
+                        <th>نوع الاستثمار</th>
+                        <th>الحالة</th>
+                        <th>التاريخ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in recent_contacts %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'contact_detail' contact.id %}" style="color: #667eea; text-decoration: none; font-weight: 700;">
+                                {{ contact.name }}
+                            </a>
+                        </td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.phone }}</td>
+                        <td>{{ contact.get_investment_display_text }}</td>
+                        <td>
+                            <span class="status-badge status-{{ contact.status }}">
+                                {{ contact.get_status_display }}
+                            </span>
+                        </td>
+                        <td>{{ contact.created_at|date:"Y/m/d H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="empty-state">
+                <p>لا توجد طلبات تواصل حتى الآن</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Analytics Charts -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">الإحصائيات التفصيلية</h2>
+            </div>
+            <div class="chart-container">
+                <div class="chart-box">
+                    <h4>الطلبات حسب الحالة</h4>
+                    <canvas id="statusChart"></canvas>
+                </div>
+
+                <div class="chart-box">
+                    <h4>الطلبات حسب نوع الاستثمار</h4>
+                    <canvas id="typeChart"></canvas>
+                </div>
+
+                <div class="chart-box">
+                    <h4>اللغات</h4>
+                    <canvas id="languageChart"></canvas>
+                </div>
+
+                <div class="chart-box">
+                    <h4>أكثر الصفحات مشاهدة</h4>
+                    <canvas id="pagesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart.js configuration
+        const chartColors = {
+            primary: ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b', '#fa709a', '#fee140', '#30cfd0'],
+            background: ['rgba(102, 126, 234, 0.2)', 'rgba(118, 75, 162, 0.2)', 'rgba(240, 147, 251, 0.2)', 'rgba(79, 172, 254, 0.2)', 'rgba(67, 233, 123, 0.2)', 'rgba(250, 112, 154, 0.2)', 'rgba(254, 225, 64, 0.2)', 'rgba(48, 207, 208, 0.2)']
+        };
+
+        // Contacts by Status Chart
+        const statusData = {
+            labels: [{% for status in contacts_by_status %}'{{ status.status|upper }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                data: [{% for status in contacts_by_status %}{{ status.count }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: chartColors.background,
+                borderColor: chartColors.primary,
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('statusChart'), {
+            type: 'pie',
+            data: statusData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                family: 'Cairo, sans-serif',
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Contacts by Type Chart
+        const typeData = {
+            labels: [{% for type in contacts_by_type %}'{{ type.investment_type|upper }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                label: 'عدد الطلبات',
+                data: [{% for type in contacts_by_type %}{{ type.count }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: chartColors.background,
+                borderColor: chartColors.primary,
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('typeChart'), {
+            type: 'bar',
+            data: typeData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            font: {
+                                family: 'Cairo, sans-serif'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                family: 'Cairo, sans-serif'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Language Distribution Chart
+        const languageData = {
+            labels: [{% for lang in language_stats %}'{{ lang.language|upper }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                data: [{% for lang in language_stats %}{{ lang.count }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: chartColors.background,
+                borderColor: chartColors.primary,
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('languageChart'), {
+            type: 'doughnut',
+            data: languageData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                family: 'Cairo, sans-serif',
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Popular Pages Chart
+        const pagesData = {
+            labels: [{% for page in popular_pages|slice:":5" %}'{{ page.page_path }}'{% if not forloop.last %}, {% endif %}{% endfor %}],
+            datasets: [{
+                label: 'المشاهدات',
+                data: [{% for page in popular_pages|slice:":5" %}{{ page.count }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+                backgroundColor: chartColors.background,
+                borderColor: chartColors.primary,
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('pagesChart'), {
+            type: 'bar',
+            data: pagesData,
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            font: {
+                                family: 'Cairo, sans-serif'
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            font: {
+                                family: 'Cairo, sans-serif'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
